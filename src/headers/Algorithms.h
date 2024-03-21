@@ -9,5 +9,6 @@ class Algorithms : public container
         Algorithms(container c);
         void set_container(container in);
         void place_boxes();
-        
+        bool prove_object(int **objects, int w, int l, box v);
+            
 };

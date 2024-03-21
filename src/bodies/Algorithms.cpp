@@ -67,7 +67,6 @@ Funciones:
 
 /*
  * Problemas a resolver:
-    - Modificar colocación, para revisar que la caja no se solape con otra caja.
     - Modificar colocación, para que si no cabe en una posición, la rote y vuelva a comprobar si cabe.
  */
 Algorithms::Algorithms(container c)
@@ -98,6 +97,23 @@ void Algorithms::set_container(container in)
     std::cout << "Number of boxes: " << k << std::endl;
 }
 
+bool Algorithms::prove_object(int **objects, int w, int l, box v)
+{
+    int width = w + v.get_width();
+    int length = l + v.get_length();
+    for (int i = w; i < width; i++)
+    {
+        for (int j = l; j < length; j++)
+        {
+            if(objects[i][j] != 0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 void Algorithms::place_boxes()
 {    
 int n_box = 1;
@@ -107,7 +123,7 @@ for (int i = 0; i < k; i++)
         {
             for (int l = 0; l < length_container; l++)
             {
-                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - j && objects[j][l] == 0)
+                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - j && prove_object(objects, j, l, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_length(); m++)
                     {
@@ -121,7 +137,7 @@ for (int i = 0; i < k; i++)
                     n_box++;
                     std::cout << n_box << std::endl;
                 }
-                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - j && objects[j][l] == 0)
+                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - j && prove_object(objects, j, l, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_width(); m++)
                     {
