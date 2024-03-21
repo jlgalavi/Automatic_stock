@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Algorithms.h"
+#include "src/headers/Algorithms.h"
 
 
 int main()
