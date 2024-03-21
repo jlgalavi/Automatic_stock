@@ -3,6 +3,22 @@
 #include "container.h"
 
 // Constructor del contenedor
+container::container()
+{
+    length_container = 0;
+    width_container = 0;
+    height_container = 0;
+    k = 0;
+    objects = new int *[width_container];
+    for (int i = 0; i < width_container; i++)
+    {
+        objects[i] = new int[length_container];
+        for (int j = 0; j < length_container; j++)
+        {
+            objects[i][j] = 0;
+        }
+    }
+}
 container::container(int l, int w, int h, int k)
 {
     length_container = l;
@@ -18,12 +34,12 @@ container::container(int l, int w, int h, int k)
             objects[i][j] = 0;
         }
     }
-    V.reserve(k);
+    V_box.reserve(k);
 }
 // Añadir caja al contenedor
 void container::add_box(box b)
 {
-    V.push_back(b);
+    V_box.push_back(b);
 }
 // Mostrar las cajas del contenedor
 void container::show()
@@ -35,7 +51,7 @@ void container::show()
     for (int i = 0; i < k; i++)
     {
         std::cout << "Box " << i + 1 << std::endl;
-        V[i].show();
+        V_box[i].show();
     }
 }
 // Obtener la longitud del contenedor
@@ -69,46 +85,6 @@ int container::surface_area()
     return length_container * width_container;
 }
 
-void container::place_boxes()
-{    
-int n_box = 1;
-for (int i = 0; i < k; i++)
-    {
-        for (int j = 0; j < width_container; j++)
-        {
-            for (int l = 0; l < length_container; l++)
-            {
-                if (V[i].get_length() <= length_container - l && V[i].get_width() <= width_container - j && objects[j][l] == 0)
-                {
-                    for (int m = 0; m < V[i].get_length(); m++)
-                    {
-                        for (int n = 0; n < V[i].get_width(); n++)
-                        {
-                            objects[j + n][l + m] = n_box;
-                        }
-                    }
-                    l = length_container;
-                    j = width_container;
-                    n_box++;
-                }
-                else if (V[i].get_width() <= length_container - l && V[i].get_length() <= width_container - j && objects[j][l] == 0)
-                {
-                    for (int m = 0; m < V[i].get_width(); m++)
-                    {
-                        for (int n = 0; n < V[i].get_length(); n++)
-                        {
-                            objects[j + n][l + m] = n_box;
-                        }
-                    }
-                    l = length_container;
-                    j = width_container;
-                    n_box++;
-                }
-            }
-        }
-    }
-}
-
 void container::show_objects()
 {
     for (int i = 0; i < width_container; i++)
@@ -120,3 +96,9 @@ void container::show_objects()
         std::cout << std::endl;
     }
 }
+
+std::vector<box> container::get_V()
+{
+    return V_box;
+}
+
