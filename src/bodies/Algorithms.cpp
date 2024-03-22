@@ -67,7 +67,7 @@ Funciones:
 
 /*
  * Problemas a resolver:
-    - Modificar colocación, para que si no cabe en una posición, la rote y vuelva a comprobar si cabe.
+    - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
  */
 Algorithms::Algorithms(container c)
 {
@@ -119,37 +119,37 @@ void Algorithms::place_boxes()
 int n_box = 1;
 for (int i = 0; i < k; i++)
     {
-        for (int j = 0; j < width_container; j++)
+        for (int w = 0; w < width_container; w++)
         {
             for (int l = 0; l < length_container; l++)
             {
-                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - j && prove_object(objects, j, l, V_box[i]))
+                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - w && prove_object(objects, w, l, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_length(); m++)
                     {
                         for (int n = 0; n < V_box[i].get_width(); n++)
                         {
-                            objects[j + n][l + m] = n_box;
+                            objects[w + n][l + m] = n_box;
                         }
                     }
                     l = length_container;
-                    j = width_container;
+                    w = width_container;
                     n_box++;
-                    std::cout << n_box << std::endl;
+                    V_box[i].set_placed(true);
                 }
-                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - j && prove_object(objects, j, l, V_box[i]))
+                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - w && prove_object(objects, w, l, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_width(); m++)
                     {
                         for (int n = 0; n < V_box[i].get_length(); n++)
                         {
-                            objects[j + n][l + m] = n_box;
+                            objects[l + n][w + m] = n_box;
                         }
                     }
-                    l = length_container;
-                    j = width_container;
+                    w = length_container;
+                    l = width_container;
                     n_box++;
-                    std::cout << n_box << std::endl;
+                    V_box[i].set_placed(true);
                 }
             }
         }

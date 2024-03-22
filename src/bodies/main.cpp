@@ -16,8 +16,9 @@ int main()
     c.add_box(b3);
     c.add_box(b4);
     a.set_container(c);
-    a.place_boxes();
     a.show();
+    a.place_boxes();
     a.show_objects();
+
     return 0;
 }

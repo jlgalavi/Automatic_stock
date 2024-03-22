@@ -1,11 +1,12 @@
 #include <iostream>
 #include "../headers/box.h"
 // Constructor de la caja
-box::box(int l, int w, int h)
+box::box(int l, int w, int h, bool p)
 {
     length_box = l;
     width_box = w;
     height_box = h;
+    placed = p;
 }
 // Obtener la longitud de la caja
 int box::get_length()
@@ -40,3 +41,12 @@ void box::show()
     std::cout << "Height: " << height_box << std::endl;
 }
 
+void box::set_placed(bool p)
+{
+    placed = p;
+}
+
+bool box::get_placed()
+{
+    return placed;
+}

@@ -50,8 +50,12 @@ void container::show()
     std::cout << "Number of boxes: " << k << std::endl;
     for (int i = 0; i < k; i++)
     {
+        bool placed = V_box[i].get_placed();
+        if(!placed)
+        {
         std::cout << "Box " << i + 1 << std::endl;
         V_box[i].show();
+        }
     }
 }
 // Obtener la longitud del contenedor
