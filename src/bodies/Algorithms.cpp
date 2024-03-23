@@ -27,41 +27,6 @@ Funciones:
             - Recorremos siempre en horizontal
             - Cuando sobrepasemos la horizontal, bajamos una fila y volvemos a recorrer en horizontal.
         
-        void container::place_boxes()
-        {
-            for (int i = 0; i < k; i++)
-            {
-                for (int j = 0; j < width_container; j++)
-                {
-                    for (int l = 0; l < length_container; l++)
-                    {
-                        if (V[i].get_length() <= length_container - l && V[i].get_width() <= width_container - j && objects[j][l] == 0)
-                        {
-                            for (int m = 0; m < V[i].get_length(); m++)
-                            {
-                                for (int n = 0; n < V[i].get_width(); n++)
-                                {
-                                    objects[j + n][l + m] = 1;
-                                }
-                            }
-                            break;
-                        }
-                        else if (V[i].get_width() <= length_container - l && V[i].get_length() <= width_container - j && objects[j][l] == 0)
-                        {
-                            for (int m = 0; m < V[i].get_width(); m++)
-                            {
-                                for (int n = 0; n < V[i].get_length(); n++)
-                                {
-                                    objects[j + n][l + m] = 1;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
         
 */
 
@@ -183,4 +148,3 @@ for (int i = 0; i < k; i++)
         }
     }
 }
-
