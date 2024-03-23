@@ -5,7 +5,7 @@
 
 int main()
 {
-    container c(10, 10, 1, 8);
+    container c(11, 11, 1, 8); // Hay uno de más en el ancho y en el largo para que el algoritmo actual funcione, a falta de revisar el algoritmo.
     box b1(2, 6, 1, false);
     box b2(4, 4, 1, false);
     box b3(2, 9, 1, false);
@@ -25,12 +25,12 @@ int main()
     c.add_box(b7);
     c.add_box(b8);
     a.set_container(c);
-    b.set_container(c);
     a.order_boxes();
     a.show();
     a.place_boxes();
     a.show_objects();
     a.show();
+    b.set_container(c);
     b.place_boxes();
     b.show_objects();
     b.show();
