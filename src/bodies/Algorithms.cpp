@@ -67,8 +67,8 @@ Funciones:
 
 /*
  * Problemas a resolver:
-    - Revisar en que lugar no comprueba para colocar la caja de la última fila
     - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
+    - Añadir altura a las cajas
  */
 Algorithms::Algorithms(container c)
 {
@@ -91,11 +91,13 @@ void Algorithms::set_container(container in)
         }
     }
     V_box = in.get_V();
-    std::cout << "Container set" << std::endl;
-    std::cout << "Length: " << length_container << std::endl;
-    std::cout << "Width: " << width_container << std::endl; 
-    std::cout << "Height: " << height_container << std::endl;   
-    std::cout << "Number of boxes: " << k << std::endl;
+    std::cout << std::endl << "--------------------------" << std::endl;
+    std::cout << "  Container set" << std::endl;
+    std::cout << "  Length: " << length_container << std::endl;
+    std::cout << "  Width: " << width_container << std::endl; 
+    std::cout << "  Height: " << height_container << std::endl;   
+    std::cout << "  Number of boxes: " << k << std::endl;
+    std::cout << "--------------------------" << std::endl << std::endl;
 }
 
 bool Algorithms::prove_object(int **objects, int w, int l, box v, bool inverted)
@@ -149,7 +151,7 @@ for (int i = 0; i < k; i++)
         {
             for (int l = 0; l < length_container; l++)
             {
-                if (V_box[i].get_length() < length_container - l && V_box[i].get_width() < width_container - w && prove_object(objects, w, l, V_box[i]))
+                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - w && prove_object(objects, w, l, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_length(); m++)
                     {
@@ -163,7 +165,7 @@ for (int i = 0; i < k; i++)
                     n_box++;
                     V_box[i].set_placed(true);
                 }
-                else if (V_box[i].get_width() < length_container - l && V_box[i].get_length() < width_container - w && prove_object(objects,  w, l, V_box[i], true))
+                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - w && prove_object(objects,  w, l, V_box[i], true))
                 {
                     for (int m = 0; m < V_box[i].get_width(); m++)
                     {

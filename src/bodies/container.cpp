@@ -44,20 +44,22 @@ void container::add_box(box b)
 // Mostrar las cajas del contenedor
 void container::show()
 {
-    std::cout << "Length: " << length_container << std::endl;
-    std::cout << "Width: " << width_container << std::endl;
-    std::cout << "Height: " << height_container << std::endl;
-    std::cout << "Number of boxes: " << k << std::endl;
+    std::cout << std::endl << "--------------------------" << std::endl;
+    std::cout << "  Length: " << length_container << std::endl;
+    std::cout << "  Width: " << width_container << std::endl;
+    std::cout << "  Height: " << height_container << std::endl;
+    std::cout << "  Number of boxes: " << k << std::endl;
     for (int i = 0; i < k; i++)
     {
         bool placed = V_box[i].get_placed();
         if(!placed)
         {
-        std::cout << "Box " << i + 1 << std::endl;
+        std::cout << "  Box " << i + 1 << std::endl;
         V_box[i].show();
         }
     }
-    std::cout << "Volume of left boxes: " << add_volume_boxes() << std::endl;
+    std::cout << "  Volume of left boxes: " << add_volume_boxes() << std::endl;
+    std::cout << "--------------------------" << std::endl << std::endl;
 }
 // Obtener la longitud del contenedor
 int container::get_length()

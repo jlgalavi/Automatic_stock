@@ -37,10 +37,10 @@ int box::surface_area()
 
 void box::show()
 {
-    std::cout << "Length: " << length_box << std::endl;
-    std::cout << "Width: " << width_box << std::endl;
-    std::cout << "Height: " << height_box << std::endl;
-    std::cout << "Volume: " << volume_box << std::endl;
+    std::cout << "  Length: " << length_box << std::endl;
+    std::cout << "  Width: " << width_box << std::endl;
+    std::cout << "  Height: " << height_box << std::endl;
+    std::cout << "  Volume: " << volume_box << std::endl;
 }
 
 void box::set_placed(bool p)
