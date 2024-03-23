@@ -24,4 +24,5 @@ class container
         int volume();
         int surface_area();
         void show_objects();
+        int add_volume_boxes();
 };

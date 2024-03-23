@@ -57,6 +57,7 @@ void container::show()
         V_box[i].show();
         }
     }
+    std::cout << "Volume of left boxes: " << add_volume_boxes() << std::endl;
 }
 // Obtener la longitud del contenedor
 int container::get_length()
@@ -106,3 +107,15 @@ std::vector<box> container::get_V()
     return V_box;
 }
 
+int container::add_volume_boxes()
+{
+    int volume = 0;
+    for (int i = 0; i < k; i++)
+    {
+        if(!V_box[i].get_placed())
+        {
+            volume += V_box[i].get_volume();
+        }
+    }
+    return volume;
+}

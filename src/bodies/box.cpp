@@ -7,6 +7,7 @@ box::box(int l, int w, int h, bool p)
     width_box = w;
     height_box = h;
     placed = p;
+    volume_box = l * w * h;
 }
 // Obtener la longitud de la caja
 int box::get_length()
@@ -24,9 +25,9 @@ int box::get_height()
     return height_box;
 }
 // Calcular el volumen de la caja (largo * ancho * altura)
-int box::volume()
+int box::get_volume()
 {
-    return length_box * width_box * height_box;
+    return volume_box;
 }
 // Calcular el área superficial de la caja (length * width)
 int box::surface_area()
@@ -39,6 +40,7 @@ void box::show()
     std::cout << "Length: " << length_box << std::endl;
     std::cout << "Width: " << width_box << std::endl;
     std::cout << "Height: " << height_box << std::endl;
+    std::cout << "Volume: " << volume_box << std::endl;
 }
 
 void box::set_placed(bool p)

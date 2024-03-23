@@ -67,6 +67,7 @@ Funciones:
 
 /*
  * Problemas a resolver:
+    - Ordenar vector de mayor a menor
     - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
  */
 Algorithms::Algorithms(container c)
