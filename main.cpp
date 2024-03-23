@@ -26,7 +26,8 @@ int main()
     c.add_box(b8);
     a.set_container(c);
     b.set_container(c);
-    //a.order_boxes();
+    a.order_boxes();
+    a.show();
     a.place_boxes();
     a.show_objects();
     a.show();

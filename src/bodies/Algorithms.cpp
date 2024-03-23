@@ -114,6 +114,21 @@ bool Algorithms::prove_object(int **objects, int w, int l, box v)
     }
     return true;
 }
+void Algorithms::order_boxes()
+{
+    for (int i = 0; i < k; i++)
+    {
+        for (int j = 0; j < k - 1; j++)
+        {
+            if (V_box[j].get_volume() < V_box[j + 1].get_volume())
+            {
+                box temp = V_box[j];
+                V_box[j] = V_box[j + 1];
+                V_box[j + 1] = temp;
+            }
+        }
+    }
+}
 
 void Algorithms::place_boxes()
 {    
@@ -138,13 +153,13 @@ for (int i = 0; i < k; i++)
                     n_box++;
                     V_box[i].set_placed(true);
                 }
-                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - w && prove_object(objects, w, l, V_box[i]))
+                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - w && prove_object(objects,  l, w, V_box[i]))
                 {
                     for (int m = 0; m < V_box[i].get_width(); m++)
                     {
                         for (int n = 0; n < V_box[i].get_length(); n++)
                         {
-                            objects[l + n][w + m] = n_box;
+                            objects[w + n][l + m] = n_box;
                         }
                     }
                     w = length_container;

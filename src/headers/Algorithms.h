@@ -10,5 +10,5 @@ class Algorithms : public container
         void set_container(container in);
         void place_boxes();
         bool prove_object(int **objects, int w, int l, box v);
-        //void order_boxes();    
+        void order_boxes();    
 };
