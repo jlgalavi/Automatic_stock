@@ -142,6 +142,7 @@ void Algorithms::order_boxes()
 void Algorithms::place_boxes()
 {    
 int n_box = 1;
+order_boxes();
 for (int i = 0; i < k; i++)
     {
         for (int w = 0; w < width_container; w++)
