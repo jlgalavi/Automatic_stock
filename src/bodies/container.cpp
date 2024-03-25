@@ -8,7 +8,7 @@ container::container()
     length_container = 0;
     width_container = 0;
     height_container = 0;
-    k = 0;
+    num_boxes = 0;
     objects = new int *[width_container];
     for (int i = 0; i < width_container; i++)
     {
@@ -19,12 +19,11 @@ container::container()
         }
     }
 }
-container::container(int l, int w, int h, int k)
+container::container(int l, int w, int h)
 {
     length_container = l;
     width_container = w;
     height_container = h;
-    this->k = k;
     objects = new int *[w];
     for (int i = 0; i < w; i++)
     {
@@ -34,12 +33,12 @@ container::container(int l, int w, int h, int k)
             objects[i][j] = 0;
         }
     }
-    V_box.reserve(k);
 }
 // Añadir caja al contenedor
 void container::add_box(box b)
 {
     V_box.push_back(b);
+    num_boxes++;
 }
 // Mostrar las cajas del contenedor
 void container::show()
@@ -48,8 +47,8 @@ void container::show()
     std::cout << "  Length: " << length_container << std::endl;
     std::cout << "  Width: " << width_container << std::endl;
     std::cout << "  Height: " << height_container << std::endl;
-    std::cout << "  Number of boxes: " << k << std::endl;
-    for (int i = 0; i < k; i++)
+    std::cout << "  Number of boxes: " << num_boxes << std::endl;
+    for (int i = 0; i < num_boxes; i++)
     {
         bool placed = V_box[i].get_placed();
         if(!placed)
@@ -77,9 +76,9 @@ int container::get_height()
     return height_container;
 }
 // Obtener el número de cajas
-int container::get_k()
+int container::get_num_boxes()
 {
-    return k;
+    return num_boxes;
 }
 // Calcular el volumen del contenedor
 int container::volume()
@@ -112,7 +111,7 @@ std::vector<box> container::get_V()
 int container::add_volume_boxes()
 {
     int volume = 0;
-    for (int i = 0; i < k; i++)
+    for (int i = 0; i < num_boxes; i++)
     {
         if(!V_box[i].get_placed())
         {

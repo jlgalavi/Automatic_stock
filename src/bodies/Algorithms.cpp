@@ -14,54 +14,52 @@ Variables:
     - V: vector de cajas
 
 Funciones:
-
-    - Colocar cajas en contenedor:
-
-        Obtenemos vector de cajas
-        Comprobamos que la caja que queremos colocar no sobrepase el ancho ni el largo del contenedor
-        Si la caja cabe, la colocamos en el contenedor
-        Si la caja no cabe, la rotamos y volvemos a comprobar si cabe
-        Si la caja no cabe en ninguna posición, pasamos a la siguiente caja
-        Si ninguna caja cabe, pasaremos a la siguiente fila
-        Para recorrer
-            - Recorremos siempre en horizontal
-            - Cuando sobrepasemos la horizontal, bajamos una fila y volvemos a recorrer en horizontal.
         
         
 */
 
 /*
- * Problemas a resolver:
+ * Tareas:
+    - Comentar los ficheros
+ * Problemas a resolver:  
+    - vincular shipments con algorithms y guardar container.
     - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
     - Añadir altura a las cajas
  */
 Algorithms::Algorithms(container c)
 {
-   this->c = c;
-}
-
-void Algorithms::set_container(container in)
-{
-    length_container = in.get_length();
-    width_container = in.get_width();
-    height_container = in.get_height();
-    k = in.get_k();
+    this->c = c;
+    length_container = 10;
+    width_container = 10;
+    height_container = 1;
     objects = new int *[width_container];
     for (int i = 0; i < width_container; i++)
     {
         objects[i] = new int[length_container];
         for (int j = 0; j < length_container; j++)
         {
-            objects[i][j] = in.objects[i][j];
+            objects[i][j] = 0;
         }
     }
-    V_box = in.get_V();
+}
+
+void Algorithms::show_boxes()
+{
+    for (int i = 0; i < V_box.size(); i++)
+    {
+        std::cout << "Box " << i + 1 << std::endl;
+        V_box[i].show();
+    }
+}
+
+void Algorithms::add_container(container in)
+{
+    V_containers.push_back(in);
     std::cout << std::endl << "--------------------------" << std::endl;
-    std::cout << "  Container set" << std::endl;
-    std::cout << "  Length: " << length_container << std::endl;
-    std::cout << "  Width: " << width_container << std::endl; 
-    std::cout << "  Height: " << height_container << std::endl;   
-    std::cout << "  Number of boxes: " << k << std::endl;
+    std::cout << "  Container added" << std::endl;
+    std::cout << "  Length: " << in.get_length() << std::endl;
+    std::cout << "  Width: " << in.get_width() << std::endl; 
+    std::cout << "  Height: " << in.get_height() << std::endl;   
     std::cout << "--------------------------" << std::endl << std::endl;
 }
 
@@ -90,9 +88,14 @@ bool Algorithms::prove_object(int **objects, int w, int l, box v, bool inverted)
     return true;
 }
 
+void Algorithms::set_boxes(std::vector<box> V)
+{
+    V_box = V;
+}
+
 void Algorithms::order_boxes()
 {
-    for (int i = 1; i < k; i++)
+    for (int i = 1; i < V_box.size(); i++)
     {
         int j = i - 1;
         int n = V_box[i].get_volume();        
@@ -108,9 +111,10 @@ void Algorithms::order_boxes()
 
 void Algorithms::place_boxes()
 {    
-int n_box = 1;
+int n_box = 1; 
 order_boxes();
-for (int i = 0; i < k; i++)
+
+for (int i = 0; i < V_box.size(); i++)
     {
         for (int w = 0; w < width_container; w++)
         {

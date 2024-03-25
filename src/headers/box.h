@@ -1,3 +1,6 @@
+// Purpose: Define the box class, which represents a box with a length, width, height, and volume.
+#pragma once
+
 class box 
 {
     private:
