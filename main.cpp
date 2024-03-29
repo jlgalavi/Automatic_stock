@@ -18,7 +18,7 @@ int main()
     A1.set_boxes(O1.get_V_boxes());
     A1.show_boxes();
     A1.place_boxes();
-    A1.show_containers(); 
+    //A1.show_containers(); Compare this snippet from src/headers/shipment.h:
     shipment S1(O1.get_V_boxes(), A1.V_containers_in_use);   
     S1.show_shipment();
     return 0;

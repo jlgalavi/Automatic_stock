@@ -26,9 +26,8 @@ Funciones:
  * Tareas:
     - Comentar los ficheros
  * Problemas a resolver:  
-    - vincular shipments con algorithms y guardar container.
-    - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
-    - Añadir altura a las cajas
+    - Añadir altura a las cajas y contenedores.
+    (Para ello reconfigurar todos los bucles con el siguiente orden: i = height, j = width, l = length)
  */
 Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box> V)
 {
