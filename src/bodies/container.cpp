@@ -50,14 +50,19 @@ void container::show_container()
     std::cout << "  Number of boxes: " << V_box.size() << std::endl;
     for (int i = 0; i < V_box.size(); i++)
     {
-        bool placed = V_box[i].get_placed();
-        if(!placed)
-        {
-        std::cout << "  Box " << i + 1 << std::endl;
+        std::cout << std::endl << " Box " << i + 1 << std::endl;
         V_box[i].show_box();
-        }
     }
-    std::cout << "  Volume of left boxes: " << add_volume_boxes() << std::endl;
+    std::cout << std::endl << " Objects" << std::endl << std::endl;
+    for(int i = 0; i < width_container; i++)
+    {
+        std::cout << "  ";
+        for(int j = 0; j < length_container; j++)
+        {
+            std::cout << objects[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
     std::cout << "--------------------------" << std::endl << std::endl;
 }
 // Obtener la longitud del contenedor
@@ -91,7 +96,7 @@ int container::get_surface_area()
     return length_container * width_container;
 }
 
-void container::show_objects()
+void container::show_objects_container()
 {
     for (int i = 0; i < width_container; i++)
     {

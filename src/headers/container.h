@@ -22,7 +22,7 @@ class container
         std::vector<box> get_V();
         int volume();
         int get_surface_area();
-        void show_objects();
+        void show_objects_container();
         int add_volume_boxes();
 };
 

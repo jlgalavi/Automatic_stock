@@ -17,6 +17,8 @@ shipment::shipment(std::vector<box> V, std::vector<container> C)
 
 void shipment::show_shipment()
 {
+    std::cout << "Welcome to the box shipment system" << std::endl;
+    std::cout << "This is the resume of your shipment" << std::endl;
     std::cout << std::endl << "--------------------------" << std::endl;
     std::cout << "  Number of containers: " << V_containers.size() << std::endl;
     std::cout << "  Number of boxes: " << V_boxes.size() << std::endl;
