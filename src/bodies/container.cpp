@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../headers/box.h"
 #include "../headers/container.h"
 
 // Constructor del contenedor
@@ -8,7 +9,6 @@ container::container()
     length_container = 0;
     width_container = 0;
     height_container = 0;
-    num_boxes = 0;
     objects = new int *[width_container];
     for (int i = 0; i < width_container; i++)
     {
@@ -19,6 +19,7 @@ container::container()
         }
     }
 }
+
 container::container(int l, int w, int h)
 {
     length_container = l;
@@ -38,23 +39,22 @@ container::container(int l, int w, int h)
 void container::add_box(box b)
 {
     V_box.push_back(b);
-    num_boxes++;
 }
 // Mostrar las cajas del contenedor
-void container::show()
+void container::show_container()
 {
     std::cout << std::endl << "--------------------------" << std::endl;
     std::cout << "  Length: " << length_container << std::endl;
     std::cout << "  Width: " << width_container << std::endl;
     std::cout << "  Height: " << height_container << std::endl;
-    std::cout << "  Number of boxes: " << num_boxes << std::endl;
-    for (int i = 0; i < num_boxes; i++)
+    std::cout << "  Number of boxes: " << V_box.size() << std::endl;
+    for (int i = 0; i < V_box.size(); i++)
     {
         bool placed = V_box[i].get_placed();
         if(!placed)
         {
         std::cout << "  Box " << i + 1 << std::endl;
-        V_box[i].show();
+        V_box[i].show_box();
         }
     }
     std::cout << "  Volume of left boxes: " << add_volume_boxes() << std::endl;
@@ -78,7 +78,7 @@ int container::get_height()
 // Obtener el número de cajas
 int container::get_num_boxes()
 {
-    return num_boxes;
+    return V_box.size();
 }
 // Calcular el volumen del contenedor
 int container::volume()
@@ -86,7 +86,7 @@ int container::volume()
     return length_container * width_container * height_container;
 }
 // Calcular el área superficial del contenedor
-int container::surface_area()
+int container::get_surface_area()
 {
     return length_container * width_container;
 }
@@ -111,7 +111,7 @@ std::vector<box> container::get_V()
 int container::add_volume_boxes()
 {
     int volume = 0;
-    for (int i = 0; i < num_boxes; i++)
+    for (int i = 0; i < V_box.size(); i++)
     {
         if(!V_box[i].get_placed())
         {

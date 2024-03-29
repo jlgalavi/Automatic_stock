@@ -35,7 +35,7 @@ int box::surface_area()
     return length_box * width_box;
 }
 
-void box::show()
+void box::show_box()
 {
     std::cout << "  Length: " << length_box << std::endl;
     std::cout << "  Width: " << width_box << std::endl;

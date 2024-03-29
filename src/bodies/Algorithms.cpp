@@ -1,5 +1,9 @@
 #include <iostream>
-#include <vector>   
+#include <vector>
+#include "../headers/box.h"
+#include "../headers/container.h"
+#include "../headers/shipment.h"
+#include "../headers/order.h"   
 #include "../headers/Algorithms.h"
 
 /*
@@ -26,35 +30,39 @@ Funciones:
     - Gestionar contenedores, si quedan cajas sin colocarse, se crea un nuevo contenedor para almacenar el resto.
     - Añadir altura a las cajas
  */
-Algorithms::Algorithms(container c)
+Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box> V)
 {
-    this->c = c;
-    length_container = 10;
-    width_container = 10;
-    height_container = 1;
-    objects = new int *[width_container];
-    for (int i = 0; i < width_container; i++)
+    length_container_in_use = l;
+    width_container_in_use = w;
+    height_container_in_use = h;
+    objects_in_use = new int*[width_container_in_use];
+    for (int i = 0; i < width_container_in_use; i++)
     {
-        objects[i] = new int[length_container];
-        for (int j = 0; j < length_container; j++)
+        objects_in_use[i] = new int[length_container_in_use];
+    }
+    for (int i = 0; i < width_container_in_use; i++)
+    {
+        for (int j = 0; j < length_container_in_use; j++)
         {
-            objects[i][j] = 0;
+            objects_in_use[i][j] = 0;
         }
     }
+    V_containers_in_use.reserve(nb);
+    V_boxes_in_use = V;
 }
 
 void Algorithms::show_boxes()
 {
-    for (int i = 0; i < V_box.size(); i++)
+    for (int i = 0; i < V_boxes_in_use.size(); i++)
     {
         std::cout << "Box " << i + 1 << std::endl;
-        V_box[i].show();
+        V_boxes_in_use[i].show_box();
     }
 }
 
 void Algorithms::add_container(container in)
 {
-    V_containers.push_back(in);
+    V_containers_in_use.push_back(in);
     std::cout << std::endl << "--------------------------" << std::endl;
     std::cout << "  Container added" << std::endl;
     std::cout << "  Length: " << in.get_length() << std::endl;
@@ -90,20 +98,20 @@ bool Algorithms::prove_object(int **objects, int w, int l, box v, bool inverted)
 
 void Algorithms::set_boxes(std::vector<box> V)
 {
-    V_box = V;
+    V_boxes_in_use = V;
 }
 
 void Algorithms::order_boxes()
 {
-    for (int i = 1; i < V_box.size(); i++)
+    for (int i = 1; i < V_boxes_in_use.size(); i++)
     {
         int j = i - 1;
-        int n = V_box[i].get_volume();        
-        while (j >= 0  && V_box[j].get_volume() < n)
+        int n = V_boxes_in_use[i].get_volume();        
+        while (j >= 0  && V_boxes_in_use[j].get_volume() < n)
         {
-            box temp = V_box[j];
-            V_box[j] = V_box[j + 1];
-            V_box[j + 1] = temp;
+            box temp = V_boxes_in_use[j];
+            V_boxes_in_use[j] = V_boxes_in_use[j + 1];
+            V_boxes_in_use[j + 1] = temp;
             j--;
         }
     }
@@ -114,39 +122,43 @@ void Algorithms::place_boxes()
 int n_box = 1; 
 order_boxes();
 
-for (int i = 0; i < V_box.size(); i++)
+for (int i = 0; i < V_boxes_in_use.size(); i++)
     {
-        for (int w = 0; w < width_container; w++)
+        for (int w = 0; w < width_container_in_use; w++)
         {
-            for (int l = 0; l < length_container; l++)
+            for (int l = 0; l < length_container_in_use; l++)
             {
-                if (V_box[i].get_length() <= length_container - l && V_box[i].get_width() <= width_container - w && prove_object(objects, w, l, V_box[i]))
+                if (V_boxes_in_use[i].get_length() <= length_container_in_use - l 
+                && V_boxes_in_use[i].get_width() <= width_container_in_use - w 
+                && prove_object(objects_in_use, w, l, V_boxes_in_use[i]))
                 {
-                    for (int m = 0; m < V_box[i].get_length(); m++)
+                    for (int m = 0; m < V_boxes_in_use[i].get_length(); m++)
                     {
-                        for (int n = 0; n < V_box[i].get_width(); n++)
+                        for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
                         {
-                            objects[w + n][l + m] = n_box;
+                            objects_in_use[w + n][l + m] = n_box;
                         }
                     }
-                    w = width_container;
-                    l = length_container;
+                    w = width_container_in_use;
+                    l = length_container_in_use;
                     n_box++;
-                    V_box[i].set_placed(true);
+                    V_boxes_in_use[i].set_placed(true);
                 }
-                else if (V_box[i].get_width() <= length_container - l && V_box[i].get_length() <= width_container - w && prove_object(objects,  w, l, V_box[i], true))
+                else if (V_boxes_in_use[i].get_width() <= length_container_in_use - l 
+                && V_boxes_in_use[i].get_length() <= width_container_in_use - w 
+                && prove_object(objects_in_use,  w, l, V_boxes_in_use[i], true))
                 {
-                    for (int m = 0; m < V_box[i].get_width(); m++)
+                    for (int m = 0; m < V_boxes_in_use[i].get_width(); m++)
                     {
-                        for (int n = 0; n < V_box[i].get_length(); n++)
+                        for (int n = 0; n < V_boxes_in_use[i].get_length(); n++)
                         {
-                            objects[w + n][l + m] = n_box;
+                            objects_in_use[w + n][l + m] = n_box;
                         }
                     }
-                    w = width_container;
-                    l = length_container;
+                    w = width_container_in_use;
+                    l = length_container_in_use;
                     n_box++;
-                    V_box[i].set_placed(true);
+                    V_boxes_in_use[i].set_placed(true);
                 }
             }
         }

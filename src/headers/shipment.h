@@ -1,19 +1,19 @@
 // File: shipment.h
-#include "box.h"
-#include "container.h"
-#include <vector>
 
-class shipment
+#ifndef SHIPMENT_H
+#define SHIPMENT_H
+
+class shipment 
 {
     private:
-        int num_containers;
-        int num_boxes;
         std::vector<box> V_boxes;
         std::vector<container> V_containers;
     public:
-        shipment(int nc, int nb);    
-        void set_container(container c);
-        void show();
+        shipment();
+        shipment(std::vector<box> V, std::vector<container> C);    
+        void show_shipment();
         int get_num_containers();
         int get_num_boxes();
-};
+}; 
+
+#endif

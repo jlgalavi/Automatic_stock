@@ -1,5 +1,5 @@
-#include "box.h"
-#include <vector>
+#ifndef CONTAINER_H
+#define CONTAINER_H
 
 class container
 {
@@ -7,7 +7,6 @@ class container
         int length_container;
         int width_container;
         int height_container;
-        int num_boxes = 0;              // Número de cajas
         std::vector<box> V_box;
 
     public:
@@ -15,14 +14,16 @@ class container
         container();
         container(int l, int w, int h);
         void add_box(box b);
-        void show();
+        void show_container();
         int get_length();
         int get_width();
         int get_height();
         int get_num_boxes();
         std::vector<box> get_V();
         int volume();
-        int surface_area();
+        int get_surface_area();
         void show_objects();
         int add_volume_boxes();
 };
+
+#endif
