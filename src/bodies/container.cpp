@@ -3,25 +3,27 @@
 #include "../headers/box.h"
 #include "../headers/container.h"
 
-// Constructor del contenedor
+// Constructor base del contenedor
+// Container base constructor
 container::container()
 {
     length_container = 0;
     width_container = 0;
-    height_container =+ 0;
-    set_objects();
+    height_container = 0;
+    preset_objects();
 }
-
+// Constructor del contenedor con parámetros
+// Container constructor with parameters
 container::container(int l, int w, int h)
 {
     length_container = l;
     width_container = w;
     height_container = h;
-    set_objects();
+    preset_objects();
 }
-// Añadir caja al contenedor
-
-void container::set_objects()
+// Presetear los objetos del contenedor
+// Preset the container objects
+void container::preset_objects()
 {
     objects = new int **[height_container];
     for (int i = 0; i < height_container; i++)
@@ -37,58 +39,82 @@ void container::set_objects()
         }
     }
 }
+// Establecer los objetos del contenedor
+// Set the container objects
+void container::set_objects(int ***objects_in)
+{
+    for (int i = 0; i < height_container; i++)
+    {
+        for (int j = 0; j < width_container; j++)
+        {
+            for(int k = 0; k < length_container; k++)
+            {
+                objects[i][j][k] = objects_in[i][j][k];
+            }
+        }
+    }
+}
+// Añadir una caja al contenedor
+// Add a box to the container
 void container::add_box(box b)
 {
     V_box.push_back(b);
 }
-// Mostrar las cajas del contenedor
-void container::show_container()
-{
-    std::cout << std::endl << "--------------------------" << std::endl;
-    std::cout << "  Length: " << length_container << std::endl;
-    std::cout << "  Width: " << width_container << std::endl;
-    std::cout << "  Height: " << height_container << std::endl;
-    std::cout << "  Number of boxes: " << V_box.size() << std::endl;
-    for (int i = 0; i < V_box.size(); i++)
-    {
-        std::cout << std::endl << " Box " << i + 1 << std::endl;
-        V_box[i].show_box();
-    }
-    std::cout << std::endl << " Objects" << std::endl << std::endl;
-    show_objects_container();
-    std::cout << "--------------------------" << std::endl << std::endl;
-}
 // Obtener la longitud del contenedor
+// Get the container length
 int container::get_length()
 {
     return length_container;
 }
 // Obtener el ancho del contenedor
+// Get the container width
 int container::get_width()
 {
     return width_container;
 }
 // Obtener la altura del contenedor
+// Get the container height
 int container::get_height()
 {
     return height_container;
 }
 // Obtener el número de cajas
+// Get the number of boxes
 int container::get_num_boxes()
 {
     return V_box.size();
 }
 // Calcular el volumen del contenedor
+// Calculate the container volume
 int container::volume()
 {
     return length_container * width_container * height_container;
 }
 // Calcular el área superficial del contenedor
+// Calculate the container surface area
 int container::get_surface_area()
 {
     return length_container * width_container;
 }
-
+// Obtener el vector de cajas
+// Get the box vector
+std::vector<box> container::get_V()
+{
+    return V_box;
+}
+// Calcular el volumen de las cajas
+// Calculate the volume of the boxes
+int container::add_volume_boxes()
+{
+    int volume = 0;
+    for (int i = 0; i < V_box.size(); i++)
+    {
+        volume += V_box[i].get_volume();
+    }
+    return volume;
+}
+// Mostrar los objetos del contenedor
+// Show the container objects
 void container::show_objects_container()
 {
     for (int i = 0; i < height_container; i++)
@@ -106,20 +132,21 @@ void container::show_objects_container()
     }
 }
 
-std::vector<box> container::get_V()
+// Mostrar las cajas del contenedor
+// Show the container boxes
+void container::show_container()
 {
-    return V_box;
-}
-
-int container::add_volume_boxes()
-{
-    int volume = 0;
+    std::cout << std::endl << "--------------------------" << std::endl;
+    std::cout << "  Length: " << length_container << std::endl;
+    std::cout << "  Width: " << width_container << std::endl;
+    std::cout << "  Height: " << height_container << std::endl;
+    std::cout << "  Number of boxes: " << V_box.size() << std::endl;
     for (int i = 0; i < V_box.size(); i++)
     {
-        if(!V_box[i].get_placed())
-        {
-            volume += V_box[i].get_volume();
-        }
+        std::cout << std::endl << " Box " << i + 1 << std::endl;
+        V_box[i].show_box();
     }
-    return volume;
+    std::cout << std::endl << " Objects" << std::endl << std::endl;
+    show_objects_container();
+    std::cout << "--------------------------" << std::endl << std::endl;
 }

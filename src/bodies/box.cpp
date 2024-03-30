@@ -1,6 +1,8 @@
 #include <iostream>
 #include "../headers/box.h"
+
 // Constructor de la caja
+// Box constructor
 box::box(int l, int w, int h, bool p)
 {
     length_box = l;
@@ -10,31 +12,37 @@ box::box(int l, int w, int h, bool p)
     volume_box = l * w * h;
 }
 // Obtener la longitud de la caja
+// Get the length of the box
 int box::get_length()
 {
     return length_box;
 }
 // Obtener el ancho de la caja
+// Get the width of the box
 int box::get_width()
 {
     return width_box;
 }
 // Obtener la altura de la caja
+// Get the height of the box
 int box::get_height()
 {
     return height_box;
 }
 // Calcular el volumen de la caja (largo * ancho * altura)
+// Calculate the volume of the box (length * width * height)
 int box::get_volume()
 {
     return volume_box;
 }
-// Calcular el área superficial de la caja (length * width)
+// Calcular el área superficial de la caja (largo * ancho)
+// Calculate the surface area of the box (length * width)
 int box::surface_area()
 {
     return length_box * width_box;
 }
-
+// Mostrar la caja
+// Show the box
 void box::show_box()
 {
     std::cout << "  Length: " << length_box << std::endl;
@@ -42,12 +50,14 @@ void box::show_box()
     std::cout << "  Height: " << height_box << std::endl;
     std::cout << "  Volume: " << volume_box << std::endl;
 }
-
+// Establecer si la caja está colocada o no
+// Set if the box is placed or not
 void box::set_placed(bool p)
 {
     placed = p;
 }
-
+// Obtener si la caja está colocada o no
+// Get if the box is placed or not
 bool box::get_placed()
 {
     return placed;

@@ -3,7 +3,8 @@
 #include "../headers/box.h"
 #include "../headers/order.h"
 
-
+// Constructor de la orden, donde generamos el menú para seleccionar las cajas
+// Order constructor, where we generate the menu to select the boxes
 order::order()
 {
     std::cout << "Welcome to the box ordering system" << std::endl;
@@ -60,7 +61,8 @@ order::order()
     }
     num_boxes = V_boxes_order.size();
 }
-
+// Mostrar la orden
+// Show the order
 void order::show_order()
 {
     std::cout << std::endl << "--------------------------" << std::endl;
@@ -71,12 +73,14 @@ void order::show_order()
         V_boxes_order[i].show_box();
     }
 }
-
+// Obtener el número de cajas
+// Get the number of boxes
 int order::get_num_boxes()
 {
     return num_boxes;
 }
-
+// Obtener el vector que contiene las cajas
+// Get the vector that contains the boxes
 std::vector<box> order::get_V_boxes()
 {
     return V_boxes_order;

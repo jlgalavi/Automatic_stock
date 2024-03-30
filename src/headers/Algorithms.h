@@ -1,4 +1,5 @@
-// File: Algorithms.h
+// Definicion de la clase Algorithms 
+// Definition of the class Algorithms
 
 #include "box.h"
 #include "container.h"
@@ -17,14 +18,15 @@ class Algorithms
         int ***objects_in_use;
         Algorithms(int nb, int l, int w, int h, std::vector<box> V);
         void set_boxes(std::vector<box> V);
-        void show_boxes();
+        //void show_boxes(); FUNCION PARA COMPROBAR QUE LAS CAJAS SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
         void add_container(container in);
         void place_boxes();
         bool prove_object(int ***objects, int w, int l, int h, box v, bool inverted = false);
         void order_boxes(); 
-        void show_objects();
-        void show_containers();
-        void reset_objects();   
+        //void show_objects(); FUNCION PARA COMPROBAR QUE LAS CAJAS SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
+        //void show_containers(); FUNCION PARA COMPROBAR QUE LOS CONTENEDORES SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
+        void reset_objects();
+        void erase_boxes_placed();   
 };
 
 #endif

@@ -1,4 +1,7 @@
-// Purpose: Define the box class, which represents a box with a length, width, height, and volume.
+// Definicion de la clase box, que representa una caja con una longitud, ancho, altura y volumen.
+// Define the box class, which represents a box with a length, width, height, and volume.
+
+
 #ifndef BOX_H
 #define BOX_H
 

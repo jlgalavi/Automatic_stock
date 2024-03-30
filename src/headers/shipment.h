@@ -1,4 +1,5 @@
-// File: shipment.h
+// Definicion de la clase envio que se utiliza para mostrar el envio de cajas y contenedores
+// Definition of the class shipment which is used to show the shipment of boxes and containers 
 
 #ifndef SHIPMENT_H
 #define SHIPMENT_H

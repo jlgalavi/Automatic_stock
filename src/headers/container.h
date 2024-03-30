@@ -1,3 +1,6 @@
+// Definicion de la clase container, que representa un contenedor con una longitud, ancho, altura y un vector de cajas.
+// Define the container class, which represents a container with a length, width, height, and a vector of boxes.
+
 #ifndef CONTAINER_H
 #define CONTAINER_H
 
@@ -15,7 +18,8 @@ class container
         container(int l, int w, int h);
         void add_box(box b);
         void show_container();
-        void set_objects();
+        void preset_objects();
+        void set_objects(int ***objects_in);
         int get_length();
         int get_width();
         int get_height();
