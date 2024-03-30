@@ -16,7 +16,6 @@ class box
 
         box() : length_box(0), width_box(0), height_box(0), volume_box(0), placed(false) {}
         box(int l, int w, int h, bool p);
-        int volume();
         int surface_area();
         int get_length();
         int get_width();

@@ -8,16 +8,8 @@ container::container()
 {
     length_container = 0;
     width_container = 0;
-    height_container = 0;
-    objects = new int *[width_container];
-    for (int i = 0; i < width_container; i++)
-    {
-        objects[i] = new int[length_container];
-        for (int j = 0; j < length_container; j++)
-        {
-            objects[i][j] = 0;
-        }
-    }
+    height_container =+ 0;
+    set_objects();
 }
 
 container::container(int l, int w, int h)
@@ -25,17 +17,26 @@ container::container(int l, int w, int h)
     length_container = l;
     width_container = w;
     height_container = h;
-    objects = new int *[w];
-    for (int i = 0; i < w; i++)
+    set_objects();
+}
+// Añadir caja al contenedor
+
+void container::set_objects()
+{
+    objects = new int **[height_container];
+    for (int i = 0; i < height_container; i++)
     {
-        objects[i] = new int[l];
-        for (int j = 0; j < l; j++)
+        objects[i] = new int *[width_container];
+        for (int j = 0; j < width_container; j++)
         {
-            objects[i][j] = 0;
+            objects[i][j] = new int[length_container];
+            for(int k = 0; k < length_container; k++)
+            {
+                objects[i][j][k] = 0;
+            }
         }
     }
 }
-// Añadir caja al contenedor
 void container::add_box(box b)
 {
     V_box.push_back(b);
@@ -54,15 +55,7 @@ void container::show_container()
         V_box[i].show_box();
     }
     std::cout << std::endl << " Objects" << std::endl << std::endl;
-    for(int i = 0; i < width_container; i++)
-    {
-        std::cout << "  ";
-        for(int j = 0; j < length_container; j++)
-        {
-            std::cout << objects[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
+    show_objects_container();
     std::cout << "--------------------------" << std::endl << std::endl;
 }
 // Obtener la longitud del contenedor
@@ -98,13 +91,18 @@ int container::get_surface_area()
 
 void container::show_objects_container()
 {
-    for (int i = 0; i < width_container; i++)
+    for (int i = 0; i < height_container; i++)
     {
-        for (int j = 0; j < length_container; j++)
+        std::cout << " Layer " << i + 1 << std::endl;
+        for (int j = 0; j < width_container; j++)
         {
-            std::cout << objects[i][j] << " ";
+            for(int k = 0; k < length_container; k++)
+            {
+                std::cout << objects[i][j][k] << " ";
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl;
     }
 }
 

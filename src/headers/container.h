@@ -10,11 +10,12 @@ class container
         std::vector<box> V_box;
 
     public:
-        int **objects;
+        int ***objects;
         container();
         container(int l, int w, int h);
         void add_box(box b);
         void show_container();
+        void set_objects();
         int get_length();
         int get_width();
         int get_height();

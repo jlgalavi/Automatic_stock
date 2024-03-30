@@ -26,26 +26,27 @@ Funciones:
  * Tareas:
     - Comentar los ficheros
  * Problemas a resolver:  
-    - Añadir altura a las cajas y contenedores.
-    (Para ello reconfigurar todos los bucles con el siguiente orden: i = height, j = width, l = length)
+    - optimizar menus y funciones
  */
 Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box> V)
 {
     length_container_in_use = l;
     width_container_in_use = w;
     height_container_in_use = h;
-    objects_in_use = new int*[width_container_in_use];
-    for (int i = 0; i < width_container_in_use; i++)
+    objects_in_use = new int **[height_container_in_use];
+    for (int i = 0; i < height_container_in_use; i++)
     {
-        objects_in_use[i] = new int[length_container_in_use];
-    }
-    for (int i = 0; i < width_container_in_use; i++)
-    {
-        for (int j = 0; j < length_container_in_use; j++)
+        objects_in_use[i] = new int *[width_container_in_use];
+        for (int j = 0; j < width_container_in_use; j++)
         {
-            objects_in_use[i][j] = 0;
+            objects_in_use[i][j] = new int[length_container_in_use];
+            for (int k = 0; k < length_container_in_use; k++)
+            {
+                objects_in_use[i][j][k] = 0;
+            }
         }
     }
+    
     V_containers_in_use.reserve(nb);
     V_boxes_in_use = V;
 }
@@ -70,9 +71,9 @@ void Algorithms::add_container(container in)
     std::cout << "--------------------------" << std::endl << std::endl;
 }
 
-bool Algorithms::prove_object(int **objects, int w, int l, box v, bool inverted)
+bool Algorithms::prove_object(int ***objects, int w, int l, int h, box v, bool inverted)
 {
-    int width, length;
+    int width, length, height = h + v.get_height();
     if(inverted)
     {
         width = w + v.get_length();
@@ -82,13 +83,17 @@ bool Algorithms::prove_object(int **objects, int w, int l, box v, bool inverted)
         width = w + v.get_width();
         length = l + v.get_length();
     }
-    for (int i = w; i < width; i++)
+
+    for (int i = h; i < height; i++)
     {
-        for (int j = l; j < length; j++)
+        for (int j = w; j < width; j++)
         {
-            if(objects[i][j] != 0)
+            for(int k = l; k < length; k++)
             {
-                return false;
+                if (objects[i][j][k] != 0)
+                {
+                    return false;
+                }
             }
         }
     }
@@ -118,13 +123,17 @@ void Algorithms::order_boxes()
 
 void Algorithms::show_objects()
 {
-    for (int i = 0; i < width_container_in_use; i++)
+    for (int i = 0; i < height_container_in_use; i++)
     {
-        for (int j = 0; j < length_container_in_use; j++)
+        for (int j = 0; j < width_container_in_use; j++)
         {
-            std::cout << objects_in_use[i][j] << " ";
+            for(int k = 0; k < length_container_in_use; k++)
+            {
+                std::cout << objects_in_use[i][j][k] << " ";
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl;
     }
 }
 
@@ -139,11 +148,14 @@ void Algorithms::show_containers()
 
 void Algorithms::reset_objects()
 {
-    for (int i = 0; i < width_container_in_use; i++)
+    for (int i = 0; i < height_container_in_use; i++)
     {
-        for (int j = 0; j < length_container_in_use; j++)
+        for (int j = 0; j < width_container_in_use; j++)
         {
-            objects_in_use[i][j] = 0;
+            for(int k = 0; k < length_container_in_use; k++)
+            {
+                objects_in_use[i][j][k] = 0;
+            }
         }
     }
 }
@@ -159,52 +171,69 @@ void Algorithms::place_boxes()
         {
             if(!V_boxes_in_use[i].get_placed())
             {
-                for (int w = 0; w < width_container_in_use; w++)
+                for(int h = 0; h < height_container_in_use; h++)
                 {
-                    for (int l = 0; l < length_container_in_use; l++)
+                    for (int w = 0; w < width_container_in_use; w++)
                     {
-                        if (V_boxes_in_use[i].get_length() <= length_container_in_use - l 
-                        && V_boxes_in_use[i].get_width() <= width_container_in_use - w 
-                        && prove_object(objects_in_use, w, l, V_boxes_in_use[i]))
+                        for (int l = 0; l < length_container_in_use; l++)
                         {
-                            for (int m = 0; m < V_boxes_in_use[i].get_length(); m++)
+                            if (V_boxes_in_use[i].get_height() <= height_container_in_use - h
+                            && V_boxes_in_use[i].get_width() <= width_container_in_use - w 
+                            && V_boxes_in_use[i].get_length() <= length_container_in_use - l 
+                            && prove_object(objects_in_use, w, l, h, V_boxes_in_use[i]))
                             {
-                                for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
+                                for (int m = 0; m < V_boxes_in_use[i].get_height(); m++)
                                 {
-                                    objects_in_use[w + n][l + m] = n_box;
+                                    for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
+                                    {
+                                        for (int o = 0; o < V_boxes_in_use[i].get_length(); o++)
+                                        {
+                                            objects_in_use[h + m][w + n][l + o] = n_box;
+                                        }
+                                    }
                                 }
+                                w = width_container_in_use;
+                                l = length_container_in_use;
+                                h = height_container_in_use;
+                                n_box++;
+                                V_boxes_in_use[i].set_placed(true);
                             }
-                            w = width_container_in_use;
-                            l = length_container_in_use;
-                            n_box++;
-                            V_boxes_in_use[i].set_placed(true);
-                        }
-                        else if (V_boxes_in_use[i].get_width() <= length_container_in_use - l 
-                        && V_boxes_in_use[i].get_length() <= width_container_in_use - w 
-                        && prove_object(objects_in_use,  w, l, V_boxes_in_use[i], true))
-                        {
-                            for (int m = 0; m < V_boxes_in_use[i].get_width(); m++)
+                            else if (V_boxes_in_use[i].get_height() <= height_container_in_use - h 
+                            && V_boxes_in_use[i].get_length() <= width_container_in_use - w
+                            && V_boxes_in_use[i].get_width() <= length_container_in_use - l 
+                            && prove_object(objects_in_use,  w, l, h, V_boxes_in_use[i], true))
                             {
-                                for (int n = 0; n < V_boxes_in_use[i].get_length(); n++)
+                                for (int m = 0; m < V_boxes_in_use[i].get_height(); m++)
                                 {
-                                    objects_in_use[w + n][l + m] = n_box;
+                                    for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
+                                    {
+                                        for (int o = 0; o < V_boxes_in_use[i].get_length(); o++)
+                                        {
+                                            objects_in_use[h + m][w + o][l + n] = n_box;
+                                        }
+                                    }
                                 }
+                                w = width_container_in_use;
+                                l = length_container_in_use;
+                                h = height_container_in_use;
+                                n_box++;
+                                V_boxes_in_use[i].set_placed(true);
                             }
-                            w = width_container_in_use;
-                            l = length_container_in_use;
-                            n_box++;
-                            V_boxes_in_use[i].set_placed(true);
                         }
                     }
                 }
             } 
         }
+        show_objects();
         container C1(width_container_in_use, length_container_in_use, height_container_in_use);
-        for (int i = 0; i < width_container_in_use; i++)
+        for (int i = 0; i < height_container_in_use; i++)
         {
-            for (int j = 0; j < length_container_in_use; j++)
+            for (int j = 0; j < width_container_in_use; j++)
             {
-                C1.objects[i][j] = objects_in_use[i][j];
+                for (int k = 0; k < length_container_in_use; k++)
+                {
+                    C1.objects[i][j][k] = objects_in_use[i][j][k];
+                }
             }
         }
         for(int i = 0; i < V_boxes_in_use.size(); i++)

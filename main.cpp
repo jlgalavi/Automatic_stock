@@ -7,7 +7,7 @@
 #include "src/headers/container.h"
 #include <ctime> 
 
-#define HEIGHT 1
+#define HEIGHT 5
 #define WIDTH 10
 #define LENGTH 10
 
