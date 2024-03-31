@@ -4,7 +4,6 @@ Tareas código c++
         * Numero de Cajas
         * Numero de Contenedores
         * Targets de las Cajas
-    - Generar vector de targets de cada contenedor
 
 Tareas código python
     - Crear código que lea de fichero

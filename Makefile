@@ -1,8 +1,11 @@
-all: main.cpp ./libs/Algorithms.o ./libs/order.o ./libs/container.o ./libs/box.o ./libs/shipment.o
-	g++ -o ./bin/main main.cpp libs/Algorithms.o libs/order.o libs/container.o libs/box.o libs/shipment.o
+all: main.cpp ./libs/Algorithms.o ./libs/order.o ./libs/container.o ./libs/box.o ./libs/shipment.o ./libs/target.o
+	g++ -o ./bin/main main.cpp libs/Algorithms.o libs/order.o libs/container.o libs/box.o libs/shipment.o libs/target.o
 
-libs/Algorithms.o: ./src/bodies/Algorithms.cpp ./src/headers/Algorithms.h ./libs/container.o ./libs/order.o ./libs/shipment.o
+libs/Algorithms.o: ./src/bodies/Algorithms.cpp ./src/headers/Algorithms.h ./libs/container.o ./libs/order.o ./libs/shipment.o ./libs/target.o
 	g++ -c ./src/bodies/Algorithms.cpp -o ./libs/Algorithms.o 
+
+libs/target.o: ./src/bodies/target.cpp ./src/headers/target.h
+	g++ -c ./src/bodies/target.cpp -o ./libs/target.o
 
 libs/shipment.o: ./src/bodies/shipment.cpp ./src/headers/shipment.h ./libs/box.o ./libs/container.o 
 	g++ -c ./src/bodies/shipment.cpp -o ./libs/shipment.o

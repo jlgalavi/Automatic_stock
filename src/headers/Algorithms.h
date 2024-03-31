@@ -3,6 +3,7 @@
 
 #include "box.h"
 #include "container.h"
+#include "target.h"
 
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
@@ -12,6 +13,7 @@ class Algorithms
     public:
         std::vector<box> V_boxes_in_use;
         std::vector<container> V_containers_in_use;
+        std::vector<target> V_targets;
         int length_container_in_use;
         int width_container_in_use;
         int height_container_in_use;
@@ -27,6 +29,12 @@ class Algorithms
         //void show_containers(); FUNCION PARA COMPROBAR QUE LOS CONTENEDORES SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
         void reset_objects();
         void erase_boxes_placed();   
+        void add_target(target in);
+        void show_targets();
+        void calculate_position_target(float *pos_x, float *pos_y, float *pos_h, 
+                                       int l, int w, int h,
+                                       int o, int n, int m, 
+                                       bool inverted);
 };
 
 #endif

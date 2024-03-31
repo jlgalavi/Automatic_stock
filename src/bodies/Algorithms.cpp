@@ -3,7 +3,8 @@
 #include "../headers/box.h"
 #include "../headers/container.h"
 #include "../headers/shipment.h"
-#include "../headers/order.h"   
+#include "../headers/order.h"
+#include "../headers/target.h"   
 #include "../headers/Algorithms.h"
 
 
@@ -55,6 +56,13 @@ void Algorithms::add_container(container in)
      *  std::cout << "--------------------------" << std::endl << std::endl;
      */
 }
+// Función para añadir un objetivo
+// Function to add a target
+void Algorithms::add_target(target in)
+{
+    V_targets.push_back(in);
+}
+
 // Función para comprobar si se puede colocar un objeto en una posición
 // Function to check if an object can be placed in a position
 bool Algorithms::prove_object(int ***objects, int w, int l, int h, box v, bool inverted)
@@ -136,7 +144,19 @@ void Algorithms::order_boxes()
  *      }
  *  }
  */
+// Función para mostrar los objetivos
+// Function to show the targets
+void Algorithms::show_targets()
+{
+    for (int i = 0; i < V_targets.size(); i++)
+    {
+        std::cout << "Target " << i + 1 << std::endl;
+        V_targets[i].show_target();
+    }
+}
+
 // Función para resetear los objetos
+// Function to reset the objects
 void Algorithms::reset_objects()
 {
     for (int i = 0; i < height_container_in_use; i++)
@@ -163,6 +183,26 @@ void Algorithms::erase_boxes_placed()
         }
     }
 }
+// Función para calcular la posición del objetivo
+// Function to calculate the target position
+void Algorithms::calculate_position_target(float *pos_x, float *pos_y, float *pos_h, 
+                                           int l, int w, int h,
+                                           int o, int n, int m,
+                                           bool inverted)
+{
+    if(!inverted)
+    {
+        *pos_x = ((2.0 * (float)(l) + (float)(o)) / 2.0);
+        *pos_y = ((2.0 * (float)(w) + (float)(n)) / 2.0);
+        *pos_h = (float)(h + m);
+    } 
+    else
+    {
+        *pos_x = ((2.0 * (float)(l) + (float)(n)) / 2.0);
+        *pos_y = ((2.0 * (float)(w) + (float)(o)) / 2.0);
+        *pos_h = (float)(h + m);    
+    }
+}
 /* FUNCION PARA COLOCAR LAS CAJAS EN LOS CONTENEDORES
  * Consiste en la anidación de bucles para recorrer las dimensiones del contenedor y comprobar si la caja cabe en esa posición.
  * El primero comprueba que no estén todas las cajas colocadas.
@@ -174,6 +214,7 @@ void Algorithms::erase_boxes_placed()
  * - La longitud de la caja es menor o igual a la longitud del contenedor menos la longitud actual.
  * - La función prove_object devuelve true.
  * Se recorren las dimensiones de la caja y se asigna el número de la caja a la posición correspondiente en el contenedor.
+ * Se calcula la posición del objetivo que se enviará al robot.
  * Se cambia el valor de la anchura, altura y longitud de las variables del bucle para salir.
  * Se cambia el valor de la variable placed de la caja a true.
  * Se incrementa el número de caja.
@@ -194,6 +235,7 @@ void Algorithms::erase_boxes_placed()
  * - The length of the box is less than or equal to the length of the container minus the current length.
  * - The prove_object function returns true.
  * The dimensions of the box are traversed and the box number is assigned to the corresponding position in the container.
+ * The position of the target to be sent to the robot is calculated.
  * The value of the width, height and length of the loop variables is changed to exit.
  * The value of the placed variable of the box is changed to true.
  * The box number is incremented.
@@ -204,7 +246,9 @@ void Algorithms::erase_boxes_placed()
  */
 void Algorithms::place_boxes()
 {    
-    int n_box = 1; 
+    int n_box = 1;
+    int m, n, o;
+    float pos_x, pos_y, pos_z; 
     order_boxes();
     bool all_boxes_placed = false;
     while(!all_boxes_placed)
@@ -224,16 +268,20 @@ void Algorithms::place_boxes()
                             && V_boxes_in_use[i].get_length() <= length_container_in_use - l 
                             && prove_object(objects_in_use, w, l, h, V_boxes_in_use[i]))
                             {
-                                for (int m = 0; m < V_boxes_in_use[i].get_height(); m++)
+                                
+                                for (m = 0; m < V_boxes_in_use[i].get_height(); m++)
                                 {
-                                    for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
+                                    for (n = 0; n < V_boxes_in_use[i].get_width(); n++)
                                     {
-                                        for (int o = 0; o < V_boxes_in_use[i].get_length(); o++)
+                                        for (o = 0; o < V_boxes_in_use[i].get_length(); o++)
                                         {
                                             objects_in_use[h + m][w + n][l + o] = n_box;
                                         }
                                     }
                                 }
+                                calculate_position_target(&pos_x, &pos_y, &pos_z, l, w, h, o, n, m, false);
+                                target T1(pos_x, pos_y, pos_z);
+                                add_target(T1);
                                 w = width_container_in_use;
                                 l = length_container_in_use;
                                 h = height_container_in_use;
@@ -245,16 +293,20 @@ void Algorithms::place_boxes()
                             && V_boxes_in_use[i].get_width() <= length_container_in_use - l 
                             && prove_object(objects_in_use,  w, l, h, V_boxes_in_use[i], true))
                             {
-                                for (int m = 0; m < V_boxes_in_use[i].get_height(); m++)
+                                for (m = 0; m < V_boxes_in_use[i].get_height(); m++)
                                 {
-                                    for (int n = 0; n < V_boxes_in_use[i].get_width(); n++)
+                                    for (n = 0; n < V_boxes_in_use[i].get_width(); n++)
                                     {
-                                        for (int o = 0; o < V_boxes_in_use[i].get_length(); o++)
+                                        for (o = 0; o < V_boxes_in_use[i].get_length(); o++)
                                         {
                                             objects_in_use[h + m][w + o][l + n] = n_box;
                                         }
                                     }
                                 }
+                                
+                                calculate_position_target(&pos_x, &pos_y, &pos_z, l, w, h, o, n, m, true);
+                                target T1(pos_x, pos_y, pos_z);
+                                add_target(T1);
                                 w = width_container_in_use;
                                 l = length_container_in_use;
                                 h = height_container_in_use;
