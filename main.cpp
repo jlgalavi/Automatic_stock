@@ -25,7 +25,6 @@ int main()
         {
             order O1;
             Algorithms A1(O1.get_num_boxes(), LENGTH, WIDTH, HEIGHT, O1.get_V_boxes());
-            A1.set_boxes(O1.get_V_boxes());
             A1.place_boxes();
             A1.show_targets();
             shipment S1(O1.get_V_boxes(), A1.V_containers_in_use);   
