@@ -29,6 +29,7 @@ class container
         int get_surface_area();
         void show_objects_container();
         int add_volume_boxes();
+        void save_container(std::ofstream &file);
 };
 
 #endif

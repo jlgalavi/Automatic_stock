@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "src/headers/Algorithms.h"
 #include "src/headers/order.h"
@@ -23,12 +24,17 @@ int main()
         std::cin >> menu;
         if(menu == 1)
         {
+            remove("D:\\repos\\Automatic_stock\\filesTXT\\shipment.txt");
+            remove("D:\\repos\\Automatic_stock\\filesTXT\\results.txt");
+            remove("D:\\repos\\Automatic_stock\\filesTXT\\order.txt");
             order O1;
+            O1.save_order();
             Algorithms A1(O1.get_num_boxes(), LENGTH, WIDTH, HEIGHT, O1.get_V_boxes());
             A1.place_boxes();
             A1.show_targets();
             shipment S1(O1.get_V_boxes(), A1.V_containers_in_use);   
             S1.show_shipment();
+            S1.save_shipment();
         }
         else if(menu == 2)
         {

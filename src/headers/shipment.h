@@ -15,6 +15,7 @@ class shipment
         void show_shipment();
         int get_num_containers();
         int get_num_boxes();
+        void save_shipment();
 }; 
 
 #endif

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "../headers/box.h"
 #include "../headers/order.h"
@@ -28,27 +29,27 @@ order::order()
         {
         case 1:
             std::cout << "Selected Box 1" << std::endl;
-            V_boxes_order.push_back(box(2, 2, 2, false));
+            V_boxes_order.push_back(box(2, 2, 2, false, 1));
             break;
         case 2:
             std::cout << "Selected Box 2" << std::endl;
-            V_boxes_order.push_back(box(3, 2, 3, false));
+            V_boxes_order.push_back(box(3, 2, 3, false, 2));
             break;
         case 3:
             std::cout << "Selected Box 3" << std::endl;
-            V_boxes_order.push_back(box(5, 3, 1, false));
+            V_boxes_order.push_back(box(5, 3, 1, false, 3));
             break;
         case 4:
             std::cout << "Selected Box 4" << std::endl;
-            V_boxes_order.push_back(box(1, 3, 2, false));
+            V_boxes_order.push_back(box(1, 3, 2, false, 4));
             break;
         case 5:
             std::cout << "Selected Box 5" << std::endl;
-            V_boxes_order.push_back(box(7, 7, 3, false));
+            V_boxes_order.push_back(box(7, 7, 3, false, 5));
             break;
         case 6:
             std::cout << "Selected Box 6" << std::endl;
-            V_boxes_order.push_back(box(1, 2, 1, false));
+            V_boxes_order.push_back(box(1, 2, 1, false, 6));
             break;
         case 7:
             std::cout << "The order is finished" << std::endl;
@@ -84,4 +85,17 @@ int order::get_num_boxes()
 std::vector<box> order::get_V_boxes()
 {
     return V_boxes_order;
+}
+// Guardar la orden en un archivo
+// Save the order in a file
+void order::save_order()
+{
+    std::ofstream file("D:\\repos\\Automatic_stock\\filesTXT\\order.txt", std::ios::app);
+    file << std::endl << "--------------------------" << std::endl;
+    file << "  Number of boxes: " << V_boxes_order.size() << std::endl;
+    for (int i = 0; i < V_boxes_order.size(); i++)
+    {
+        file << "  Box " << i + 1 << std::endl;
+        V_boxes_order[i].save_box(file);
+    }
 }
