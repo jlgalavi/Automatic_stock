@@ -2,4 +2,4 @@ Más adelante, la variable ***objects podrá ser eliminada,
 o solo de verificación y visualización de las posiciones de las cajas,
 ya que para el proyecto final lo que nos interesa es extraer 
 los targets a donde va a tener que desplazarse el cobot.
-chupa chupa
+tamaño caja 1 250x300x210
