@@ -1,12 +1,8 @@
 Tareas código c++
-    - Generar fichero txt guardando:
-        * ID Cajas
-        * Numero de Cajas
-        * Numero de Contenedores
-        * Targets de las Cajas
+    - A falta de utilizar BBDD
 
 Tareas código python
-    - Crear código que lea de fichero
+
     - Estructurar lecturas para gestionar cajas y targets
     - Crear Script para enviar targets ya cajas a RoboDK
 
@@ -17,3 +13,4 @@ Mejoras a realizar
     - Gestionar información desde base de datos
     - Crear interfaz con JS, css y HTML para obtener información de pedido.
 
+- Crear nueva pestaña en la web para generar pedido
