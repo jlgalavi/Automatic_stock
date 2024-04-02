@@ -6,3 +6,4 @@ tamaño caja S   150 x 120 x 100   1.800 K
 tamaño caja M   200 x 210 x  70   2.940 K
 tamaño caja L   200 x 210 x 210   8.820 K
 tamaño caja XL  250 x 300 x 210  15.750 K
+cajas a utilizar son las .obj
