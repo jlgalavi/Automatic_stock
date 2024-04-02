@@ -4,67 +4,32 @@ This is the resume of your shipment
 
 --------------------------
   Number of containers: 1
-  Number of boxes: 8
+  Number of boxes: 3
 
   Container 1
-  Volume of boxes: 236
+  Volume of boxes: 39
 
 --------------------------
   Length: 10
   Width: 10
   Height: 5
-  Number of boxes: 8
+  Number of boxes: 3
 
  Box 1
-  ID_Box 5
-  Length: 7
-  Width: 7
+  ID_Box 2
+  Length: 3
+  Width: 2
   Height: 3
-  Volume: 147
+  Volume: 18
 
  Box 2
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-
- Box 3
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-
- Box 4
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-
- Box 5
   ID_Box 3
   Length: 5
   Width: 3
   Height: 1
   Volume: 15
 
- Box 6
-  ID_Box 1
-  Length: 2
-  Width: 2
-  Height: 2
-  Volume: 8
-
- Box 7
-  ID_Box 4
-  Length: 1
-  Width: 3
-  Height: 2
-  Volume: 6
-
- Box 8
+ Box 3
   ID_Box 4
   Length: 1
   Width: 3
@@ -74,39 +39,39 @@ This is the resume of your shipment
  Objects
 
  Layer 1
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 6 6 7 
-5 5 5 5 5 8 0 6 6 7 
-5 5 5 5 5 8 0 0 0 7 
-5 5 5 5 5 8 0 0 0 0 
+1 1 1 2 2 2 2 2 3 0 
+1 1 1 2 2 2 2 2 3 0 
+0 0 0 2 2 2 2 2 3 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
 
 
  Layer 2
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 6 6 7 
-0 0 0 0 0 8 0 6 6 7 
-0 0 0 0 0 8 0 0 0 7 
-0 0 0 0 0 8 0 0 0 0 
+1 1 1 0 0 0 0 0 3 0 
+1 1 1 0 0 0 0 0 3 0 
+0 0 0 0 0 0 0 0 3 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
 
 
  Layer 3
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 2 2 2 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 3 3 3 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 4 4 4 
-1 1 1 1 1 1 1 0 0 0 
+1 1 1 0 0 0 0 0 0 0 
+1 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 0 0 0 

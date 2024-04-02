@@ -1,51 +1,21 @@
 
 --------------------------
-  Number of boxes: 8
+  Number of boxes: 3
   Box 1
-  ID_Box 4
-  Length: 1
-  Width: 3
-  Height: 2
-  Volume: 6
+  ID_Box 2
+  Length: 3
+  Width: 2
+  Height: 3
+  Volume: 18
   Box 2
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-  Box 3
-  ID_Box 5
-  Length: 7
-  Width: 7
-  Height: 3
-  Volume: 147
-  Box 4
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-  Box 5
   ID_Box 3
   Length: 5
   Width: 3
   Height: 1
   Volume: 15
-  Box 6
+  Box 3
   ID_Box 4
   Length: 1
   Width: 3
   Height: 2
   Volume: 6
-  Box 7
-  ID_Box 2
-  Length: 3
-  Width: 2
-  Height: 3
-  Volume: 18
-  Box 8
-  ID_Box 1
-  Length: 2
-  Width: 2
-  Height: 2
-  Volume: 8
