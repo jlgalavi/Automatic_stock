@@ -205,11 +205,12 @@ void Algorithms::calculate_position_target(float *pos_x, float *pos_y, float *po
     }
 }
 
-void Algorithms::save_container(int n_container)
+void Algorithms::save_container(int n_container, int n_box)
 {
     std::ofstream file;
     file.open("D:\\repos\\Automatic_stock\\filesTXT\\results.txt", std::ios::app);
-    file << "Container " << n_container << std::endl;
+    file << "Container: " << n_container << std::endl;
+    file << "Number-boxes: " << n_box << std::endl;
     file.close();
 }
 
@@ -217,7 +218,7 @@ void Algorithms::save_results(target t_in, box b_in)
 {
     std::ofstream file;
     file.open("D:\\repos\\Automatic_stock\\filesTXT\\results.txt", std::ios::app);
-    file << "ID_Box " << b_in.get_id() << std::endl;
+    file << "ID_Box: " << b_in.get_id() << std::endl;
     file << "Target: (" << t_in.get_position_x() << ", " << t_in.get_position_y() << ", " << t_in.get_position_z() << ")" << std::endl;
     file.close();
 }
@@ -340,19 +341,25 @@ void Algorithms::place_boxes()
 
         container C1(width_container_in_use, length_container_in_use, height_container_in_use);
         C1.set_objects(objects_in_use);
-        save_container(n_container);
-        n_container++;
 
         for(int i = 0; i < V_boxes_in_use.size(); i++)
         {
             if(V_boxes_in_use[i].get_placed())
             {
                 C1.add_box(V_boxes_in_use[i]);
+            }
+        }
+        add_container(C1);
+        save_container(n_container, C1.get_num_boxes());
+        n_container++;
+        for(int i = 0; i < V_boxes_in_use.size(); i++)
+        {
+            if(V_boxes_in_use[i].get_placed())
+            {
                 save_results(V_targets[t], V_boxes_in_use[i]);
                 t++;
             }
         }
-        add_container(C1);
         reset_objects();
         erase_boxes_placed();
 

@@ -35,7 +35,7 @@ class Algorithms
                                        int l, int w, int h,
                                        int o, int n, int m, 
                                        bool inverted);
-        void save_container(int n_container);
+        void save_container(int n_container, int n_box);
         void save_results(target t_in, box b_in);
 };
 
