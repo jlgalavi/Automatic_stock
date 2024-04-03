@@ -1,4 +1,6 @@
 import classtarget
+#from robodk import *
+#from robolink import *
 
 file_tagets = open('D:\\repos\Automatic_stock\\filesTXT\\results.txt', 'r')
 lines = file_tagets.readlines()
@@ -60,3 +62,19 @@ for j in targets_vector:
     print(f"Target ID: {j.ID_box}  - Position: ({j.position_x}, {j.position_y}, {j.position_z})")
 
 file_tagets.close()
+
+RDK = robolink.Robolink()
+robot = RDK.Item('UR10', ITEM_TYPE_ROBOT)
+
+reference = robot.Parent()
+robot.setPoseFrame(reference)
+
+pose_ref = robot.Pose()
+
+for target in targets_vector:
+    pose_i =pose_ref * transl(target.position_x, target.position_y, target.position_z)
+    MoveJ(pose_i)
+
+MoveJ(pose_ref)
+
+quit()

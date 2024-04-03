@@ -1,8 +1,84 @@
 Container: 1
-Number-boxes: 3
-ID_Box: 2
-Target: (1.5, 1, 3)
-ID_Box: 3
-Target: (5.5, 1.5, 1)
+Number-boxes: 24
 ID_Box: 4
-Target: (8.5, 1.5, 2)
+Target: (12.5, 15, 21)
+ID_Box: 4
+Target: (37.5, 15, 21)
+ID_Box: 4
+Target: (62.5, 15, 21)
+ID_Box: 4
+Target: (87.5, 15, 21)
+ID_Box: 4
+Target: (12.5, 45, 21)
+ID_Box: 4
+Target: (37.5, 45, 21)
+ID_Box: 4
+Target: (62.5, 45, 21)
+ID_Box: 4
+Target: (87.5, 45, 21)
+ID_Box: 4
+Target: (12.5, 75, 21)
+ID_Box: 4
+Target: (37.5, 75, 21)
+ID_Box: 4
+Target: (62.5, 75, 21)
+ID_Box: 4
+Target: (87.5, 75, 21)
+ID_Box: 4
+Target: (12.5, 15, 42)
+ID_Box: 4
+Target: (37.5, 15, 42)
+ID_Box: 4
+Target: (62.5, 15, 42)
+ID_Box: 4
+Target: (87.5, 15, 42)
+ID_Box: 4
+Target: (12.5, 45, 42)
+ID_Box: 4
+Target: (37.5, 45, 42)
+ID_Box: 4
+Target: (62.5, 45, 42)
+ID_Box: 4
+Target: (87.5, 45, 42)
+ID_Box: 4
+Target: (12.5, 75, 42)
+ID_Box: 4
+Target: (37.5, 75, 42)
+ID_Box: 4
+Target: (62.5, 75, 42)
+ID_Box: 4
+Target: (87.5, 75, 42)
+Container: 2
+Number-boxes: 16
+ID_Box: 4
+Target: (12.5, 15, 21)
+ID_Box: 4
+Target: (37.5, 15, 21)
+ID_Box: 4
+Target: (62.5, 15, 21)
+ID_Box: 4
+Target: (87.5, 15, 21)
+ID_Box: 4
+Target: (12.5, 45, 21)
+ID_Box: 4
+Target: (37.5, 45, 21)
+ID_Box: 4
+Target: (62.5, 45, 21)
+ID_Box: 4
+Target: (87.5, 45, 21)
+ID_Box: 4
+Target: (12.5, 75, 21)
+ID_Box: 4
+Target: (37.5, 75, 21)
+ID_Box: 4
+Target: (62.5, 75, 21)
+ID_Box: 4
+Target: (87.5, 75, 21)
+ID_Box: 4
+Target: (12.5, 15, 42)
+ID_Box: 4
+Target: (37.5, 15, 42)
+ID_Box: 4
+Target: (62.5, 15, 42)
+ID_Box: 4
+Target: (87.5, 15, 42)

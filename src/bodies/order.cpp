@@ -14,12 +14,10 @@ order::order()
     {
         std::cout << "--------------------------" << std::endl;
         std::cout << "Select Box: " << std::endl;
-        std::cout << "  Box 1: 200mm x 150mm x 200mm" << std::endl;
-        std::cout << "  Box 2: 300mm x 170mm x 300mm" << std::endl;
-        std::cout << "  Box 3: 500mm x 300mm x 100mm"<< std::endl;
-        std::cout << "  Box 4: 100mm x 30mm x 20mm" << std::endl;
-        std::cout << "  Box 5: 70mm x 70mm x 30mm" << std::endl;
-        std::cout << "  Box 6: 140mm x 140mm x 100mm" << std::endl;
+        std::cout << "  Box 1: 150mm x 120mm x 100mm" << std::endl;
+        std::cout << "  Box 2: 200mm x 210mm x  70mm" << std::endl;
+        std::cout << "  Box 3: 200mm x 210mm x 210mm"<< std::endl;
+        std::cout << "  Box 4: 250mm x 300mm x 210mm" << std::endl;
         std::cout << "  Finish the order: 7" << std::endl;
         std::cout << "--------------------------" << std::endl;
 
@@ -29,27 +27,19 @@ order::order()
         {
         case 1:
             std::cout << "Selected Box 1" << std::endl;
-            V_boxes_order.push_back(box(2, 2, 2, false, 1));
+            V_boxes_order.push_back(box(15, 12, 10, false, 1));
             break;
         case 2:
             std::cout << "Selected Box 2" << std::endl;
-            V_boxes_order.push_back(box(3, 2, 3, false, 2));
+            V_boxes_order.push_back(box(20, 21, 7, false, 2));
             break;
         case 3:
             std::cout << "Selected Box 3" << std::endl;
-            V_boxes_order.push_back(box(5, 3, 1, false, 3));
+            V_boxes_order.push_back(box(20, 21, 21, false, 3));
             break;
         case 4:
             std::cout << "Selected Box 4" << std::endl;
-            V_boxes_order.push_back(box(1, 3, 2, false, 4));
-            break;
-        case 5:
-            std::cout << "Selected Box 5" << std::endl;
-            V_boxes_order.push_back(box(7, 7, 3, false, 5));
-            break;
-        case 6:
-            std::cout << "Selected Box 6" << std::endl;
-            V_boxes_order.push_back(box(1, 2, 1, false, 6));
+            V_boxes_order.push_back(box(25, 30, 21, false, 4));
             break;
         case 7:
             std::cout << "The order is finished" << std::endl;
