@@ -8,9 +8,9 @@
 #include "src/headers/container.h"
 #include <ctime> 
 
-#define HEIGHT 5
-#define WIDTH 10
-#define LENGTH 10
+#define HEIGHT 50
+#define WIDTH 100
+#define LENGTH 100
 
 int main()
 {
@@ -33,7 +33,6 @@ int main()
             A1.place_boxes();
             A1.show_targets();
             shipment S1(O1.get_V_boxes(), A1.V_containers_in_use);   
-            S1.show_shipment();
             S1.save_shipment();
         }
         else if(menu == 2)
