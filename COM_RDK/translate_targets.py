@@ -1,6 +1,20 @@
-import classtarget
-#from robodk import *
-#from robolink import *
+from robodk import *
+from robolink import *
+
+class target:
+    
+    position_x = 0
+    position_y = 0
+    position_z = 0
+    ID_box = 0
+
+    def __init__(self, position_x, position_y, position_z):
+        self.position_x = position_x
+        self.position_y = position_y
+        self.position_z = position_z
+
+    def set_ID_box(self, ID_box):
+        self.ID_box = ID_box
 
 file_tagets = open('D:\\repos\Automatic_stock\\filesTXT\\results.txt', 'r')
 lines = file_tagets.readlines()
@@ -41,7 +55,7 @@ for target_id_vector in targets.items():
     pos_x = float(coordenadas[0])
     pos_y = float(coordenadas[1])
     pos_z = float(coordenadas[2])
-    T1 = classtarget.target(pos_x, pos_y, pos_z)
+    T1 = target(pos_x, pos_y, pos_z)
     targets_vector.append(T1)
     contador_target = contador_target + 1
 
@@ -64,17 +78,49 @@ for j in targets_vector:
 file_tagets.close()
 
 RDK = robolink.Robolink()
-robot = RDK.Item('UR10', ITEM_TYPE_ROBOT)
 
-reference = robot.Parent()
-robot.setPoseFrame(reference)
+APPROACH = 100
 
-pose_ref = robot.Pose()
 
+robot = RDK.Item('UR20', ITEM_TYPE_ROBOT)
+AGV = RDK.Item('Omron HD-1500', ITEM_TYPE_ROBOT)
+reference = RDK.Item('Pose_ref', ITEM_TYPE_TARGET)
+pick = RDK.Item('Target 1', ITEM_TYPE_TARGET)
+tool = RDK.Item('Vacuum Gripper', ITEM_TYPE_TOOL)
+system_ref = RDK.Item('Frame 3', ITEM_TYPE_FRAME)
+target_home = RDK.Item('HOME', ITEM_TYPE_TARGET)
+pose_ref = reference.Pose()
+pose_pick = pick.Pose()
+pose_prepick = pose_pick * transl(0, 0, -20)
+
+
+def TCP_On(toolitem):
+    """Attaches the closest object to the toolitem Htool pose,
+    It will also output appropriate function calls on the generated robot program (call to TCP_On)"""
+    toolitem.AttachClosest()
+    toolitem.RDK().RunMessage('Set air valve on')
+    toolitem.RDK().RunProgram('TCP_On()');
+        
+def TCP_Off(toolitem, itemleave=0):
+    """Detaches the closest object attached to the toolitem Htool pose,
+    It will also output appropriate function calls on the generated robot program (call to TCP_Off)"""
+    toolitem.DetachAll()
+    toolitem.RDK().RunMessage('Set air valve off')
+    toolitem.RDK().RunProgram('TCP_Off()');
+
+robot.setPoseFrame(system_ref)
+
+robot.MoveJ(target_home)
 for target in targets_vector:
-    pose_i =pose_ref * transl(target.position_x, target.position_y, target.position_z)
-    MoveJ(pose_i)
+    robot.MoveJ(pose_prepick)
+    robot.MoveJ(pose_pick)
+    TCP_On(tool)
+    robot.MoveJ(target_home)
+    pose_i = pose_ref * transl((target.position_x * 10), -(target.position_y * 10), -(target.position_z * 10))
+    robot.MoveJ(pose_i)
+    TCP_Off(tool, system_ref)
+    robot.MoveJ(target_home)
+    
 
-MoveJ(pose_ref)
 
 quit()

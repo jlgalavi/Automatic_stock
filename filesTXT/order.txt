@@ -1,243 +1,87 @@
 
 --------------------------
-  Number of boxes: 40
+  Number of boxes: 14
   Box 1
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 2
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 3
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 4
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 5
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 6
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 7
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 8
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 9
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 10
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 11
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 12
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 13
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
+  Volume: 8820
   Box 14
-  ID_Box 4
-  Length: 25
-  Width: 30
+  ID_Box 3
+  Length: 20
+  Width: 21
   Height: 21
-  Volume: 15750
-  Box 15
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 16
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 17
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 18
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 19
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 20
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 21
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 22
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 23
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 24
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 25
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 26
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 27
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 28
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 29
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 30
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 31
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 32
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 33
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 34
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 35
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 36
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 37
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 38
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 39
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
-  Box 40
-  ID_Box 4
-  Length: 25
-  Width: 30
-  Height: 21
-  Volume: 15750
+  Volume: 8820
