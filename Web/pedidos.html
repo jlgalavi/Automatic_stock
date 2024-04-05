@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pedidos</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/3b8572695f.js" crossorigin="anonymous"></script>
@@ -24,6 +24,31 @@
                     <a href="index.html" class="nav-menu-link nav-links ">Volver al inicio</a>
                 </li>
             </ul>
+            <div class="cart">
+                <div class="container-icon-buy">
+                    <a href="#" class="icon-buy">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </a>               
+                </div>
+                <div class="cont-products">
+                    <span id="contador-productos">
+                        0
+                    </span>
+                </div>
+                <div class="container-cart-products hidden-cart">
+                    <div class="row-product">
+                    </div>
+                    <div class="cart-total">
+                        <h3>
+                            Total: 
+                        </h3>
+                        <span class="total-price"></span>
+                    </div>
+                    <button class="btn-buy">
+                        Completa tu compra
+                    </button>
+                </div>
+            </div>
         </nav>
     </header>
     <section class="section" id="Pedidos">
@@ -40,8 +65,11 @@
                     <p class="Pedidos-item-text">
                         100mm x 50mm x 30mm
                     </p>
+                    <p class="price-product">
+                        5 €
+                    </p>
                     <button class="btn-pedidos">
-                        Comprar
+                        Añadir al carrito
                     </button>
                 </div>
                 <div class="Pedidos-item">
@@ -52,8 +80,11 @@
                     <p class="Pedidos-item-text">
                         150mm x 120mm x 100mm
                     </p>
+                    <p class="price-product">
+                        10 €
+                    </p>
                     <button class="btn-pedidos">
-                        Comprar
+                        Añadir al carrito
                     </button>
                 </div>
                 <div class="Pedidos-item">
@@ -64,8 +95,11 @@
                     <p class="Pedidos-item-text">
                         200mm x 210mm x 70mm
                     </p>
+                    <p class="price-product">
+                        15 €
+                    </p>
                     <button class="btn-pedidos">
-                        Comprar
+                        Añadir al carrito
                     </button>
                 </div>
                 <div class="Pedidos-item">
@@ -76,11 +110,15 @@
                     <p class="Pedidos-item-text">
                         250mm x 300mm x 210mm
                     </p>
+                    <p class="price-product">
+                        20 €
+                    </p>
                     <button class="btn-pedidos">
-                        Comprar
+                        Añadir al carrito
                     </button>
                 </div>
             </section>
-        </div>    
+        </div>  
+    </section>  
 </body>
 </html>
