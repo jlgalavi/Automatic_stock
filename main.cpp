@@ -17,7 +17,7 @@ int main()
     int menu;
     for(;;)
     {
-        std::cout << "Welcome to the NN system" << std::endl;
+        std::cout << "Welcome to the NN system" << std::endl; 
         std::cout << "Select an option" << std::endl;
         std::cout << "1. Order boxes" << std::endl;
         std::cout << "2. Exit" << std::endl;
