@@ -7,7 +7,8 @@ Tareas código python
     - Crear Script para enviar targets ya cajas a RoboDK
 
 Tareas RoboDK
-    - Falta definir
+    - terminar de genrear script para recorrer palets M y S
+    - Poner puntos de paso para cada palet y evitar que haga piruetas
 
 Mejoras a realizar
     - Gestionar información desde base de datos
