@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "../headers/box.h"
 #include "../headers/container.h"
@@ -34,6 +35,25 @@ void shipment::show_shipment()
         V_containers[i].show_container();
     }
     std::cout << "--------------------------" << std::endl;
+}
+
+void shipment::save_shipment()
+{
+    std::ofstream file("D:\\repos\\Automatic_stock\\filesTXT\\shipment.txt", std::ios::app);
+    file << std::endl << "Welcome to the box shipment system" << std::endl;
+    file << "This is the resume of your shipment" << std::endl;
+    file << std::endl << "--------------------------" << std::endl;
+    file << "  Number of containers: " << V_containers.size() << std::endl;
+    file << "  Number of boxes: " << V_boxes.size() << std::endl;
+    for (int i = 0; i < V_containers.size(); i++)
+    {
+        file << std::endl << "  Container " << i + 1 << std::endl;
+        file << "  Volume of boxes: " <<  V_containers[i].add_volume_boxes() << std::endl;
+        V_containers[i].save_container(file);
+    }
+    file << "--------------------------" << std::endl;
+    file.close();
+
 }
 // Obtener el número de contenedores
 // Get the number of containers

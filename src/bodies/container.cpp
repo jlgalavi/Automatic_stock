@@ -1,7 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "../headers/box.h"
 #include "../headers/container.h"
+#include <fstream>
 
 // Constructor base del contenedor
 // Container base constructor
@@ -149,4 +151,35 @@ void container::show_container()
     std::cout << std::endl << " Objects" << std::endl << std::endl;
     show_objects_container();
     std::cout << "--------------------------" << std::endl << std::endl;
+}
+
+// Guardar el contenedor en un archivo
+// Save the container in a file
+void container::save_container(std::ofstream &file)
+{
+    file << std::endl << "--------------------------" << std::endl;
+    file << "  Length: " << length_container << std::endl;
+    file << "  Width: " << width_container << std::endl;
+    file << "  Height: " << height_container << std::endl;
+    file << "  Number of boxes: " << V_box.size() << std::endl;
+    for (int i = 0; i < V_box.size(); i++)
+    {
+        file << std::endl << " Box " << i + 1 << std::endl;
+        V_box[i].save_box(file);
+    }
+    file << std::endl << " Objects" << std::endl << std::endl;
+    for (int i = 0; i < height_container; i++)
+    {
+        file << " Layer " << i + 1 << std::endl;
+        for (int j = 0; j < width_container; j++)
+        {
+            for(int k = 0; k < length_container; k++)
+            {
+                file << objects[i][j][k] << " ";
+            }
+            file << std::endl;
+        }
+        file << std::endl << std::endl;
+    }
+    file << "--------------------------" << std::endl << std::endl;
 }

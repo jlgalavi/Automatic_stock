@@ -14,6 +14,7 @@ class order : public box
         void show_order();
         int get_num_boxes();
         std::vector<box> get_V_boxes();
+        void save_order();
 };
 
 #endif

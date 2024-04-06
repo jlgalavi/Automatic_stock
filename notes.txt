@@ -9,3 +9,4 @@ tamaño caja XL  250 x 300 x 210  15.750 K
 cajas a utilizar son las .obj
 color carton #a58a67
 color logo #013357
+- Para gestionar la información del pedido y poder comunicarlo con RoboDK a través de la web, necesitamos si o si BBDD

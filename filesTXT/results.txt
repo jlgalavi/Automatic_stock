@@ -1,0 +1,26 @@
+Container: 1
+Number-boxes: 12
+ID_Box: 3
+Target: (10, 10.5, 21)
+ID_Box: 3
+Target: (30, 10.5, 21)
+ID_Box: 3
+Target: (50, 10.5, 21)
+ID_Box: 3
+Target: (70, 10.5, 21)
+ID_Box: 3
+Target: (90, 10.5, 21)
+ID_Box: 3
+Target: (10, 31.5, 21)
+ID_Box: 2
+Target: (30, 31.5, 7)
+ID_Box: 2
+Target: (50, 31.5, 7)
+ID_Box: 2
+Target: (70, 31.5, 7)
+ID_Box: 2
+Target: (90, 31.5, 7)
+ID_Box: 2
+Target: (10, 52.5, 7)
+ID_Box: 2
+Target: (30, 52.5, 7)
