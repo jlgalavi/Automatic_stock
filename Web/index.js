@@ -129,32 +129,7 @@ const showHTML = () =>
 
 btnConfirm.addEventListener('click', (e) => 
 {
-    const orderData = allProducts.map((product, index) => {
-        let productId;
-        switch (product.title) {
-            case 'BOX S':
-                productId = 1;
-                break;
-            case 'BOX M':
-                productId = 2;
-                break;
-            case 'BOX L':
-                productId = 3;
-                break;
-            case 'BOX XL':
-                productId = 4;
-                break;
-            default:
-                productId = 0;
-                break;
-        }
-        return {
-            id: productId,
-            quantity: product.quantity
-        };
-    });
-
-    const orderText = orderData.map(data => `Product ID: ${data.id}, Quantity: ${data.quantity}`).join('\n');
+    const orderText = allProducts.map(data => `Product ID: ${data.title}, Quantity: ${data.quantity}`).join('\n');
 
     const element = document.createElement('a');
     const file = new Blob([orderText], { type: 'text/plain' });
