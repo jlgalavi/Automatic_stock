@@ -1,6 +1,6 @@
 
 --------------------------
-  Number of boxes: 12
+  Number of boxes: 13
   Box 1
   ID_Box 2
   Length: 20
@@ -26,23 +26,23 @@
   Height: 7
   Volume: 2940
   Box 5
-  ID_Box 3
+  ID_Box 2
   Length: 20
   Width: 21
-  Height: 21
-  Volume: 8820
+  Height: 7
+  Volume: 2940
   Box 6
-  ID_Box 3
+  ID_Box 2
   Length: 20
   Width: 21
-  Height: 21
-  Volume: 8820
+  Height: 7
+  Volume: 2940
   Box 7
-  ID_Box 3
+  ID_Box 2
   Length: 20
   Width: 21
-  Height: 21
-  Volume: 8820
+  Height: 7
+  Volume: 2940
   Box 8
   ID_Box 3
   Length: 20
@@ -50,11 +50,11 @@
   Height: 21
   Volume: 8820
   Box 9
-  ID_Box 2
+  ID_Box 3
   Length: 20
   Width: 21
-  Height: 7
-  Volume: 2940
+  Height: 21
+  Volume: 8820
   Box 10
   ID_Box 3
   Length: 20
@@ -62,12 +62,18 @@
   Height: 21
   Volume: 8820
   Box 11
-  ID_Box 2
+  ID_Box 3
   Length: 20
   Width: 21
-  Height: 7
-  Volume: 2940
+  Height: 21
+  Volume: 8820
   Box 12
+  ID_Box 3
+  Length: 20
+  Width: 21
+  Height: 21
+  Volume: 8820
+  Box 13
   ID_Box 3
   Length: 20
   Width: 21
