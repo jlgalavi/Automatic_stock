@@ -3,8 +3,8 @@
 
 // WiFi
 
-const char *ssid = "mariyjose"; //Enter the router name
-const char *password = "********"; //Enter the router password
+const char *ssid = "iPhone"; //Enter the router name
+const char *password = "Hxry-Fp0R-8yMS-5HBS"; //Enter the router password
 
 // MQTT Broker
 const char *mqtt_broker = "broker.emqx.io";
