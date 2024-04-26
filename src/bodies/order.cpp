@@ -27,19 +27,19 @@ order::order()
         {
         case 1:
             std::cout << "Selected Box 1" << std::endl;
-            V_boxes_order.push_back(box(15, 12, 10, false, 1));
+            V_boxes_order.push_back(box(15, 12, 10, false, 'S'));
             break;
         case 2:
             std::cout << "Selected Box 2" << std::endl;
-            V_boxes_order.push_back(box(20, 21, 7, false, 2));
+            V_boxes_order.push_back(box(20, 21, 7, false, 'M'));
             break;
         case 3:
             std::cout << "Selected Box 3" << std::endl;
-            V_boxes_order.push_back(box(20, 21, 21, false, 3));
+            V_boxes_order.push_back(box(20, 21, 21, false, 'L'));
             break;
         case 4:
             std::cout << "Selected Box 4" << std::endl;
-            V_boxes_order.push_back(box(25, 30, 21, false, 4));
+            V_boxes_order.push_back(box(25, 30, 21, false, 'X'));
             break;
         case 7:
             std::cout << "The order is finished" << std::endl;

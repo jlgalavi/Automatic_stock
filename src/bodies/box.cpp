@@ -4,7 +4,7 @@
 
 // Constructor de la caja
 // Box constructor
-box::box(int l, int w, int h, bool p, int id)
+box::box(int l, int w, int h, bool p, char id)
 {
     length_box = l;
     width_box = w;
@@ -46,7 +46,7 @@ int box::surface_area()
 }
 // Obtener el id de la caja
 // Get the box id
-int box::get_id()
+char box::get_id()
 {
     return id_box;
 }
