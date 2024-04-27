@@ -9,7 +9,7 @@ class box
 {
     protected:
 
-        int id_box;
+        char id_box;
         int length_box;
         int width_box;
         int height_box;
@@ -18,10 +18,10 @@ class box
 
     public:
 
-        box() :id_box(0), length_box(0), width_box(0), height_box(0), volume_box(0), placed(false) {}
-        box(int l, int w, int h, bool p, int id);
+        box() :id_box('Z'), length_box(0), width_box(0), height_box(0), volume_box(0), placed(false) {}
+        box(int l, int w, int h, bool p, char id);
         int surface_area();
-        int get_id();
+        char get_id();
         int get_length();
         int get_width();
         int get_height();
