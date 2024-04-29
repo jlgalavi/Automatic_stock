@@ -127,7 +127,7 @@ const showHTML = () =>
 
 };
 
-btnConfirm.addEventListener('click', (e) => 
+btnConfirm.addEventListener('click', (e) =>   
 {
     const orderText = allProducts.map(data => `Product ID: ${data.title}, Quantity: ${data.quantity}`).join('\n');
 
