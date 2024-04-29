@@ -1,26 +1,38 @@
 Container: 1
-Number-boxes: 12
-ID_Box: 3
-Target: (10, 10.5, 21)
-ID_Box: 3
-Target: (30, 10.5, 21)
-ID_Box: 3
-Target: (50, 10.5, 21)
-ID_Box: 3
-Target: (70, 10.5, 21)
-ID_Box: 3
-Target: (90, 10.5, 21)
-ID_Box: 3
-Target: (10, 31.5, 21)
-ID_Box: 2
-Target: (30, 31.5, 7)
-ID_Box: 2
-Target: (50, 31.5, 7)
-ID_Box: 2
-Target: (70, 31.5, 7)
-ID_Box: 2
-Target: (90, 31.5, 7)
-ID_Box: 2
-Target: (10, 52.5, 7)
-ID_Box: 2
-Target: (30, 52.5, 7)
+Number-boxes: 18
+ID_Box: X
+Target: (12.5, 15, 21)
+ID_Box: X
+Target: (37.5, 15, 21)
+ID_Box: X
+Target: (62.5, 15, 21)
+ID_Box: X
+Target: (87.5, 15, 21)
+ID_Box: X
+Target: (12.5, 45, 21)
+ID_Box: L
+Target: (35, 40.5, 21)
+ID_Box: L
+Target: (55, 40.5, 21)
+ID_Box: L
+Target: (75, 40.5, 21)
+ID_Box: L
+Target: (35, 61.5, 21)
+ID_Box: M
+Target: (55, 61.5, 7)
+ID_Box: M
+Target: (75, 61.5, 7)
+ID_Box: M
+Target: (10, 70.5, 7)
+ID_Box: M
+Target: (30, 82.5, 7)
+ID_Box: M
+Target: (50, 82.5, 7)
+ID_Box: M
+Target: (70, 82.5, 7)
+ID_Box: S
+Target: (92.5, 36, 10)
+ID_Box: S
+Target: (92.5, 48, 10)
+ID_Box: S
+Target: (92.5, 60, 10)
