@@ -80,6 +80,9 @@ int container::get_height()
 {
     return height_container;
 }
+int container::get_volume(){
+    return length_container * width_container * height_container; 
+}
 // Obtener el número de cajas
 // Get the number of boxes
 int container::get_num_boxes()

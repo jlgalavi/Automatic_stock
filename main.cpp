@@ -8,9 +8,15 @@
 #include "src/headers/container.h"
 #include <ctime> 
 
-#define HEIGHT 50
-#define WIDTH 100
-#define LENGTH 100
+#define HEIGHT1 50
+#define WIDTH1 100
+#define LENGTH1 100
+#define HEIGHT2 25
+#define WIDTH2 50
+#define LENGTH2 50
+#define HEIGHT3 15
+#define WIDTH3 25
+#define LENGTH3 25
 
 int main()
 {

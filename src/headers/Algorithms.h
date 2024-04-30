@@ -18,10 +18,12 @@ class Algorithms
         int width_container_in_use;
         int height_container_in_use;
         int ***objects_in_use;
+        int boxes_volume; 
         Algorithms(int nb, int l, int w, int h, std::vector<box> V);
         void set_boxes(std::vector<box> V);
         //void show_boxes(); FUNCION PARA COMPROBAR QUE LAS CAJAS SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
         void add_container(container in);
+        void select_container(); 
         void place_boxes();
         bool prove_object(int ***objects, int w, int l, int h, box v, bool inverted = false);
         void order_boxes(); 
