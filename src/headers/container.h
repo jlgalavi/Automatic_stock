@@ -10,6 +10,7 @@ class container
         int length_container;
         int width_container;
         int height_container;
+        int volume_container; 
         std::vector<box> V_box;
 
     public:

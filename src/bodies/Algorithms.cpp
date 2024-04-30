@@ -273,20 +273,26 @@ void Algorithms::save_results(target t_in, box b_in)
  */
 
 void Algorithms::select_container(){
-    if(volume_box <= volume3){
-        length_container_in_use = LENGTH1; 
-        width_container_in_use = WIDTH1; 
-        height_container_in_use = HEIGHT1; 
-    }
-    else if(volume_box <= volume2){
-        length_container_in_use = LENGTH2; 
-        width_conainer_in_use = WIDTH2; 
-        height_container_in_use = HEIGHT2; 
-    } 
-    else{
-        length_container_in_use = LENGTH3; 
-        width_container_in_use = WIDHT3; 
-        height_container_in_use = HEIGHT3; 
+    int volume_box = boxes_volume; 
+    while(volume_box <= 0){
+        if(volume_box <= cont3.volume_container){
+            length_container_in_use = LENGTH1; 
+            width_container_in_use = WIDTH1; 
+            height_container_in_use = HEIGHT1;
+            volume_box -= cont3.volume_container;  
+        }
+        else if(volume_box <= cont2.volume_container){
+            length_container_in_use = LENGTH2; 
+            width_conainer_in_use = WIDTH2; 
+            height_container_in_use = HEIGHT2; 
+            volume_box -= cont2.volume_container; 
+        } 
+        else{
+            length_container_in_use = LENGTH3; 
+            width_container_in_use = WIDHT3; 
+            height_container_in_use = HEIGHT3; 
+            volume_box -= cont1.volume_container; 
+        }
     }
     
     objects_in_use = new int **[height_container_in_use];

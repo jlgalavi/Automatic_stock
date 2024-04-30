@@ -12,6 +12,7 @@ container::container()
     length_container = 0;
     width_container = 0;
     height_container = 0;
+    volume_container = 0; 
     preset_objects();
 }
 // Constructor del contenedor con parámetros
@@ -21,6 +22,7 @@ container::container(int l, int w, int h)
     length_container = l;
     width_container = w;
     height_container = h;
+    volume_container = l * w * h; 
     preset_objects();
 }
 // Presetear los objetos del contenedor
@@ -81,7 +83,7 @@ int container::get_height()
     return height_container;
 }
 int container::get_volume(){
-    return length_container * width_container * height_container; 
+    return volume_container; 
 }
 // Obtener el número de cajas
 // Get the number of boxes
