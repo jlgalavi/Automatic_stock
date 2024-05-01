@@ -9,11 +9,16 @@
 #include "../headers/Algorithms.h"
 
 
+Container cont1(50,100, 100); 
+Container cont2(25, 50, 50); 
+Container cont3(15, 25, 25); 
+
+
 // Constructor de la clase Algorithms
 // Algorithms class constructor
-Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box> V)
+Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box>& V)
 {
-    length_container_in_use = l;
+    /*length_container_in_use = l;
     width_container_in_use = w;
     height_container_in_use = h;
     objects_in_use = new int **[height_container_in_use];
@@ -30,8 +35,11 @@ Algorithms::Algorithms(int nb, int l, int w, int h, std::vector<box> V)
         }
     }
     
-    V_containers_in_use.reserve(nb);
+    V_containers_in_use.reserve(nb);*/
     V_boxes_in_use = V;
+    boxes_volume = 0; 
+    for(auto box : V)
+        boxes_volume += box.volume_box; 
 }
 /* FUNCION PARA COMPROBAR QUE LAS CAJAS SE COLOCAN CORRECTAMENTE EN EL ALGORITMO
  * FUNCTION TO CHECK THAT THE BOXES ARE PLACED CORRECTLY IN THE ALGORITHM
@@ -263,6 +271,40 @@ void Algorithms::save_results(target t_in, box b_in)
  * The placed boxes are removed.
  * If there are no more boxes to place, the loop is exited, otherwise it is repeated with a new and empty container.
  */
+
+void Algorithms::select_container(){
+    if(volume_box <= volume3){
+        length_container_in_use = LENGTH1; 
+        width_container_in_use = WIDTH1; 
+        height_container_in_use = HEIGHT1; 
+    }
+    else if(volume_box <= volume2){
+        length_container_in_use = LENGTH2; 
+        width_conainer_in_use = WIDTH2; 
+        height_container_in_use = HEIGHT2; 
+    } 
+    else{
+        length_container_in_use = LENGTH3; 
+        width_container_in_use = WIDHT3; 
+        height_container_in_use = HEIGHT3; 
+    }
+    
+    objects_in_use = new int **[height_container_in_use];
+    for (int i = 0; i < height_container_in_use; i++)
+    {
+        objects_in_use[i] = new int *[width_container_in_use];
+        for (int j = 0; j < width_container_in_use; j++)
+        {
+            objects_in_use[i][j] = new int[length_container_in_use];
+            for (int k = 0; k < length_container_in_use; k++)
+            {
+                objects_in_use[i][j][k] = 0;
+            }
+        }
+    }
+    V_containers_in_use.reserve(nb);
+    Container cont(length_container_in_use, width_container_in_use)
+}
 void Algorithms::place_boxes()
 {    
     int n_box = 1, n_container = 1;
