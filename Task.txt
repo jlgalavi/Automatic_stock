@@ -1,18 +1,3 @@
-Tareas código c++
-    - A falta de utilizar BBDD
+- Gestionar los ficheros JSON para conexxiones MQTT
 
-Tareas código python
-
-    - Estructurar lecturas para gestionar cajas y targets
-    - Crear Script para enviar targets ya cajas a RoboDK
-
-Tareas RoboDK
-    - terminar de genrear script para recorrer palets M y S
-    - Poner puntos de paso para cada palet y evitar que haga piruetas
-
-Mejoras a realizar
-    - Gestionar información desde base de datos
-    - Crear interfaz con JS, css y HTML para obtener información de pedido.
-
-- Crear nueva pestaña en la web para generar pedido
 
