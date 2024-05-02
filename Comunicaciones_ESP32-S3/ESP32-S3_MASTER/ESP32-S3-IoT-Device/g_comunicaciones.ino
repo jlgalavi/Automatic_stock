@@ -87,6 +87,15 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     }
     else warnln("**>> Solicitud no reconocida!");
   }
+  if (strcmp(topic, TEMPERATURE_TOPIC) == 0 ) {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if (!err) {
+      String msg = doc["msg"];
+      Serial.println(msg);
+    }
+    else warnln("**>> Solicitud no reconocida!");
+  }
 
 }
 
