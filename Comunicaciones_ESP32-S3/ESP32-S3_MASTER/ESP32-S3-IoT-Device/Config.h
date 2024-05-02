@@ -24,14 +24,14 @@
 
 #define HELLO_TOPIC               "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
 #define INFOPEDIDO_TOPIC          "giirob/pr2/B1/infopedido"    // TODO: topic ejemplo ejercicio inicial
-#define INFOBOXES_TOPIC           "giirob/pr2/B1/infoboxes"    // TODO: topic ejemplo ejercicio inicial
 #define DESPALETIZADO_TOPIC       "giirob/pr2/B1/actions/despaletizado"    // TODO: topic ejemplo ejercicio inicial
 #define ASIGNACION_TOPIC          "giirob/pr2/B1/actions/asignacion"    // TODO: topic ejemplo ejercicio inicial
+#define AGV_CONTROL               "giirob/pr2/B1/actions/agvControl"    // TODO: topic ejemplo ejercicio inicial
 #define STOCK_TOPIC               "giirob/pr2/B1/control/stock"    // TODO: topic ejemplo ejercicio inicial
 #define TEMPERATURE_TOPIC         "giirob/pr2/B1/control/sensors/temperature"    // TODO: topic ejemplo ejercicio inicial
 #define EMERGENCY_TOPIC           "giirob/pr2/B1/control/emergency"    // TODO: topic ejemplo ejercicio inicial
 #define CONTROLBOX_TOPIC          "giirob/pr2/B1/control/boxes"    // TODO: topic ejemplo ejercicio inicial
-#define AGV_CONTROL               "giirob/pr2/B1/actions/agvControl"    // TODO: topic ejemplo ejercicio inicial
+
 
 // IO
 #define LED_BUILTIN               2
