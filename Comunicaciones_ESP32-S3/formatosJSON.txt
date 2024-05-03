@@ -127,6 +127,7 @@ PUBLISHERS:
 Archivo JSON:
 '''
 {
-    "ACTION": "<string><format := "(ID_PROG)" >"
+    "ACTION": "<string><format := "(ID_PROG)" >",
+    "POSE": "<string><format := (x,y,z)>"
 }
 '''
