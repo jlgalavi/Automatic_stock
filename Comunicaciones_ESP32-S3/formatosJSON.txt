@@ -113,9 +113,12 @@ Archivo JSON:
 
 TOPIC: 
 {
-    DESPALETIZADO_TOPIC --> giirob/pr2/B1/actions/despaletizado
-    ASIGNACION_TOPIC --> giirob/pr2/B1/actions/asignacion
-    AGV_CONTROL --> giirob/pr2/B1/actions/agvControl
+    DESPALETIZADO_STATUS_TOPIC --> giirob/pr2/B1/actions/despaletizado/status
+    DESPALETIZADO_COMMANDS_TOPIC --> giirob/pr2/B1/actions/despaletizado/commands
+    ASIGNACION_STATUS_TOPIC --> giirob/pr2/B1/actions/asignacion/status
+    ASIGNACION_COMMANDS_TOPIC --> giirob/pr2/B1/actions/asignacion/commands
+    AGV_STATUS_CONTROL --> giirob/pr2/B1/actions/agvControl/status
+    AGV_COMMANDS_CONTROL --> giirob/pr2/B1/actions/agvControl/commands
 }
 SUBSCRIBERS:
     - ROBODK_SIMULATION --> PY
