@@ -22,15 +22,18 @@
 // SSL
 // Define SSL_ROOT_CA to enable TLS/SSL connection
 
-#define HELLO_TOPIC               "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
-#define INFOPEDIDO_TOPIC          "giirob/pr2/B1/infopedido"    // TODO: topic ejemplo ejercicio inicial
-#define DESPALETIZADO_TOPIC       "giirob/pr2/B1/actions/despaletizado"    // TODO: topic ejemplo ejercicio inicial
-#define ASIGNACION_TOPIC          "giirob/pr2/B1/actions/asignacion"    // TODO: topic ejemplo ejercicio inicial
-#define AGV_CONTROL               "giirob/pr2/B1/actions/agvControl"    // TODO: topic ejemplo ejercicio inicial
-#define STOCK_TOPIC               "giirob/pr2/B1/control/stock"    // TODO: topic ejemplo ejercicio inicial
-#define TEMPERATURE_TOPIC         "giirob/pr2/B1/control/sensors/temperature"    // TODO: topic ejemplo ejercicio inicial
-#define EMERGENCY_TOPIC           "giirob/pr2/B1/control/emergency"    // TODO: topic ejemplo ejercicio inicial
-#define CONTROLBOX_TOPIC          "giirob/pr2/B1/control/boxes"    // TODO: topic ejemplo ejercicio inicial
+#define HELLO_TOPIC                   "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
+#define INFOPEDIDO_TOPIC              "giirob/pr2/B1/infopedido"    // TODO: topic ejemplo ejercicio inicial
+#define DESPALETIZADO_STATUS_TOPIC    "giirob/pr2/B1/actions/despaletizado/status"
+#define DESPALETIZADO_COMMANDS_TOPIC  "giirob/pr2/B1/actions/despaletizado/commands"
+#define ASIGNACION_STATUS_TOPIC       "giirob/pr2/B1/actions/asignacion/status"
+#define ASIGNACION_COMMANDS_TOPIC     "giirob/pr2/B1/actions/asignacion/commands"
+#define AGV_STATUS_CONTROL            "giirob/pr2/B1/actions/agvControl/status"
+#define AGV_COMMANDS_CONTROL          "giirob/pr2/B1/actions/agvControl/commands"
+#define STOCK_TOPIC                   "giirob/pr2/B1/control/stock"    // TODO: topic ejemplo ejercicio inicial
+#define TEMPERATURE_TOPIC             "giirob/pr2/B1/control/sensors/temperature"    // TODO: topic ejemplo ejercicio inicial
+#define EMERGENCY_TOPIC               "giirob/pr2/B1/control/emergency"    // TODO: topic ejemplo ejercicio inicial
+#define CONTROLBOX_TOPIC              "giirob/pr2/B1/control/boxes"    // TODO: topic ejemplo ejercicio inicial
 
 
 // IO
