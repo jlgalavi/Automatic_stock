@@ -273,20 +273,20 @@ void Algorithms::save_results(target t_in, box b_in)
  */
 
 void Algorithms::select_container(){
-    if(volume_box <= volume3){
-        length_container_in_use = LENGTH1; 
-        width_container_in_use = WIDTH1; 
-        height_container_in_use = HEIGHT1; 
+    if(volume_box <= cont1.get_volume()){
+        length_container_in_use = cont1.get_length();  
+        width_container_in_use = cont1.get_width(); 
+        height_container_in_use = cont1.get_height(); 
     }
-    else if(volume_box <= volume2){
-        length_container_in_use = LENGTH2; 
-        width_conainer_in_use = WIDTH2; 
-        height_container_in_use = HEIGHT2; 
+    else if(volume_box <= cont2.get_volume()){
+        length_container_in_use = cont2.get_length();  
+        width_conainer_in_use = cont2.get_width(); 
+        height_container_in_use = cont2.get_height(); 
     } 
     else{
-        length_container_in_use = LENGTH3; 
-        width_container_in_use = WIDHT3; 
-        height_container_in_use = HEIGHT3; 
+        length_container_in_use = cont3.get_length();  
+        width_container_in_use = cont3.get_width(); 
+        height_container_in_use = cont3.get_height(); 
     }
     
     objects_in_use = new int **[height_container_in_use];
@@ -302,8 +302,7 @@ void Algorithms::select_container(){
             }
         }
     }
-    V_containers_in_use.reserve(nb);
-    Container cont(length_container_in_use, width_container_in_use)
+    V_containers_in_use.reserve(nb); 
 }
 void Algorithms::place_boxes()
 {    
