@@ -19,17 +19,5 @@ class target{
       y = 0;
       z = 0;
     }
-    /*int get_x()
-    {
-      return x;
-    }
-    int get_y()
-    {
-      return y;
-    }
-    int get_z()
-    {
-      return z;
-    }*/
 
 };
