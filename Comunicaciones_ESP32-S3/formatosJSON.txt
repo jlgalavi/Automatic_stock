@@ -22,11 +22,11 @@ Archivo JSON:
 {
   "ID_PEDIDO": "<string>",
   "N_CONT": "<int>",
-  "N_BOX": "<int>",
   "CONTAINER": [
     {
       "ID_CONT": "<string> + <id_size>",
-      "Positions": [
+      "N_BOX": "<int>",
+      "BOXES": [
         {
           "ID_BOX": "<char><format := "X" || "L" || "M" || "S" >",
           "POSE": "<string><format := (x,y,z)>"

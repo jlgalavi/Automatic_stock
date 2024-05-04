@@ -1,13 +1,13 @@
-class box : public target{
+class box {
 
   private:
 
     const char* ID;
-    target pos;
+    const char* pos;
 
   public:
 
-    box(const char* idbox, target position)
+    box(const char* idbox, const char* position)
     {
       ID = idbox;
       pos = position;
@@ -16,7 +16,7 @@ class box : public target{
     box()
     {
       ID = "";
-      pos = target(0,0,0);
+      pos = "(0,0,0)";
     }
 
     const char* get_boxID()
@@ -24,7 +24,7 @@ class box : public target{
       return ID;
     }
 
-    target get_boxpos()
+    const char* get_boxpos()
     {
       return pos;
     }

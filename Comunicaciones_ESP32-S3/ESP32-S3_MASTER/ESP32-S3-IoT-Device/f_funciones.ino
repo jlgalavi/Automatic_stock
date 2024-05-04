@@ -1,19 +1,26 @@
-uint8_t ledStatus = 0;
+#include "box.h"
+#include "container.h"
+#include "order.h"
 
-void setInternalLed(uint8_t status) {
-  if ( ledStatus == status ) // Nothing to do
-    return;
-    
-  ledStatus = status;
-  if ( status ) {
-    infoln("Led: on");
-    digitalWrite(LED_BUILTIN, HIGH);
-  } else {
-    infoln("Led: off");
-    digitalWrite(LED_BUILTIN, LOW);
+
+void add_order(const char* incomingMessage)
+{
+  JsonDocument doc;
+  DeserializationError err = deserializeJson(doc, incomingMessage);
+  if (!err) {
+    order inputOrder = order(doc["N_CONT"].as<int>(), doc["ID_PEDIDO"]);
+    JsonArray CONTAINER = doc["CONTAINER"];
+    for(JsonVariant v : CONTAINER) {
+      container inputContainer = container(v["N_BOX"].as<int>(), v["ID_CONT"]);
+      JsonArray Positions = v["BOXES"];
+      for(JsonVariant w : Positions) {
+        box inputBox = box(w["ID_BOX"], w["POSE"]);
+        inputContainer.add_box(inputBox);
+      }
+      inputOrder.add_container(inputContainer);
+    }
   }
-
-  // TODO: Deberíamos publicar el estado del dispositivo cada vez que cambie
+  else warnln("**>> Solicitud no reconocida!");  
 }
 
 

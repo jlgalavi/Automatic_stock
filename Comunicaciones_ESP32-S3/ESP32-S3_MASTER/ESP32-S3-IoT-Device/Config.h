@@ -36,7 +36,5 @@
 #define CONTROLBOX_TOPIC              "giirob/pr2/B1/control/boxes"    // TODO: topic ejemplo ejercicio inicial
 
 
-// IO
-#define LED_BUILTIN               2
 
 

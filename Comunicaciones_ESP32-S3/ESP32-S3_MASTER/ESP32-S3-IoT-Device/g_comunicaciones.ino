@@ -29,37 +29,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     else warnln("**>> Solicitud no reconocida!");
   }
    if (strcmp(topic, INFOPEDIDO_TOPIC) == 0 ) {
-    const size_t capacity = 768;
-    DynamicJsonDocument doc(capacity);
-    DeserializationError err = deserializeJson(doc, incomingMessage);
-    if (!err) {
-        const char* ID_PEDIDO = doc["ID_PEDIDO"];
-        Serial.println(ID_PEDIDO);
 
-        int N_CONT = doc["N_CONT"].as<int>();
-        Serial.println(N_CONT);
-
-        int N_BOX = doc["N_BOX"].as<int>();
-        Serial.println(N_BOX);
-
-        JsonArray CONTAINER = doc["CONTAINER"];
-        for(JsonVariant v : CONTAINER) {
-            const char* ID_CONT = v["ID_CONT"];
-            Serial.println(ID_CONT);
-
-            JsonArray Positions = v["Positions"];
-            for(JsonVariant w : Positions) {
-                const char* ID_BOX = w["ID_BOX"];
-                Serial.println(ID_BOX);
-
-                const char* POSE = w["POSE"];
-                Serial.println(POSE);
-            }
-        }
-        size_t requiredSize = measureJson(doc);
-        Serial.println(requiredSize);
-    }
-    else warnln("**>> Solicitud no reconocida!");
   }
   if (strcmp(topic, STOCK_TOPIC) == 0 ) {
     JsonDocument doc;
