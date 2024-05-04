@@ -228,6 +228,17 @@ th, td
     font-weight: 800;
 }
 
+.btn-show-cart
+{
+    background-color: #7272ec;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 800;
+
+}
+
 .inicio-content
 {
     margin-top: 80px;
