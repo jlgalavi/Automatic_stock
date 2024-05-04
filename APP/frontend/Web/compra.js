@@ -9,7 +9,7 @@ document.getElementById('buy-cart').addEventListener('click', async () => {
     });
 
     try{
-        const res = await fetch('http://localhost:4000/pedido', {
+        const res = await fetch('http://localhost:5500/pedido', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
