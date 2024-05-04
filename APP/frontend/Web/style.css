@@ -173,6 +173,20 @@ header
     min-width: 400px;
 }
 
+.cart-count{
+    top: 20px;
+    left: 30px;
+    background-color: #7270ec;
+    color: #ffffff;
+    border-radius: 100%;
+    display:inline-block;
+    width: 20px;
+    line-height: 20px;
+    aspect-ratio: 1;
+    font-size: 13px;
+    text-align: center;
+}
+
 table
 {
     width: 100%;
@@ -212,6 +226,17 @@ th, td
     text-decoration: none;
     color: #ffffff;
     font-weight: 800;
+}
+
+.btn-show-cart
+{
+    background-color: #7272ec;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 800;
+
 }
 
 .inicio-content
@@ -445,7 +470,15 @@ hr
     font-size: 18px;
 } 
 
-
+.btn-proyecto-info{
+    display: inline-block;
+    background-color: #7270ec;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    margin-top: 40px;
+}
 .products
 {
     padding: 50px 0;
@@ -597,19 +630,6 @@ hr
         display: none;
     }
 
-    .cart-count{
-        top: 20px;
-        left: 30px;
-        background-color: #7270ec;
-        color: #ffffff;
-        border-radius: 100%;
-        display:inline-block;
-        width: 20px;
-        line-height: 20px;
-        aspect-ratio: 1;
-        font-size: 13px;
-        text-align: center;
-    }
 
     .mySwiper-1
     {

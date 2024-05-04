@@ -23,6 +23,7 @@ class container
         int get_length();
         int get_width();
         int get_height();
+        int get_volume(); 
         int get_num_boxes();
         std::vector<box> get_V();
         int volume();

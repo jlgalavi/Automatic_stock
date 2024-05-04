@@ -1,0 +1,133 @@
+TOPIC: ****
+SUBSCRIBERS:
+    -
+    -
+PUBLISHERS:
+    -
+    -
+Archivo JSON:
+'''
+    Aquí la estructura.
+'''
+
+*********************************************************************************
+
+TOPIC: INFOPEDIDO_TOPIC --> giirob/pr2/B1/infopedido
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - PC_ALGORITHM --> C++
+Archivo JSON:
+'''
+{
+  "ID_PEDIDO": "<string>",
+  "N_CONT": "<int>",
+  "N_BOX": "<int>",
+  "CONTAINER": [
+    {
+      "ID_CONT": "<string> + <id_size>",
+      "Positions": [
+        {
+          "ID_BOX": "<char><format := "X" || "L" || "M" || "S" >",
+          "POSE": "<string><format := (x,y,z)>"
+        },
+        {
+            ...
+        }
+      ]
+    },
+    {
+      ...
+    }
+  ]
+}
+'''
+
+*********************************************************************************
+
+TOPIC: TEMPERATURE_TOPIC --> giirob/pr2/B1/control/sensors/temperature
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - ESP32-S3_SLAVE
+Archivo JSON:
+'''
+[
+    {
+        "ID_SENSOR": "<string>",
+        "DATA": "<float>"
+    },
+    {
+        ...
+    }
+]
+'''
+
+*********************************************************************************
+
+TOPIC: EMERGENCY_TOPIC --> giirob/pr2/B1/control/emergency
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - ESP32-S3_SLAVE
+Archivo JSON:
+'''
+{
+    "EMERGENCY_TYPE": "<string>"
+}
+'''
+
+*********************************************************************************
+
+TOPIC: CONTROLBOX_TOPIC --> giirob/pr2/B1/control/boxes
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - ESP32-S3_SLAVE
+Archivo JSON:
+'''
+{
+    "ID_BOX": "<char><format := "X" || "L" || "M" || "S" >"
+}
+'''
+
+*********************************************************************************
+
+TOPIC: ORDER_RECEPTION --> giirob/pr2/B1/order
+SUBSCRIBERS:
+    - PC_ALGORITHM --> C++
+PUBLISHERS:
+    - WEB_SERVER --> JS
+Archivo JSON:
+'''
+{
+    "ID_PEDIDO": "<string>",
+    "N_BOX_XL": "<int>",
+    "N_BOX_L": "<int>",
+    "N_BOX_M": "<int>",
+    "N_BOX_S": "<int>"
+}
+'''
+
+*********************************************************************************
+
+TOPIC: 
+{
+    DESPALETIZADO_STATUS_TOPIC --> giirob/pr2/B1/actions/despaletizado/status
+    DESPALETIZADO_COMMANDS_TOPIC --> giirob/pr2/B1/actions/despaletizado/commands
+    ASIGNACION_STATUS_TOPIC --> giirob/pr2/B1/actions/asignacion/status
+    ASIGNACION_COMMANDS_TOPIC --> giirob/pr2/B1/actions/asignacion/commands
+    AGV_STATUS_CONTROL --> giirob/pr2/B1/actions/agvControl/status
+    AGV_COMMANDS_CONTROL --> giirob/pr2/B1/actions/agvControl/commands
+}
+SUBSCRIBERS:
+    - ROBODK_SIMULATION --> PY
+PUBLISHERS:
+    - ESP32-S3_MASTER
+Archivo JSON:
+'''
+{
+    "ACTION": "<string><format := "(ID_PROG)" >",
+    "POSE": "<string><format := (x,y,z)>"
+}
+'''
