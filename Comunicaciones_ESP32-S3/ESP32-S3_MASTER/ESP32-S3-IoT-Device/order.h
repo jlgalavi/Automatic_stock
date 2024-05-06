@@ -29,4 +29,14 @@ class order : public container{
     {
       return containers;
     }
+
+    void print_order()
+    {
+      Serial.print("ORDER --> ");
+      Serial.println(ID);
+      for(int i = 0; i < index; i++)
+      {
+        containers[i].print_container();
+      }
+    }
 };

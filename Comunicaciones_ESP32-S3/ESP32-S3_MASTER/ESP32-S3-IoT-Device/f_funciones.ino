@@ -1,9 +1,11 @@
 #include "box.h"
 #include "container.h"
 #include "order.h"
+#include "Vector.h"
 
+Vector<order> OrdersQueque;
 
-void add_order(const char* incomingMessage)
+void add_order(String incomingMessage)
 {
   JsonDocument doc;
   DeserializationError err = deserializeJson(doc, incomingMessage);
@@ -19,8 +21,18 @@ void add_order(const char* incomingMessage)
       }
       inputOrder.add_container(inputContainer);
     }
+    OrdersQueque.push_back(inputOrder);
+    Serial.println("ORDER SOCKED");
   }
   else warnln("**>> Solicitud no reconocida!");  
+}
+
+void print_orders()
+{
+  for(int i = 0; i < OrdersQueque.size(); i++)
+  {
+    OrdersQueque[i].print_order();
+  }
 }
 
 

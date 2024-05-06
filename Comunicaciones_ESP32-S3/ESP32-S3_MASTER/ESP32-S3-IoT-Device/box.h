@@ -29,4 +29,12 @@ class box {
       return pos;
     }
 
+    void print_box()
+    {
+      Serial.print("BOX --> ");
+      Serial.print(ID);
+      Serial.print(" --> ");
+      Serial.println(pos);
+    }
+
 };

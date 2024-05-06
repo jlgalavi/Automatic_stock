@@ -65,6 +65,31 @@ var swiper = new Swiper('.mySwiper-3', {
 
 });
 
+const containerProducts = document.getElementById('cont-products');
+
+function showProductsList(productos) {
+    productos.forEach(producto => {
+        const newProduct = document.createElement("div");
+        newProduct.classList.add('swiper-slide');
+        newProduct.innerHTML = `
+            <div class="product">
+                <img src="${producto.img}" alt=""> 
+                <div class="product-txt">
+                    <h3>${producto.title}</h3>
+                    <p>Descripcion</p>
+                    <p class="price">${producto.price}€</p>
+                    <button class="btn-add-cart" data-id="${producto.id}">Agregar al carrito</button>
+                </div>
+            </div>
+            `
+        containerProducts.appendChild(newProduct);
+        newProduct.getElementsByTagName("button")[0].addEventListener('click', () => addCart(producto)) });
+   
+}
+
+showProductsList(products);
+
+/*
 const cartInfo = document.querySelector('.cart-menu');
 const rowProducts = document.querySelector('#cart-list');
 const productsList = document.querySelector('#products-list');
@@ -116,6 +141,7 @@ rowProducts.addEventListener('click', (e) => {
     showHTML();
 });
 
+
 const showHTML = () => 
 {
     rowProducts.innerHTML = '';
@@ -126,15 +152,15 @@ const showHTML = () =>
         const {image, title, price, quantity, id} = product;
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>
-                <img src="${image}" width=100>
-            </td>
-            <td>${title}</td>
-            <td>${price}</td>
-            <td>${quantity}</td>
-            <td>
-                <a href="" class="remove" data-id="${id}">X</a>
-            </td>
+        <td>
+        <img src="${image}" width=100>
+        </td>
+        <td>${title}</td>
+        <td>${price}</td>
+        <td>${quantity}</td>
+        <td>
+            <a href="" class="remove" data-id="${id}">X</a>
+        </td>
         `;
         rowProducts.append(row);
         total += quantity * parseFloat(price.replace('€', ''));
@@ -143,3 +169,4 @@ const showHTML = () =>
     });
     valorTotal.innerText = `${total}€`;
 }
+*/

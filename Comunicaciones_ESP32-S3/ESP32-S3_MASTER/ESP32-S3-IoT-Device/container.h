@@ -34,4 +34,15 @@ class container : public box{
     {
       return boxes;
     }
+
+    void print_container()
+    {
+      Serial.print("CONTAINER --> ");
+      Serial.println(ID);
+      for(int i = 0; i < index; i++)
+      {
+        boxes[i].print_box();
+      }
+
+    }
 };

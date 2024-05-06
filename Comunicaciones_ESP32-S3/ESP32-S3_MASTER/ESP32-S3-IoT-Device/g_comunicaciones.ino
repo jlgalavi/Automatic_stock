@@ -29,7 +29,8 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     else warnln("**>> Solicitud no reconocida!");
   }
    if (strcmp(topic, INFOPEDIDO_TOPIC) == 0 ) {
-
+    add_order(incomingMessage);
+    print_orders();
   }
   if (strcmp(topic, STOCK_TOPIC) == 0 ) {
     JsonDocument doc;
