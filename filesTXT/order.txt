@@ -1,6 +1,6 @@
 
 --------------------------
-  Number of boxes: 5
+  Number of boxes: 4
   Box 1
   ID_Box S
   Length: 15
@@ -20,14 +20,8 @@
   Height: 21
   Volume: 8820
   Box 4
-  ID_Box L
-  Length: 20
-  Width: 21
+  ID_Box X
+  Length: 25
+  Width: 30
   Height: 21
-  Volume: 8820
-  Box 5
-  ID_Box L
-  Length: 20
-  Width: 21
-  Height: 21
-  Volume: 8820
+  Volume: 15750
