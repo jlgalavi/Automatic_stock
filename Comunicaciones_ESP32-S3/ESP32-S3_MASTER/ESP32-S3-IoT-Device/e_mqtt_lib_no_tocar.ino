@@ -97,10 +97,7 @@ void mqttCallback(char* topic, byte* message, unsigned int length) {
   String incomingMessage;
   for (int i = 0; i < length; i++) {
     incomingMessage += (char)message[i];
-    Serial.print((char)message[i]);
   }
-  Serial.print(" ---> ");
-  Serial.println(length);
 
 
   traceln("<<~~ RECEIVING an MQTT message:");

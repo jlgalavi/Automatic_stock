@@ -1,7 +1,3 @@
-#include "order.h"
-
-order inputOrder;
-const char * ID;
 void suscribirseATopics() {
 
   // TODO: añadir suscripciones a los topics MQTT ...
@@ -23,15 +19,13 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
 
   // If a message is received on the topic ...
   if (strcmp(topic, HELLO_TOPIC) == 0) {
-    create_order();
   }
   if (strcmp(topic, INFOPEDIDO_TOPIC) == 0) {
-    JsonDocument doc;
-    DeserializationError err = deserializeJson(doc, incomingMessage);
-    if (!err) {
-      
+    order newOrder;
+    getOrder(&newOrder, incomingMessage);
+    newOrder.print_order();
+    perpareOrder(&newOrder);
     } else warnln("**>> Solicitud no reconocida!");
-  }
   if (strcmp(topic, STOCK_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);

@@ -4,13 +4,13 @@ class order : public container {
 
 private:
 
-  const char* ID;
+  String ID;
   int ncontainers;
   container* containers;
 
 public:
 
-  order(int ncont, const char* idorder) {
+  order(int ncont, String idorder) {
     ID = idorder;
     ncontainers = ncont;
     containers = new container[ncont];
@@ -22,18 +22,19 @@ public:
 
   void add_container(container c_add) {
     for (int i = 0; i < ncontainers; i++) {
-      if (containers[i].get_containerID() == "") {
+      if (!(containers[i].get_setContainer())) {
         containers[i] = c_add;
-        i = ncontainers;
+        containers[i].set_container();
+        i = ncontainers;   
       }
     }
   }
 
-  const char* get_orderID() {
+  String get_orderID() {
     return ID;
   }
 
-  container get_container(const char* idcontainer) {
+  container get_container(String idcontainer) {
     for (int i = 0; i < ncontainers; i++) {
       if (containers[i].get_containerID() == idcontainer) {
         return containers[i];
@@ -57,6 +58,8 @@ public:
   void print_order() {
     Serial.print("ORDER --> ");
     Serial.println(ID);
+    Serial.print("Nº Containers --> ");
+    Serial.println(ncontainers);
     for (int i = 0; i < ncontainers; i++) {
       containers[i].print_container();
     }

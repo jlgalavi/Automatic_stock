@@ -7,12 +7,12 @@
 #define LOG_LEVEL TRACE           // nivells en c_logger: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, NONE
 
 // DEVICE
-#define DEVICE_ESP_ID             "ESP32-S3-MASTER"   // ESP32 ID
+#define DEVICE_ESP_ID             "ESP32S3MASTER"   // ESP32 ID
 #define DEVICE_GIIROB_PR2_ID      "giirobpr2_B1" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                  "mariyjose"//"UPV-PSK"
-#define NET_PASSWD                "09122000"//"giirob-pr2-2023"
+#define NET_SSID                  "UPV-PSK"
+#define NET_PASSWD                "giirob-pr2-2023"
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//

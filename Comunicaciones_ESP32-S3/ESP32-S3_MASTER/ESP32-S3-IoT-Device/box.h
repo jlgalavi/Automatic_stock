@@ -2,12 +2,13 @@ class box {
 
   private:
 
-    const char* ID;
-    const char* pos;
+    String ID;
+    String pos;
+    bool set = false;
 
   public:
 
-    box(const char* idbox, const char* position)
+    box(String idbox, String position)
     {
       ID = idbox;
       pos = position;
@@ -19,21 +20,31 @@ class box {
       pos = "(0,0,0)";
     }
 
-    const char* get_boxID()
+    String get_boxID()
     {
       return ID;
     }
 
-    const char* get_boxpos()
+    String get_boxpos()
     {
       return pos;
+    }
+
+    bool get_setBox()
+    {
+      return set;
+    }
+
+    void set_box()
+    {
+      set = true;
     }
 
     void print_box()
     {
       Serial.print("BOX --> ");
       Serial.print(ID);
-      Serial.print(" --> ");
+      Serial.print("; POSE --> ");
       Serial.println(pos);
     }
 

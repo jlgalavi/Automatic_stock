@@ -15,6 +15,7 @@
  * Version: 0.1   (2023/11/29) Prototipo Inicial Funcional
 */
 #include "Config.h"
+#include "order.h"
 
 #include <WiFi.h>
 #ifdef SSL_ROOT_CA

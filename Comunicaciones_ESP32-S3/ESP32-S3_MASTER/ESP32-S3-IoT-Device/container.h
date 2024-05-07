@@ -4,14 +4,14 @@ class container : public box {
 
 private:
 
-  const char* ID;
+  String ID;
   box* boxes;
   int nboxes;
-  int index = 0;
+  bool set = false;
 
 public:
 
-  container(int nbox, const char* idcontainer) {
+  container(int nbox, String idcontainer) {
     ID = idcontainer;
     nboxes = nbox;
     boxes = new box[nbox];
@@ -22,15 +22,16 @@ public:
   }
 
   void add_box(box b_add) {
-    if (index < nboxes) {
-      boxes[index] = b_add;
-      index++;
-    } else {
-      Serial.println("ERROR | MAX BOXES");
+    for (int i = 0; i < nboxes; i++) {
+      if (!(boxes[i].get_setBox())) {
+        boxes[i] = b_add;
+        boxes[i].set_box();
+        i = nboxes;
+      }
     }
   }
 
-  const char* get_containerID() {
+  String get_containerID() {
     return ID;
   }
 
@@ -44,6 +45,16 @@ public:
 
   void set_boxes(box* newBoxes) {
     boxes = newBoxes;
+  }
+
+  void set_container()
+  {
+    set = true;
+  }
+
+  bool get_setContainer()
+  {
+    return set;
   }
 
   void print_container() {
