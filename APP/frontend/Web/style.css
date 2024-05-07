@@ -238,6 +238,17 @@ th, td
 
 }
 
+#empty-cart{
+    animation: fade 5s;
+    animation-fill-mode: both;
+}
+
+@keyframes fade{
+    0%{opacity: 1; display:flex}
+    50%{opacity: 0.8}
+    100%{opacity: 0; display:none}
+}
+
 .inicio-content
 {
     margin-top: 80px;

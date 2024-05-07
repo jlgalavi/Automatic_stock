@@ -75,6 +75,7 @@ let cartCount = 0;
 const valorTotal = document.querySelector('.total-price');
 const btnBuyCart = document.querySelector('.btn-buy-cart');
 const updateCartValue = document.getElementsByClassName('cart-count');
+const btnShowCart = document.querySelector('.btn-show-cart');
 
 productsList.addEventListener('click', (e) => {
     if(e.target.classList.contains('btn-add-cart')) {
@@ -100,7 +101,7 @@ productsList.addEventListener('click', (e) => {
         {
             allProducts = [...allProducts, productInfo];
         }
-    showHTML();
+        showHTML();
     }
 });
 
@@ -115,6 +116,63 @@ rowProducts.addEventListener('click', (e) => {
     }
     showHTML();
 });
+
+btnShowCart.addEventListener('click', (event) => {
+    if(allProducts.length == 0){
+        HtmlEmptyCart();
+        event.preventDefault();
+    }
+});
+
+btnBuyCart.addEventListener('click', (event) => {
+    if(allProducts.length == 0){
+        HtmlEmptyCart();
+        event.preventDefault();
+    }
+});
+
+function HtmlEmptyCart(){
+    const row = document.createElement('tr');
+    row.id = 'empty-cart';
+    row.innerHTML = `
+        <td">No hay productos en el carrito</td>
+    `;
+
+    const existingRow = document.getElementById('empty-cart');
+    if(!existingRow){
+        rowProducts.append(row);
+    }
+};
+
+//PÁGINA VER CARRITO
+function showCart() {
+    // Obtén el elemento donde quieres mostrar el carrito
+    const cartContainer = document.getElementById('show-cart');
+
+    // Inicializa una variable para almacenar el HTML del carrito
+    let cartHTML = '';
+
+    // Itera sobre todos los productos en el carrito
+    if(allProducts.length > 0){
+        allProducts.forEach(product => {
+            // Genera el HTML para este producto
+            const productHTML = `
+                <div class="product">
+                    <img src="${product.image}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p>${product.price}</p>
+                    <p>Cantidad: ${product.quantity}</p>
+                    <button class="remove" data-id="${product.id}">Eliminar</button>
+                </div>
+            `;
+
+            // Añade el HTML de este producto al HTML del carrito
+            cartHTML += productHTML;
+        }); 
+    }
+    // Actualiza el contenido del contenedor del carrito con el HTML del carrito
+    cartContainer.innerHTML = cartHTML;
+}
 
 const showHTML = () => 
 {
