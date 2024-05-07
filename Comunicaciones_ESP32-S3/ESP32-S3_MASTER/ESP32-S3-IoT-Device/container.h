@@ -1,48 +1,58 @@
-class container : public box{
+#include "box.h"
 
-  private:
+class container : public box {
 
-    int index = 0;
-    const char* ID;
-    box* boxes;
+private:
 
-  public:
+  const char* ID;
+  box* boxes;
+  int nboxes;
+  int index = 0;
 
-    container(int nbox, const char* idcontainer)
-    {
-      ID = idcontainer;
-      boxes = new box[nbox];
-    } 
+public:
 
-    container()
-    {
-      ID = "";
-    }
+  container(int nbox, const char* idcontainer) {
+    ID = idcontainer;
+    nboxes = nbox;
+    boxes = new box[nbox];
+  }
 
-    void add_box(box b_add)
-    {
+  container() {
+    ID = "";
+  }
+
+  void add_box(box b_add) {
+    if (index < nboxes) {
       boxes[index] = b_add;
       index++;
+    } else {
+      Serial.println("ERROR | MAX BOXES");
     }
+  }
 
-    const char* get_containerID()
-    {
-      return ID;
-    }
+  const char* get_containerID() {
+    return ID;
+  }
 
-    box* get_boxes()
-    {
-      return boxes;
-    }
+  box* get_boxes() {
+    return boxes;
+  }
 
-    void print_container()
-    {
-      Serial.print("CONTAINER --> ");
-      Serial.println(ID);
-      for(int i = 0; i < index; i++)
-      {
+  int get_containerSize() {
+    return nboxes;
+  }
+
+  void set_boxes(box* newBoxes) {
+    boxes = newBoxes;
+  }
+
+  void print_container() {
+    Serial.print("CONTAINER --> ");
+    Serial.println(ID);
+    if (ID != "") {
+      for (int i = 0; i < nboxes; i++) {
         boxes[i].print_box();
       }
-
     }
+  }
 };

@@ -1,6 +1,7 @@
 // COMM BAUDS
 #define BAUDS 115200
 
+#define MQTT_BUFFER_SIZE 65535
 #define LOGGER_ENABLED            // Comentar para deshabilitar el logger por consola serie
 
 #define LOG_LEVEL TRACE           // nivells en c_logger: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, NONE
@@ -10,8 +11,8 @@
 #define DEVICE_GIIROB_PR2_ID      "giirobpr2_B1" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                  "iPhone"//"UPV-PSK"
-#define NET_PASSWD                "Hxry-Fp0R-8yMS-5HBS"//"giirob-pr2-2023"
+#define NET_SSID                  "mariyjose"//"UPV-PSK"
+#define NET_PASSWD                "09122000"//"giirob-pr2-2023"
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//

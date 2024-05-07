@@ -1,42 +1,64 @@
-class order : public container{
+#include "container.h"
 
-  private:
+class order : public container {
 
-    int index = 0;
-    const char* ID;
-    container* containers;
+private:
 
-  public:
+  const char* ID;
+  int ncontainers;
+  container* containers;
 
-    order(int ncont, const char* idorder)
-    {
-      ID = idorder;
-      containers = new container[ncont];
-    }
+public:
 
-    void add_container(container c_add)
-    {
-      containers[index] = c_add;
-      index++;
-    }
+  order(int ncont, const char* idorder) {
+    ID = idorder;
+    ncontainers = ncont;
+    containers = new container[ncont];
+  }
 
-    const char* get_orderID()
-    {
-      return ID;
-    }
+  order() {
+    ID = "";
+  }
 
-    container* get_containers()
-    {
-      return containers;
-    }
-
-    void print_order()
-    {
-      Serial.print("ORDER --> ");
-      Serial.println(ID);
-      for(int i = 0; i < index; i++)
-      {
-        containers[i].print_container();
+  void add_container(container c_add) {
+    for (int i = 0; i < ncontainers; i++) {
+      if (containers[i].get_containerID() == "") {
+        containers[i] = c_add;
+        i = ncontainers;
       }
     }
+  }
+
+  const char* get_orderID() {
+    return ID;
+  }
+
+  container get_container(const char* idcontainer) {
+    for (int i = 0; i < ncontainers; i++) {
+      if (containers[i].get_containerID() == idcontainer) {
+        return containers[i];
+      }
+    }
+    Serial.println("CONTAINER NOT FOUNDED");
+  }
+
+  container* get_containers() {
+    return containers;
+  }
+
+  int get_Size() {
+    return ncontainers;
+  }
+
+  void set_containers(container* newContainers) {
+    containers = newContainers;
+  }
+
+  void print_order() {
+    Serial.print("ORDER --> ");
+    Serial.println(ID);
+    for (int i = 0; i < ncontainers; i++) {
+      containers[i].print_container();
+    }
+  }
 };

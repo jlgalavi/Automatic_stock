@@ -23,6 +23,7 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 
+
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
 //String deviceID = String("giirobpr2-device-") + String(DEVICE_GIIROB_PR2_ID); 
   // Versión usando el ID asignado en la asignatura GIIROB-PR2
@@ -59,6 +60,8 @@ void setup() {
 
   // TODO: completar esta función (s_setup.ino)
   on_setup();
+
+  mqtt_resize_buffer();
 
 }
 
