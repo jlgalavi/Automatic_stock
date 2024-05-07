@@ -17,8 +17,34 @@ SUBSCRIBERS:
     - ESP32-S3_MASTER
 PUBLISHERS:
     - PC_ALGORITHM --> C++
-Archivo JSON:
+Archivos JSON:
 '''
+***** UNO AL COMENZAR LA ORDEN Y OTRO AL FINALIZAR *****
+{
+    "ORDERTYPE": "0",
+    "ACTION": "start | stop",
+    "IDORDER": "pedidoID",
+    "NCONTAINERS": "x"
+}
+
+***** UNO POR CADA CONTENEDOR QUE TENGA LA ORDEN *****
+{
+    "ORDERTYPE": "1",
+    "IDCONTAINER": "containerID",
+    "NBOXES": "y"
+}
+
+***** UNO POR CADA CAJA QUE HAYA EN UN CONTENEDOR *****
+{
+    "ORDERTYPE": "2",
+    "IDCONTAINER": "containerID",
+    "IDBOX": " X | L | M | S ",
+    "POSE": "(x,y,z)"
+}
+
+'''
+
+''' (si solucionamos el problema del tamaño del JSON)
 {
   "ID_PEDIDO": "<string>",
   "N_CONT": "<int>",
@@ -127,7 +153,7 @@ PUBLISHERS:
 Archivo JSON:
 '''
 {
-    "ACTION": "<string><format := "(ID_PROG)" >",
+    "ACTION": "<string><format := "(ID_PROG)",
     "POSE": "<string><format := (x,y,z)>"
 }
 '''
