@@ -12,7 +12,7 @@ void suscribirseATopics() {
   //mqtt_subscribe(CONTROLBOX_TOPIC);
   mqtt_subscribe(STATION_STATUS_TOPIC);
   mqtt_subscribe(DESPALETIZADO_STATUS_TOPIC);
-  mqtt_subscribe(CONVEYOR_STATUS_TOPIC);
+  mqtt_subscribe(CONVEYOR1_STATUS_TOPIC);
 
 }
 
@@ -28,9 +28,6 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
   if (strcmp(topic, HELLO_TOPIC) == 0) {
 
   }
-  if (strcmp(topic, CONVEYOR_STATUS_TOPIC) == 0) {
-
-  }
   if (strcmp(topic, STATION_STATUS_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
@@ -43,7 +40,6 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         doc["STATE"] = "ready";
         String state_json;
         serializeJson(doc, state_json);
-        enviarMensajePorTopic(CONVEYOR_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(DESPALETIZADO_STATUS_TOPIC, state_json);
       }
     }
@@ -87,7 +83,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
       //perpareOrder(&newOrder);
     
   }
-  if(strcmp(topic, CONVEYOR_STATUS_TOPIC) == 0)
+  if(strcmp(topic, CONVEYOR1_STATUS_TOPIC) == 0)
   {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
@@ -100,14 +96,14 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         doc["ACTION"] = "start";
         String action_json;
         serializeJson(doc, action_json);
-        enviarMensajePorTopic(CONVEYOR_COMMANDS_TOPIC, action_json);
-      } else if {
-        String state = doc["object"];
+        enviarMensajePorTopic(CONVEYOR1_COMMANDS_TOPIC, action_json);
+      } else if (state == "object"){
+        String state = doc["ACTION"];
         StaticJsonDocument<200> doc;
         doc["ACTION"] = "stop";
         String action_json;
         serializeJson(doc, action_json);
-        enviarMensajePorTopic(CONVEYOR_COMMANDS_TOPIC, action_json);
+        enviarMensajePorTopic(CONVEYOR1_COMMANDS_TOPIC, action_json);
       }
     }
   }
