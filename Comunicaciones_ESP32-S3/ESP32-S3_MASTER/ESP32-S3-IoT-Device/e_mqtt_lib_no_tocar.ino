@@ -31,6 +31,18 @@ void mqtt_connect(String clientID) {
 
 }
 
+void mqtt_resize_buffer()
+{
+  if(mqttClient.setBufferSize(MQTT_BUFFER_SIZE))
+  {
+    Serial.println("SIZE BUFFER ACTUAIZADO");
+  }
+  else 
+  {
+    Serial.println("ERROR SIZE BUFFER");
+  }
+}
+
 void mqtt_reconnect(int retries) {
 
   if ( !WiFi.isConnected() )
@@ -86,6 +98,7 @@ void mqttCallback(char* topic, byte* message, unsigned int length) {
   for (int i = 0; i < length; i++) {
     incomingMessage += (char)message[i];
   }
+
 
   traceln("<<~~ RECEIVING an MQTT message:");
   traceln(topic);

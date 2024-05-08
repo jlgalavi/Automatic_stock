@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NN</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/3b8572695f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/5.5.5/mqtt.min.js"></script>
-    <script src="mqtt.js" defer></script>
+    <!-- <script src="./js/mqtt.js" defer></script> -->
+    <script src="./js/products.js" ></script>
+    <script src="./js/index.js" defer></script>
+    <script src="./js/cartService.js" defer></script>
     
 </head>
 
@@ -40,29 +43,12 @@
             <div>
                 <ul>
                     <li class="cart-menu"> <!-- ELEMENTO ABUELO DE btn-buy-cart-->
-                        
-                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <a href="carrito.html">
+                            <i class="fas fa-shopping-cart cart-icon"></i>
+                        </a>
                         <span class="cart-count">0</span>
-                        
-                        <div id="cart">
-                            <table id="cart-list">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <hr>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                            <a href="ver_carrito.html" id="buy-cart" class="btn-buy-cart">Comprar</a>
-                            <a href="ver_carrito.html" id="show-cart" class="btn-show-cart">Ver carrito</a>
 
-                            <p class="total-price"></p>
-                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -118,7 +104,6 @@
                         <div class="category-txt">
                             <h3>C++</h3>
                             <p class="tecnology-description">Creación de algoritmos</p>
-                            <!-- <a href="#" class="btn-tecnology-info">Información</a> -->
                         </div>
                     </div>
                 </div>
@@ -130,7 +115,6 @@
                         <div class="category-txt">
                             <h3>Python</h3>
                             <p class="tecnology-description">Control de los robots</p>
-                            <!-- <a href="#" class="btn-tecnology-info">Información</a> -->
                         </div>
                     </div>
                 </div>
@@ -142,7 +126,6 @@
                         <div class="category-txt">
                             <h3>CSS</h3>
                             <p class="tecnology-description">Diseño y Estilo Web</p>
-                            <!-- <a href="#" class="btn-tecnology-info">Información</a> -->
                         </div>
                     </div>
                 </div>
@@ -154,7 +137,6 @@
                         <div class="category-txt">
                             <h3>HTML</h3>
                             <p class="tecnology-description">Maquetación de la Web</p>
-                            <!-- <a href="#" class="btn-tecnology-info">Información</a> -->
                         </div>
                     </div>
                 </div>
@@ -166,7 +148,6 @@
                         <div class="category-txt">
                             <h3>PostgreSQL</h3>
                             <p class="tecnology-description">Gestión de la DDBB</p>
-                            <!-- <a href="#" class="btn-tecnology-info">Información</a> -->
                         </div>
                     </div>
                 </div>
@@ -243,51 +224,8 @@
         <h2>Experimenta</h2>
         <p>Crea tu pedido y que empiece la mágia</p>
         <div class="swiper mySwiper-3">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="images/image.png" alt="">
-                        <div class="product-txt">
-                            <h3>BOX S</h3>
-                            <p>Descripcion</p>
-                            <p class="price">5€</p>
-                            <button class="btn-add-cart" data-id="1">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product"> <!-- elemento abuelo de btn-add-cart-->
-                        <img src="images/image.png" alt="">
-                        <div class="product-txt">
-                            <h3>BOX M</h3>
-                            <p>Descripcion</p>
-                            <p class="price">10€</p>
-                            <button class="btn-add-cart" data-id="2">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="images/image.png" alt="">
-                        <div class="product-txt">
-                            <h3>BOX L</h3>
-                            <p>Descripcion</p>
-                            <p class="price">15€</p>
-                            <button class="btn-add-cart" data-id="3">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="images/image.png" alt="">
-                        <div class="product-txt">
-                            <h3>BOX XL</h3>
-                            <p>Descripcion</p>
-                            <p class="price">20€</p>
-                            <button class="btn-add-cart" data-id="4">Agregar al carrito</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="swiper-wrapper" id="cont-products">
+                
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -295,8 +233,6 @@
         </div>
 
     </section>
-
-
     <footer class="footer ">
         <div class="footer-title">
             <h3>Proyecto para el grado en Informática Industrial y Robótica </h3>
@@ -318,5 +254,6 @@
     <script src="index.js"></script>
     <script src="cartService.js"></script>
     <!--<script src="compra.js"></script> -->
+    <!-- <script src="./js/compra.js"></script> -->
 
-</html>
+    </html>

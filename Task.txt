@@ -1,5 +1,3 @@
 - Gestionar los ficheros JSON para conexxiones MQTT
 
-
-
-
+- Gestionar mqtt /status of robot.

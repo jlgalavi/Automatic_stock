@@ -15,13 +15,15 @@
  * Version: 0.1   (2023/11/29) Prototipo Inicial Funcional
 */
 #include "Config.h"
+#include "order.h"
 
 #include <WiFi.h>
 #ifdef SSL_ROOT_CA
-  #include <WiFiClientSecure.h>
+#include <WiFiClientSecure.h>
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+
 
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
 //String deviceID = String("giirobpr2-device-") + String(DEVICE_GIIROB_PR2_ID); 
@@ -59,6 +61,8 @@ void setup() {
 
   // TODO: completar esta función (s_setup.ino)
   on_setup();
+
+  mqtt_resize_buffer();
 
 }
 

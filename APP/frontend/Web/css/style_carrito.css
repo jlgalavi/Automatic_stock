@@ -1,0 +1,151 @@
+
+body
+{
+    background-color: #061f3d;;
+}
+
+.menu
+{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #061f3d;
+    color: white;
+}
+
+.logo
+{
+    width: 100px;
+}
+
+.return
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-return
+{
+    justify-content: center;
+    background-color: #7270ec;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.container-products {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width: 550px;
+}
+
+.content-cart {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-info
+{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 400px;
+}
+
+.product-text
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 30px;
+}
+
+.product-text h3
+{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.product-text p
+{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.product-text button
+{
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #061f3d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.container-products img
+{
+    width: 100px;
+    height: 100px;
+}
+
+.totales
+{
+    text-align: center;
+    color: white;
+}
+
+.botones
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+    
+.btn-comprar
+{
+    background-color: #7270ec;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-comprar:hover
+{
+    scale: 1.1;
+}
+
+.btn-vaciar
+{
+    background-color: #7270ec;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.btn-vaciar:hover
+{
+    scale: 1.1;
+}

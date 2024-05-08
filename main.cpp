@@ -35,7 +35,7 @@ int main()
             remove("D:\\repos\\Automatic_stock\\filesTXT\\order.txt");
             order O1;
             O1.save_order();
-            Algorithms A1(O1.get_num_boxes(), LENGTH, WIDTH, HEIGHT, O1.get_V_boxes());
+            Algorithms A1(O1.get_num_boxes(), LENGTH1, WIDTH1, HEIGHT1, O1.get_V_boxes());
             A1.place_boxes();
             A1.show_targets();
             shipment S1(O1.get_V_boxes(), A1.V_containers_in_use);   
