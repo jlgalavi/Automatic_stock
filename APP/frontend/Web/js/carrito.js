@@ -39,3 +39,5 @@ function showProducts() {
 }
 
 showProducts();
+
+// Path: APP/frontend/Web/js/carrito.js

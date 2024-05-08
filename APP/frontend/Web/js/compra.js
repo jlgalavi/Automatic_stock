@@ -25,3 +25,5 @@ document.getElementById('buy-cart').addEventListener('click', async () => {
         console.log("Ha ocurrido un error en la solicitud:", err.message);
     }
 });
+
+// Path: APP/frontend/Web/js/compra.js

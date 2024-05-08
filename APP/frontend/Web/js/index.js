@@ -170,3 +170,5 @@ const showHTML = () =>
     valorTotal.innerText = `${total}€`;
 }
 */
+
+// Path: APP/frontend/Web/js/carrito.js

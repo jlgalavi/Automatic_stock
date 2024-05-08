@@ -24,3 +24,5 @@ const products = [
         img: 'images/image.png'
     }
 ];
+
+// const rowProducts = document.getElementById('row-products');
