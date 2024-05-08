@@ -32,3 +32,5 @@ document.getElementById('buy-cart').addEventListener('click', async () =>{
     //client.on('message', eventoMensaje);
 });
 
+// Path: APP/frontend/Web/js/mqtt.js
+

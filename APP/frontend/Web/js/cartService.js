@@ -47,3 +47,5 @@ function updateNumberCart(){
 }
 
 updateNumberCart();
+
+// Path: APP/frontend/Web/js/carrito.js
