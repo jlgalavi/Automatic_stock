@@ -76,6 +76,7 @@ const valorTotal = document.querySelector('.total-price');
 const btnBuyCart = document.querySelector('.btn-buy-cart');
 const updateCartValue = document.getElementsByClassName('cart-count');
 const btnShowCart = document.querySelector('.btn-show-cart');
+const btnAddCart = document.querySelector(".btn-add-cart");
 
 productsList.addEventListener('click', (e) => {
     if(e.target.classList.contains('btn-add-cart')) {
@@ -144,36 +145,6 @@ function HtmlEmptyCart(){
     }
 };
 
-//PÁGINA VER CARRITO
-function showCart() {
-    // Obtén el elemento donde quieres mostrar el carrito
-    const cartContainer = document.getElementById('show-cart');
-
-    // Inicializa una variable para almacenar el HTML del carrito
-    let cartHTML = '';
-
-    // Itera sobre todos los productos en el carrito
-    if(allProducts.length > 0){
-        allProducts.forEach(product => {
-            // Genera el HTML para este producto
-            const productHTML = `
-                <div class="product">
-                    <img src="${product.image}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p>${product.price}</p>
-                    <p>Cantidad: ${product.quantity}</p>
-                    <button class="remove" data-id="${product.id}">Eliminar</button>
-                </div>
-            `;
-
-            // Añade el HTML de este producto al HTML del carrito
-            cartHTML += productHTML;
-        }); 
-    }
-    // Actualiza el contenido del contenedor del carrito con el HTML del carrito
-    cartContainer.innerHTML = cartHTML;
-}
-
 const showHTML = () => 
 {
     rowProducts.innerHTML = '';
@@ -182,8 +153,8 @@ const showHTML = () =>
 
     allProducts.forEach(product => {
         const {image, title, price, quantity, id} = product;
-        const row = document.createElement('tr');
-        row.innerHTML = `
+        const nuevoProducto = document.createElement('tr');
+        nuevoProducto.innerHTML = `
             <td>
                 <img src="${image}" width=100>
             </td>
@@ -194,7 +165,8 @@ const showHTML = () =>
                 <a href="" class="remove" data-id="${id}">X</a>
             </td>
         `;
-        rowProducts.append(row);
+        rowProducts.append(nuevoProducto);
+        btnAddCart.addEventListener("click", () => agregarCarrito(nuevoProducto));
         total += quantity * parseFloat(price.replace('€', ''));
         totalQuantity += quantity;
         
