@@ -25,10 +25,13 @@
 
 #define HELLO_TOPIC                   "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
 #define INFOPEDIDO_TOPIC              "giirob/pr2/B1/infopedido"    // TODO: topic ejemplo ejercicio inicial
+#define STATION_STATUS_TOPIC          "giirob/pr2/B1/status"
 #define DESPALETIZADO_STATUS_TOPIC    "giirob/pr2/B1/actions/despaletizado/status"
 #define DESPALETIZADO_COMMANDS_TOPIC  "giirob/pr2/B1/actions/despaletizado/commands"
 #define ASIGNACION_STATUS_TOPIC       "giirob/pr2/B1/actions/asignacion/status"
 #define ASIGNACION_COMMANDS_TOPIC     "giirob/pr2/B1/actions/asignacion/commands"
+#define CONVEYOR_STATUS_TOPIC         "giirob/pr2/B1/actions/conveyor/status"
+#define CONVEYOR_COMMANDS_TOPIC       "giirob/pr2/B1/actions/conveyor/commands"
 #define AGV_STATUS_CONTROL            "giirob/pr2/B1/actions/agvControl/status"
 #define AGV_COMMANDS_CONTROL          "giirob/pr2/B1/actions/agvControl/commands"
 #define STOCK_TOPIC                   "giirob/pr2/B1/control/stock"    // TODO: topic ejemplo ejercicio inicial

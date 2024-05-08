@@ -19,7 +19,7 @@
 
 #include <WiFi.h>
 #ifdef SSL_ROOT_CA
-  #include <WiFiClientSecure.h>
+#include <WiFiClientSecure.h>
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>

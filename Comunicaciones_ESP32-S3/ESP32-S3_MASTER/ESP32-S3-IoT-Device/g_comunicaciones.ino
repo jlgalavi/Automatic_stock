@@ -1,12 +1,19 @@
+String bDespaletizado = "";
+box bAsignacion[100];
+
 void suscribirseATopics() {
 
   // TODO: añadir suscripciones a los topics MQTT ...
   mqtt_subscribe(HELLO_TOPIC);
   mqtt_subscribe(INFOPEDIDO_TOPIC);
   mqtt_subscribe(STOCK_TOPIC);
-  mqtt_subscribe(TEMPERATURE_TOPIC);
-  mqtt_subscribe(EMERGENCY_TOPIC);
-  mqtt_subscribe(CONTROLBOX_TOPIC);
+  //mqtt_subscribe(TEMPERATURE_TOPIC);
+  //mqtt_subscribe(EMERGENCY_TOPIC);
+  //mqtt_subscribe(CONTROLBOX_TOPIC);
+  mqtt_subscribe(STATION_STATUS_TOPIC);
+  mqtt_subscribe(DESPALETIZADO_STATUS_TOPIC);
+  mqtt_subscribe(CONVEYOR_STATUS_TOPIC);
+
 }
 
 void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
@@ -19,13 +26,91 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
 
   // If a message is received on the topic ...
   if (strcmp(topic, HELLO_TOPIC) == 0) {
+
+  }
+  if (strcmp(topic, CONVEYOR_STATUS_TOPIC) == 0) {
+
+  }
+  if (strcmp(topic, STATION_STATUS_TOPIC) == 0) {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if(!err)
+    {
+      String state = doc["STATE"];
+      if(state == "ready")
+      {
+        StaticJsonDocument<200> doc;
+        doc["STATE"] = "ready";
+        String state_json;
+        serializeJson(doc, state_json);
+        enviarMensajePorTopic(CONVEYOR_STATUS_TOPIC, state_json);
+        enviarMensajePorTopic(DESPALETIZADO_STATUS_TOPIC, state_json);
+      }
+    }
+  }
+  if(strcmp(topic, DESPALETIZADO_STATUS_TOPIC) == 0)
+  {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if(!err)
+    {
+      String state = doc["STATE"];
+      if(state == "ready")
+      {
+        String order = "Despaletizado_";
+        for(int i = 0; i < bDespaletizado.length(); i++)
+        {
+          if(bDespaletizado[i]!='F')
+          {
+            StaticJsonDocument<200> doc;
+            order = order + bDespaletizado[i];
+            doc["ACTION"] = order;
+            String action_json;
+            serializeJson(doc, action_json);
+            enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
+            bDespaletizado[i] = 'F';
+            i = bDespaletizado.length();
+          }  
+        }
+      }
+      Serial.println(bDespaletizado);      
+    }
   }
   if (strcmp(topic, INFOPEDIDO_TOPIC) == 0) {
-    order newOrder;
-    getOrder(&newOrder, incomingMessage);
-    newOrder.print_order();
-    perpareOrder(&newOrder);
-    } else warnln("**>> Solicitud no reconocida!");
+      getOrder(&bDespaletizado, bAsignacion, incomingMessage);
+      /*Serial.println(bDespaletizado);
+      for(int i = 0; i < bDespaletizado.length(); i++)
+      {
+        bAsignacion[i].print_box();
+      }*/
+      //newOrder.print_order();
+      //perpareOrder(&newOrder);
+    
+  }
+  if(strcmp(topic, CONVEYOR_STATUS_TOPIC) == 0)
+  {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if(!err)
+    {
+      String state = doc["STATE"];
+      if(state == "ready")
+      {
+        StaticJsonDocument<200> doc;
+        doc["ACTION"] = "start";
+        String action_json;
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(CONVEYOR_COMMANDS_TOPIC, action_json);
+      } else if {
+        String state = doc["object"];
+        StaticJsonDocument<200> doc;
+        doc["ACTION"] = "stop";
+        String action_json;
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(CONVEYOR_COMMANDS_TOPIC, action_json);
+      }
+    }
+  }
   if (strcmp(topic, STOCK_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
