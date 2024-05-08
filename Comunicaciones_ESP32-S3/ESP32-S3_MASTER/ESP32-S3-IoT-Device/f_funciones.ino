@@ -1,7 +1,10 @@
-void getOrder(order* inputOrder, String incomingMessage) {
+bool STATE_DESPALETIZADO = false;
+bool STATE_STATION = false;
+
+void getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) {
   JsonDocument doc;
   DeserializationError err = deserializeJson(doc, incomingMessage);
-
+  int index = 0;
   if (!err) {
     order tempOrder = order(doc["N_CONT"].as<int>(), doc["ID_PEDIDO"]);
     JsonArray CONTAINER = doc["CONTAINER"];
@@ -10,12 +13,14 @@ void getOrder(order* inputOrder, String incomingMessage) {
       JsonArray Positions = v["BOXES"];
       for (JsonVariant w : Positions) {
         box inputBox = box(w["ID_BOX"], w["POSE"]);
+        String id = w["ID_BOX"];
+        bDespaletizado[0] = bDespaletizado[0] + id;
         inputContainer.add_box(inputBox);
+        bAsignacion[index] = inputBox;
+        index++;
       }
       tempOrder.add_container(inputContainer);
     }
-    inputOrder[0] = tempOrder;
-    Serial.println("ORDER SOCKED");
   }
 }
 
@@ -28,47 +33,25 @@ bool compareIDs(String ID1, String ID2)
   {
     return false;
   }
-  
 }
-void perpareOrder(order* outOrder) {
 
-  StaticJsonDocument<200> action_doc;
-  String action_json;
-  container* tempC = outOrder->get_containers();
-
-  for (int i = 0; i < outOrder->get_Size(); i++) {
-    for (int j = 0; j < tempC[i].get_containerSize(); j++) {
-      box* tempB = tempC[i].get_boxes();
-      String ID = tempB[j].get_boxID();
-      if (compareIDs(ID, "X")) {
-        //Serial.println(tempB[j].get_boxID());
-        action_doc["ACTION"] = "Despaletizado_XL";
-        serializeJson(action_doc, action_json);
-        Serial.println(action_json);
-        enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
-        delay(1000);
-      } else if (compareIDs(ID, "L")) {
-        //Serial.println(tempB[j].get_boxID());
-        action_doc["ACTION"] = "Despaletizado_L";
-        serializeJson(action_doc, action_json);
-        Serial.println(action_json);
-        enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
-        delay(1000);
-      } else if (compareIDs(ID, "M")) {
-        //Serial.println(tempB[j].get_boxID());
-        action_doc["ACTION"] = "Despaletizado_M";
-        serializeJson(action_doc, action_json);
-        Serial.println(action_json);
-        enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
-        delay(1000);
-      } else if (compareIDs(ID, "S")) {
-        //Serial.println(tempB[j].get_boxID());
-        action_doc["ACTION"] = "Despaletizado_S";
-        serializeJson(action_doc, action_json);
-        Serial.println(action_json);
-        enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
-        delay(1000);
-      }
-    }
-  }
+void setStateDespaletizado(bool state)
+{
+  STATE_DESPALETIZADO = state;
 }
+
+bool get_StateDespaletizado()
+{
+  return STATE_DESPALETIZADO;
+}
+
+void setStateStation(bool state)
+{
+  STATE_STATION = state;
+}
+
+bool get_StateStation()
+{
+  return STATE_STATION;
+}
+
