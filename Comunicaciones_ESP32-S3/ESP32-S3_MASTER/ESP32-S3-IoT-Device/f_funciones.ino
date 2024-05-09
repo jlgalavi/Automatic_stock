@@ -35,23 +35,3 @@ bool compareIDs(String ID1, String ID2)
   }
 }
 
-void setStateDespaletizado(bool state)
-{
-  STATE_DESPALETIZADO = state;
-}
-
-bool get_StateDespaletizado()
-{
-  return STATE_DESPALETIZADO;
-}
-
-void setStateStation(bool state)
-{
-  STATE_STATION = state;
-}
-
-bool get_StateStation()
-{
-  return STATE_STATION;
-}
-
