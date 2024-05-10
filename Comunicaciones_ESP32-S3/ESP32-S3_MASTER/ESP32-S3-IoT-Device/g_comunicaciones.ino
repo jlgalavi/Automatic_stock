@@ -94,7 +94,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     if (!err) {
       String state = doc["STATE"];
       if (state == "start") {
-        for (int i = 0; i < bDespaletizado.length(); i++) {
+        for (int i = 0; i <= bDespaletizado.length(); i++) {
           if (!(bAsignacion[i].get_setBox())) {
             StaticJsonDocument<200> doc;
             order = order + bAsignacion[i].get_boxID();
