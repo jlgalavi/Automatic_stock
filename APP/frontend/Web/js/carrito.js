@@ -80,20 +80,17 @@ function VaciarCarrito(){
 }
 
 carritoCompraElement.addEventListener('click', cargarDatosMqtt);
+const aux = 0;
 
 function cargarDatosMqtt(){
     const loadingAnimation = document.getElementById('loading-animation');
     const loadingOverlay = document.getElementById('loading-overlay');
-
-    loadingOverlay.classList.toggle("loading-overlay", false)
-    // Muestra la animación de carga
+    
+    loadingOverlay.style.display = 'none';
     loadingAnimation.style.display = 'flex';
 
-    // Espera 3 segundos (3000 milisegundos) antes de redireccionar
     setTimeout(function() {
         window.location.href = "compra_exitosa.html";
-
-        // Oculta la animación de carga
         loadingAnimation.style.display = 'none';
     }, 2000);
 }

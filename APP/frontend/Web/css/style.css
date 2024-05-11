@@ -97,12 +97,13 @@ header
     align-items: center;
     background-color: #061f3d;
     padding: 0 20px;
+    box-shadow: 0 3px 5px rgba(218, 23, 218, 0.2)
 }
 
 .logo
 {
     width: 65px;
-    height: 65px;
+    height: 60px;
 }	
 
 .menu-icono
@@ -468,6 +469,11 @@ hr
     border-radius: 25px;
     margin-top: 40px;
 }
+
+.btn-proyecto-info:hover{
+    transform:scale(1.1);
+    transition: 0.3s;
+}
 .products
 {
     padding: 50px 0;
@@ -545,6 +551,7 @@ hr
 {
     padding: 40px;
     background-color: white;
+    box-shadow: 0 -3px 5px rgba(218, 23, 218, 0.7);
 }
 
 .footer-title

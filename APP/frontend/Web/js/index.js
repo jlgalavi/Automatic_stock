@@ -76,7 +76,7 @@ function showProductsList(productos) {
                 <img src="${producto.img}" alt=""> 
                 <div class="product-txt">
                     <h3>${producto.title}</h3>
-                    <p>Descripcion</p>
+                    <p>${producto.description}</p>
                     <p class="price">${producto.price}€</p>
                     <button class="btn-add-cart" data-id="${producto.id}">Agregar al carrito</button>
                 </div>
