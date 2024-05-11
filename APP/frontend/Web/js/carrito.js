@@ -7,7 +7,6 @@ const carritoCompraElement = document.getElementById('carrito-compra');
 function showProducts() {
     containerProducts.innerHTML = "";
     const productos = JSON.parse(localStorage.getItem("products"));
-    console.log(productos);
     if (productos && productos.length > 0) {
         productos.forEach(producto => {
             const newProduct = document.createElement("div");
@@ -18,15 +17,17 @@ function showProducts() {
                     <p>${producto.price} €</p>
                     <div class="buttons">
                         <button><strong>-</strong></button>
-                        <span class="cantidad">${producto.quantity}</span>
+                        <span class="cantidad" id="suma-carrito">${producto.quantity}</span>
                         <button><strong>+</strong></button>
                     </div>
             `;
+            const cantidadElement = newProduct.querySelector('.cantidad');
             containerProducts.appendChild(newProduct);
             newProduct
                 .getElementsByTagName("button")[1]
                 .addEventListener("click", (e) => {
-                    addCart(producto);
+                    var numeroCarrito = addCart(producto);
+                    cantidadElement.innerText = numeroCarrito;
                     updateTotals();
                 });
             newProduct
@@ -80,7 +81,6 @@ function VaciarCarrito(){
 }
 
 carritoCompraElement.addEventListener('click', cargarDatosMqtt);
-const aux = 0;
 
 function cargarDatosMqtt(){
     const loadingAnimation = document.getElementById('loading-animation');

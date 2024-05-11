@@ -50,6 +50,7 @@ function updateNumberCart(){
     if(memory && memory.length > 0){
         const elementsQuantity = memory.reduce((acc, current) => acc + current.quantity, 0);
         countCart.innerText = elementsQuantity;
+        return elementsQuantity;
     }else{
         countCart.innerText = 0;
     }
