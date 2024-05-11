@@ -69,10 +69,12 @@ h2{
     margin-right:40px;
     border-radius: 10px;
     cursor: pointer;
+    border:none;
 }
 
 .boton_volver:hover{
     scale:1.1;
+    border: none;
 }
 
 .text{

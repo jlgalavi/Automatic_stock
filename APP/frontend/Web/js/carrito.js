@@ -1,43 +1,79 @@
-const containerProducts = document.getElementById('cont-products');
+const containerProducts = document.getElementById('productos-container');
+const unidadesElement = document.getElementById('total-unidades');
+const precioElement = document.getElementById('precio-unidades');
+const vaciarCarritoElement = document.getElementById('vaciar-carrito');
 
 function showProducts() {
+    containerProducts.innerHTML = "";
     const productos = JSON.parse(localStorage.getItem("products"));
-    if (productos) {
+    console.log(productos);
+    if (productos && productos.length > 0) {
         productos.forEach(producto => {
-           const newProduct = document.createElement("div");
-            newProduct.classList.add('container-products');
+            const newProduct = document.createElement("div");
+            newProduct.classList.add('tarjeta-producto');
             newProduct.innerHTML = `
-                    <img src="${producto.img}" alt="">
-                    <div class="product-text">
-                        <h3>${producto.title}</h3>
-                        <p class="price">${producto.price}€</p>
-                        <div class="mod-products">
-                            <button class="less">-</button>
-                            <span class="quantity">${producto.quantity}</span>
-                            <button class="more">+</button>
-                      </div>
+                    <img src="${producto.img}">
+                    <h3>${producto.title}</h3>
+                    <p>${producto.price} €</p>
+                    <div class="buttons">
+                        <button><strong>-</strong></button>
+                        <span class="cantidad">${producto.quantity}</span>
+                        <button><strong>+</strong></button>
                     </div>
             `;
-//            containerProducts.appendChild(newProduct);
-//             newProduct.getElementsByTagName("button")[0].addEventListener('click', (e) => {
-//                 quitCart(producto);
-//                 showProducts();
-//             });
-//             newProduct.getElementsByTagName("button")[1].addEventListener('click', (e) => {
-//                 addCart(producto)});
-            
-            
+            containerProducts.appendChild(newProduct);
+            newProduct
+                .getElementsByTagName("button")[1]
+                .addEventListener("click", (e) => {
+                    addCart(producto);
+                    updateTotals();
+                });
+            newProduct
+                .getElementsByTagName("button")[0]
+                .addEventListener("click", (e) => {
+                    substractCart(producto);
+                    showProducts();
+                    updateTotals();
+                });
         });
-//     } else {
-//         const newProduct = document.createElement("div");
-//         newProduct.classList.add('container-products');
-//         newProduct.innerHTML = `
-//             <h3>No hay productos en el carrito</h3>
-//         `;
-//         containerProducts.appendChild(newProduct);        
+        
     }
 }
 
 showProducts();
+updateTotals();
 
-// Path: APP/frontend/Web/js/carrito.js
+function updateTotals() {
+    const productos = JSON.parse(localStorage.getItem("products"));
+    let quantity = 0;
+    let price = 0;
+    if(productos && productos.length > 0){
+        productos.forEach(producto => {
+            quantity += producto.quantity;
+            price += producto.price * producto.quantity;
+        });
+        unidadesElement.innerText = quantity;
+        precioElement.innerText = price;
+    }
+    revisarCarritoVacio();
+}
+
+function revisarCarritoVacio(){
+    const productos = JSON.parse(localStorage.getItem("products"));
+    const carritoVacioElement = document.querySelector('.mensaje-carrito-vacio');
+    const totalesElement = document.querySelector('#todo');
+    carritoVacioElement.classList.toggle('escondido', productos && productos.length > 0);
+    totalesElement.classList.toggle('escondido', !(productos && productos.length > 0));
+}
+
+revisarCarritoVacio();
+
+
+vaciarCarritoElement.addEventListener('click', VaciarCarrito);
+
+function VaciarCarrito(){
+    localStorage.removeItem("products");
+    updateTotals();
+    showProducts();
+    updateNumberCart();
+}
