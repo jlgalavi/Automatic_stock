@@ -8,10 +8,19 @@
     <title>NN - Carrito</title>
     <link rel="stylesheet" href="./css/style_carrito.css">
     <script src="https://kit.fontawesome.com/3b8572695f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/5.5.5/mqtt.min.js"></script>
     <script src="./js/products.js"></script>
     <script src="./js/carrito.js" defer></script>
     <script src="./js/cartService.js" defer></script>
-
+    <script src="./js/mqtt.js" defer></script>
+    <script>
+        function redireccionConRetraso() {
+            // Espera 3 segundos (3000 milisegundos) antes de redireccionar
+            setTimeout(function() {
+                window.location.href = "compra_exitosa.html";
+            }, 3000);
+        }
+    </script>
 
 </head>
 
@@ -41,7 +50,7 @@
                     </section>
                     <section id="botones">
                         <button id="vaciar-carrito">Vaciar carrito</button>
-                        <a href="compra_exitosa.html"><button>Comprar</button></a>
+                        <button id="carrito-compra" onclick="redireccionConRetraso()">Comprar</button>
                         <a href="index.html"><button>Volver al menú</button></a>
                     </section>
                 </div>
