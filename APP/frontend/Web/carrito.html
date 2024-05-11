@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NN - Carrito</title>
     <link rel="stylesheet" href="./css/style_carrito.css">
+    <script src="https://kit.fontawesome.com/3b8572695f.js" crossorigin="anonymous"></script>
     <script src="./js/products.js" ></script>
     <script src="./js/carrito.js" defer></script> 
     <script src="./js/cartService.js" defer></script>
@@ -18,16 +19,17 @@
     
     <header class="header">
         <div class="menu">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/image.png" alt="logo" class="logo">
             </a>
-        </div>
-        <div class="return">
-            <a href="index.html#products-list" class="btn-return">Seguir comprando</a>
         </div>
     </header>
 
     <main>
+        <div class="return">
+            <a href="index.html#products-list" class="btn-return">Seguir comprando</a>
+        </div>
+
         <div class="carrito">
             <div class="content-cart" id="cont-products">
 
@@ -39,14 +41,17 @@
             <p>PRECIO TOTAL: <span id="precio">0</span>€</p>
         </div>
         <div class="botones">
-            <button class="btn-comprar" id="btn-comprar">Comprar</button>
-            <button class="btn-vaciar" id="btn-vaciar">Vaciar carrito</button>
+            <a href="compra_exitosa.html"><button class="btn-comprar" id="btn-comprar"><strong>Comprar</strong></button></a>
+            <button class="btn-vaciar" id="btn-vaciar"><strong>Vaciar Carrito</strong></button>
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>© 2024 NN - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
 </body>
 
-
-
 </html>
-
-<!-- Path: APP/frontend/Web/carrito.html -->
