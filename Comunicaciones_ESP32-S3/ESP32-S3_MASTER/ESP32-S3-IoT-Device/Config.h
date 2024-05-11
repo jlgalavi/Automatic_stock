@@ -11,8 +11,8 @@
 #define DEVICE_GIIROB_PR2_ID      "giirobpr2_B1" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                  //"UPV-PSK"
-#define NET_PASSWD                //"giirob-pr2-2023"
+#define NET_SSID                  "UPV-PSK"
+#define NET_PASSWD                "giirob-pr2-2023"
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//
@@ -40,6 +40,9 @@
 #define TEMPERATURE_TOPIC             "giirob/pr2/B1/control/sensors/temperature"    // TODO: topic ejemplo ejercicio inicial
 #define EMERGENCY_TOPIC               "giirob/pr2/B1/control/emergency"    // TODO: topic ejemplo ejercicio inicial
 #define CONTROLBOX_TOPIC              "giirob/pr2/B1/control/boxes"    // TODO: topic ejemplo ejercicio inicial
+
+#define SDA 14 //Define SDA pins
+#define SCL 13 //Define SCL pins
 
 
 

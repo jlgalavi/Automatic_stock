@@ -34,6 +34,9 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     if (!err) {
       String state = doc["STATE"];
       if (state == "ready") {
+        lcd.clear();
+        lcd.print("STATION REDAY");  // The print content is displayed on the LCD
+      } else if (state == "start") {
         StaticJsonDocument<200> doc;
         doc["STATE"] = "ready";
         String state_json;
@@ -42,7 +45,14 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         enviarMensajePorTopic(DESPALETIZADO_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(ASIGNACION_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(SENSOR1_STATUS_TOPIC, state_json);
-      }
+        lcd.clear();
+        lcd.print("START PROCESSING");
+      } else if (state == "finished") {
+        bDespaletizado = "";
+        lcd.clear();
+        lcd.print("ORDER FINISHED");
+
+      } else warnln("**>> Solicitud no reconocida!");
     } else warnln("**>> Solicitud no reconocida!");
   }
   if (strcmp(topic, DESPALETIZADO_STATUS_TOPIC) == 0) {
@@ -94,7 +104,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     if (!err) {
       String state = doc["STATE"];
       if (state == "start") {
-        for (int i = 0; i <= bDespaletizado.length(); i++) {
+        for (int i = 0; i < bDespaletizado.length(); i++) {
           if (!(bAsignacion[i].get_setBox())) {
             StaticJsonDocument<200> doc;
             order = order + bAsignacion[i].get_boxID();
@@ -107,29 +117,39 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
             i = bDespaletizado.length();
           }
         }
-      }
-
-    } else warnln("**>> Solicitud no reconocida!");
-  }
-  if (strcmp(topic, SENSOR1_STATUS_TOPIC) == 0) {
-    JsonDocument doc;
-    DeserializationError err = deserializeJson(doc, incomingMessage);
-    if (!err) {
-      String state = doc["STATE"];
-      if(state == "ready"){
-        StaticJsonDocument<200> doc;
-        doc["ACTION"] = "start";
-        String action_json;
-        serializeJson(doc, action_json);
-        enviarMensajePorTopic(SENSOR1_COMMANDS_TOPIC, action_json);
-
+        if ((bAsignacion[bDespaletizado.length() - 1].get_setBox())) {
+          StaticJsonDocument<200> doc;
+          doc["STATE"] = "finished";
+          String state_json;
+          serializeJson(doc, state_json);
+          enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
+        }
       }
     }
+  } else warnln("**>> Solicitud no reconocida!");
+if (strcmp(topic, SENSOR1_STATUS_TOPIC) == 0) {
+  JsonDocument doc;
+  DeserializationError err = deserializeJson(doc, incomingMessage);
+  if (!err) {
+    String state = doc["STATE"];
+    if (state == "ready") {
+      StaticJsonDocument<200> doc;
+      doc["ACTION"] = "start";
+      String action_json;
+      serializeJson(doc, action_json);
+      enviarMensajePorTopic(SENSOR1_COMMANDS_TOPIC, action_json);
+    }
   }
-  if (strcmp(topic, INFOPEDIDO_TOPIC) == 0) {
-    getOrder(&bDespaletizado, bAsignacion, incomingMessage);
-  }
-  /*if (strcmp(topic, STOCK_TOPIC) == 0) {
+}
+if (strcmp(topic, INFOPEDIDO_TOPIC) == 0) {
+  getOrder(&bDespaletizado, bAsignacion, incomingMessage);
+  StaticJsonDocument<200> doc;
+  doc["STATE"] = "start";
+  String state_json;
+  serializeJson(doc, state_json);
+  enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
+}
+/*if (strcmp(topic, STOCK_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
     if (!err) {
