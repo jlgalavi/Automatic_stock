@@ -13,15 +13,7 @@
     <script src="./js/carrito.js" defer></script>
     <script src="./js/cartService.js" defer></script>
     <script src="./js/mqtt.js" defer></script>
-    <script>
-        function redireccionConRetraso() {
-            // Espera 3 segundos (3000 milisegundos) antes de redireccionar
-            setTimeout(function() {
-                window.location.href = "compra_exitosa.html";
-            }, 3000);
-        }
-    </script>
-
+    
 </head>
 
 <body>
@@ -39,6 +31,7 @@
     </header>
 
     <main>
+        <div id="loading-overlay" class="loading-overlay">
         <div class="elementos">
             <div id="todo">
                 <section id="productos-container">
@@ -50,15 +43,17 @@
                     </section>
                     <section id="botones">
                         <button id="vaciar-carrito">Vaciar carrito</button>
-                        <button id="carrito-compra" onclick="redireccionConRetraso()">Comprar</button>
+                        <button id="carrito-compra">Comprar</button>
                         <a href="index.html"><button>Volver al menú</button></a>
                     </section>
+                    <div id="loading-animation"></div>
                 </div>
             </div>
             <div class="mensaje-carrito-vacio">
                 <p id="carrito-vacio">El carrito está vacío</p>
                 <a href="index.html#products-list"><button id="hacer-pedido">Hacer pedido</button></a>
             </div>
+        </div>
         </div>
     </main>
 

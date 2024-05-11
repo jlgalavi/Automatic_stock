@@ -2,6 +2,7 @@ const containerProducts = document.getElementById('productos-container');
 const unidadesElement = document.getElementById('total-unidades');
 const precioElement = document.getElementById('precio-unidades');
 const vaciarCarritoElement = document.getElementById('vaciar-carrito');
+const carritoCompraElement = document.getElementById('carrito-compra');
 
 function showProducts() {
     containerProducts.innerHTML = "";
@@ -76,4 +77,23 @@ function VaciarCarrito(){
     updateTotals();
     showProducts();
     updateNumberCart();
+}
+
+carritoCompraElement.addEventListener('click', cargarDatosMqtt);
+
+function cargarDatosMqtt(){
+    const loadingAnimation = document.getElementById('loading-animation');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    loadingOverlay.classList.toggle("loading-overlay", false)
+    // Muestra la animación de carga
+    loadingAnimation.style.display = 'flex';
+
+    // Espera 3 segundos (3000 milisegundos) antes de redireccionar
+    setTimeout(function() {
+        window.location.href = "compra_exitosa.html";
+
+        // Oculta la animación de carga
+        loadingAnimation.style.display = 'none';
+    }, 2000);
 }
