@@ -23,6 +23,7 @@
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include <LiquidCrystal_I2C.h>
 
 
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
@@ -32,7 +33,7 @@
   // Versión usando la dirección MAC del dispositivo
 String deviceID = String("device-esp32s3-") + String(DEVICE_ESP_ID);        
 // Versión usando el ID de ESP del dispositivo
-
+LiquidCrystal_I2C lcd(0x27,16,2);
 void setup() {
   // Este setup configura conceptos 'core', inicializa la wifi y la conexión con 
   //  el bróker MQTT, y ejecuta algunos métodos que hay que completar. 

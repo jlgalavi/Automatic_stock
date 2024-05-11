@@ -1,6 +1,3 @@
-bool STATE_DESPALETIZADO = false;
-bool STATE_STATION = false;
-
 void getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) {
   JsonDocument doc;
   DeserializationError err = deserializeJson(doc, incomingMessage);
@@ -33,25 +30,5 @@ bool compareIDs(String ID1, String ID2)
   {
     return false;
   }
-}
-
-void setStateDespaletizado(bool state)
-{
-  STATE_DESPALETIZADO = state;
-}
-
-bool get_StateDespaletizado()
-{
-  return STATE_DESPALETIZADO;
-}
-
-void setStateStation(bool state)
-{
-  STATE_STATION = state;
-}
-
-bool get_StateStation()
-{
-  return STATE_STATION;
 }
 
