@@ -1,36 +1,38 @@
 const url = "ws://broker.emqx.io:8083/mqtt"
 var client = mqtt.connect(url);
 
-document.getElementById('buy-cart').addEventListener('click', async () =>{
+const carritoElement = document.getElementById('carrito-compra');
 
-    allProducts = allProducts.map(product => {
-        //PARA NO GUARDAR LA IMAGEN EN LA BBDD
-        let newProduct = {...product};
-        delete newProduct.image;
-        return newProduct;
-    });
-
+function PublicarPedido(){
     client.on('connect', function () {
-        client.subscribe('alberto', function (err) {
-            if (!err) {
-                client.publish('alberto', 'juana', function(err) {
-                    if(err) {
-                        console.log("Error al publicar el mensaje", err);
+        carritoElement.addEventListener('click',() => {
+            const productos = JSON.parse(localStorage.getItem("products"));
+            if(productos && productos.length > 0){
+                console.log(productos);
+                client.subscribe('giirob/pr2/B1/infopedido', function (err) {
+                    if (!err) {
+                        client.publish('giirob/pr2/B1/infopedido', JSON.stringify(productos), function(err) {
+                            if(err) {
+                                console.log("Error al publicar el mensaje", err);
+                            }
+                        });
+                    } 
+                    else{
+                        console.log("Error al suscribirse al topic", err);
                     }
                 });
-            } 
+            }
             else{
-                console.log("Error al suscribirse al topic", err);
+                console.log("No hay productos en el carrito");
             }
         });
     });
-    
-    client.on('error', function (err) {
-        console.log('Error de conexión MQTT:', err);
-    });
-    //client.on('connect', eventoConectar);
-    //client.on('message', eventoMensaje);
-});
+}
 
-// Path: APP/frontend/Web/js/mqtt.js
+PublicarPedido();
+
+
+
+
+    
 
