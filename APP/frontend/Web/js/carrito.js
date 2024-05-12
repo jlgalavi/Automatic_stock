@@ -7,7 +7,6 @@ const carritoCompraElement = document.getElementById('carrito-compra');
 function showProducts() {
     containerProducts.innerHTML = "";
     const productos = JSON.parse(localStorage.getItem("products"));
-    console.log(productos);
     if (productos && productos.length > 0) {
         productos.forEach(producto => {
             const newProduct = document.createElement("div");
@@ -18,15 +17,17 @@ function showProducts() {
                     <p>${producto.price} €</p>
                     <div class="buttons">
                         <button><strong>-</strong></button>
-                        <span class="cantidad">${producto.quantity}</span>
+                        <span class="cantidad" id="suma-carrito">${producto.quantity}</span>
                         <button><strong>+</strong></button>
                     </div>
             `;
+            const cantidadElement = newProduct.querySelector('.cantidad');
             containerProducts.appendChild(newProduct);
             newProduct
                 .getElementsByTagName("button")[1]
                 .addEventListener("click", (e) => {
-                    addCart(producto);
+                    var numeroCarrito = addCart(producto);
+                    cantidadElement.innerText = numeroCarrito;
                     updateTotals();
                 });
             newProduct
@@ -84,16 +85,12 @@ carritoCompraElement.addEventListener('click', cargarDatosMqtt);
 function cargarDatosMqtt(){
     const loadingAnimation = document.getElementById('loading-animation');
     const loadingOverlay = document.getElementById('loading-overlay');
-
-    loadingOverlay.classList.toggle("loading-overlay", false)
-    // Muestra la animación de carga
+    
+    loadingOverlay.style.display = 'none';
     loadingAnimation.style.display = 'flex';
 
-    // Espera 3 segundos (3000 milisegundos) antes de redireccionar
     setTimeout(function() {
         window.location.href = "compra_exitosa.html";
-
-        // Oculta la animación de carga
         loadingAnimation.style.display = 'none';
     }, 2000);
 }

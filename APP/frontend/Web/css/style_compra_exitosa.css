@@ -62,11 +62,13 @@ h2{
 }
 
 .boton_volver{
+    font-size: 20px;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background-color: #7270ec;
-    margin-left: 40px;
-    margin-right:40px;
+    margin-left: 35px;
+    margin-right:35px;
+    margin-top:50px;
     border-radius: 10px;
     cursor: pointer;
     border:none;
@@ -137,6 +139,12 @@ h2{
     .footer-title
     {
         font-size: 20px;
+    }
+
+    .boton_volver{
+        margin-top: auto;
+        font-size: 15px;
+        padding:10px;
     }
 }
 
