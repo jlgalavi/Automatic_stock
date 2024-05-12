@@ -38,12 +38,12 @@ function showProducts() {
                     updateTotals();
                 });
         });
-        
+    
     }
 }
 
-showProducts();
 updateTotals();
+showProducts();
 
 function updateTotals() {
     const productos = JSON.parse(localStorage.getItem("products"));
