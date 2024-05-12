@@ -4,28 +4,28 @@ const products = [
         title: 'Box S',
         price: 100,
         img: 'images/image.png',
-        description: 'Caja pequeña'
+        size: "15 x 12 x 10"
     },
     {
         id: 2,
         title: 'Box M',
         price: 200,
         img: 'images/image.png',
-        description: 'Caja mediana'
+        size: '20 x 21 x 7'
     },
     {
         id: 3,
         title: 'Box L',
         price: 300,
         img: 'images/image.png',
-        description: 'Caja grande'
+        size: '20 x 21 x 21'
     },
     {
         id: 4,
         title: 'Box XL',
         price: 400,
         img: 'images/image.png',
-        description: 'Caja extra grande'
+        size: '25 x 30 x 21'
     }
 ];
 

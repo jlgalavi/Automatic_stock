@@ -152,6 +152,7 @@ body
     text-align: center;
     color: #ffffff;
     background-color: #7270ec;
+    box-shadow: 3px 3px rgba(0, 85, 255, 0.7);
     padding: 10px;
     width: 300px;
     margin: auto;
