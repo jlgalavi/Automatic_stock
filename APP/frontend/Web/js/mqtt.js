@@ -11,7 +11,7 @@ function PublicarPedido(){
                 delete productos[i].img;
                 delete productos[i].price;
                 delete productos[i].title;
-                delete productos[i].description;
+                delete productos[i].size;
             }
             if(productos && productos.length > 0){
                 console.log(productos);

@@ -80,9 +80,9 @@ function VaciarCarrito(){
     updateNumberCart();
 }
 
-carritoCompraElement.addEventListener('click', cargarDatosMqtt);
+carritoCompraElement.addEventListener('click', animacionCarga);
 
-function cargarDatosMqtt(){
+function animacionCarga(){
     const loadingAnimation = document.getElementById('loading-animation');
     const loadingOverlay = document.getElementById('loading-overlay');
     
