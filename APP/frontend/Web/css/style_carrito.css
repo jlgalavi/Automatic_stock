@@ -20,6 +20,10 @@ body
     background-color: #061f3d;
 }
 
+header{
+    margin-bottom: 20px;
+}
+
 .menu
 {
     padding: 10px;
@@ -27,6 +31,10 @@ body
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+#opacidad{
+    top:0;
 }
 
 .logo
@@ -59,18 +67,15 @@ body
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-#productos-container{
-    width: 400px;   
-    margin: auto;
-    margin-top: 20px;
+    align-items: center;
 }
 
 .tarjeta-producto{
     display: flex;
-    gap:20px;
+    gap:30px;
     align-items: center;
+    justify-content: space-between;
+    width: 500px;
 }
 
 .tarjeta-producto img{
@@ -91,7 +96,7 @@ body
 .tarjeta-producto p{
     font-size: 20px;
     color: #ffffff;
-    width: 170px;
+    width: 180px;
 }
 
 .buttons{
@@ -193,6 +198,51 @@ body
     transform: scale(1.1);
 }
 
+#mensaje-compra{
+    display:none;
+    text-align: center;
+    color: #ffffff;
+    background-color: #7270ec;
+    padding: 10px;
+    width: 300px;
+    border-radius: 20px;
+    margin:auto;
+    margin-top: 15vh;
+}
+
+#confirmar-compra{
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#cancelar-compra{
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#confirmar-compra:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+#cancelar-compra:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
 .footer
 {   
     background-color: white;
@@ -220,7 +270,7 @@ body
 }
 
 #loading-animation {
-    display:none;
+    display: none;
     width: 50px;
     height: 50px;
     border: 5px solid #ccc;
@@ -238,4 +288,19 @@ body
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 992px){
+    .tarjeta-producto{
+        display: flex;
+        gap:30px;
+        align-items: center;
+        justify-content: space-between;
+        width: 450px;
+    }
+    
+    .tarjeta-producto img{
+        height: 80px;
+        margin-right: 0;
+    }
 }

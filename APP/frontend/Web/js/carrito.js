@@ -3,6 +3,8 @@ const unidadesElement = document.getElementById('total-unidades');
 const precioElement = document.getElementById('precio-unidades');
 const vaciarCarritoElement = document.getElementById('vaciar-carrito');
 const carritoCompraElement = document.getElementById('carrito-compra');
+const carritoConfirmarCompraElement = document.getElementById("confirmar-compra");
+const carritoCancelarCompraElement = document.getElementById("cancelar-compra");
 
 function showProducts() {
     containerProducts.innerHTML = "";
@@ -14,7 +16,7 @@ function showProducts() {
             newProduct.innerHTML = `
                     <img src="${producto.img}">
                     <h3>${producto.title}</h3>
-                    <p>${producto.price} €</p>
+                    <p>${producto.price} €/u</p>
                     <div class="buttons">
                         <button><strong>-</strong></button>
                         <span class="cantidad" id="suma-carrito">${producto.quantity}</span>
@@ -65,15 +67,18 @@ function revisarCarritoVacio(){
     const carritoVacioElement = document.querySelector('.mensaje-carrito-vacio');
     const totalesElement = document.querySelector('#todo');
     const botonesytotales = document.getElementById("botonesytotales");
+    const mensajeCompra = document.getElementById("mensaje-compra");
+    mensajeCompra.classList.toggle('escondido', !(productos && productos.length > 0));
+    botonesytotales.classList.toggle('escondido', !(productos && productos.length > 0));
     carritoVacioElement.classList.toggle('escondido', productos && productos.length > 0);
     totalesElement.classList.toggle('escondido', !(productos && productos.length > 0));
-    botonesytotales.classList.toggle('escondido', !(productos && productos.length > 0));
 }
 
 revisarCarritoVacio();
 
 
 vaciarCarritoElement.addEventListener('click', VaciarCarrito);
+carritoConfirmarCompraElement.addEventListener("click", VaciarCarrito);
 
 function VaciarCarrito(){
     localStorage.removeItem("products");
@@ -82,7 +87,7 @@ function VaciarCarrito(){
     updateNumberCart();
 }
 
-carritoCompraElement.addEventListener('click', animacionCarga);
+carritoConfirmarCompraElement.addEventListener('click', animacionCarga);
 
 function animacionCarga(){
     const loadingAnimation = document.getElementById('loading-animation');
@@ -96,3 +101,24 @@ function animacionCarga(){
         loadingAnimation.style.display = 'none';
     }, 2000);
 }
+
+function mensajeCompra(){
+    const mensajeCompra = document.getElementById('mensaje-compra');
+    const opacidad = document.getElementById('opacidad');
+    carritoCompraElement.addEventListener('click', () => {
+        mensajeCompra.style.display = 'block';
+        opacidad.style.opacity = '0.1';
+    });
+}
+
+function cancelarCompra(){
+    const mensajeCancelarCompra = document.getElementById("cancelar-compra");
+    const mensajeCompra = document.getElementById('mensaje-compra');
+    mensajeCancelarCompra.addEventListener('click', () => {
+        mensajeCompra.style.display = 'none';
+        opacidad.style.opacity = '1';
+    });
+}
+
+mensajeCompra();
+cancelarCompra();
