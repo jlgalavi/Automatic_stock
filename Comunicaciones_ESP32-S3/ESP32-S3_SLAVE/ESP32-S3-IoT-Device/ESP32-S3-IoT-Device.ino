@@ -22,6 +22,8 @@
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include "src/ESP32QRCodeReader.h"
+ESP32QRCodeReader reader(CAMERA_MODEL_ESP32S3_EYE);
 
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
 String deviceID = String("giirobpr2-device-") + String(DEVICE_GIIROB_PR2_ID); 

@@ -45,7 +45,7 @@ Archivo JSON:
 
 *********************************************************************************
 
-TOPIC: TEMPERATURE_TOPIC --> giirob/pr2/B1/control/sensors/temperature
+TOPIC: ILUMINATION_TOPIC --> giirob/pr2/B1/control/sensors/ilumination
 SUBSCRIBERS:
     - ESP32-S3_MASTER
 PUBLISHERS:
