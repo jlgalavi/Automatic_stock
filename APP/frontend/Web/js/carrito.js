@@ -78,7 +78,6 @@ revisarCarritoVacio();
 
 
 vaciarCarritoElement.addEventListener('click', VaciarCarrito);
-carritoConfirmarCompraElement.addEventListener("click", VaciarCarrito);
 
 function VaciarCarrito(){
     localStorage.removeItem("products");
