@@ -40,6 +40,10 @@ header
     min-height: 70vh;
 }
 
+#Equipo h2{
+    font-size: 40px;
+}
+
 .swiper-wrapper
 {
     display: flex;
@@ -440,13 +444,6 @@ hr
     padding: 10px 25px;
     border-radius: 25px;
     margin-top: 40px;
-}
-
-.btn-tecnology-info:hover
-{
-    background-color: #6c69f9;
-    transform: scale(1.1);
-    transition: 0.3s;
 }
 
 .category-img img
