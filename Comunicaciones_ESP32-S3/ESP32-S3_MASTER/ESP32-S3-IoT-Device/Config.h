@@ -11,8 +11,8 @@
 #define DEVICE_GIIROB_PR2_ID      "giirobpr2_B1" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                 "mariyjose"// //"UPV-PSK"
-#define NET_PASSWD                "09122000"////"giirob-pr2-2023"
+#define NET_SSID                  //"UPV-PSK"
+#define NET_PASSWD                //"giirob-pr2-2023"
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//
@@ -24,7 +24,7 @@
 // Define SSL_ROOT_CA to enable TLS/SSL connection
 
 #define HELLO_TOPIC                   "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
-#define INFOPEDIDO_TOPIC              "giirob/pr2/B1/infopedido"    // TODO: topic ejemplo ejercicio inicial
+#define ORDERPROCES_TOPIC             "giirob/pr2/B1/orderProces"
 #define STATION_STATUS_TOPIC          "giirob/pr2/B1/status"
 #define DESPALETIZADO_STATUS_TOPIC    "giirob/pr2/B1/actions/despaletizado/status"
 #define DESPALETIZADO_COMMANDS_TOPIC  "giirob/pr2/B1/actions/despaletizado/commands"
@@ -32,8 +32,8 @@
 #define ASIGNACION_COMMANDS_TOPIC     "giirob/pr2/B1/actions/asignacion/commands"
 #define CONVEYOR1_STATUS_TOPIC        "giirob/pr2/B1/actions/conveyor1/status"
 #define CONVEYOR1_COMMANDS_TOPIC      "giirob/pr2/B1/actions/conveyor1/commands"
-//#define AGV_STATUS_CONTROL            "giirob/pr2/B1/actions/agvControl/status"
-//#define AGV_COMMANDS_CONTROL          "giirob/pr2/B1/actions/agvControl/commands"
+#define AGV_STATUS_TOPIC              "giirob/pr2/B1/actions/agv/status"
+#define AGV_COMMANDS_TOPIC            "giirob/pr2/B1/actions/agv/commands"
 #define SENSOR1_STATUS_TOPIC          "giirob/pr2/B1/control/sensor1/status"
 #define SENSOR1_COMMANDS_TOPIC        "giirob/pr2/B1/control/sensor1/commands"
 #define STOCK_TOPIC                   "giirob/pr2/B1/control/stock"    // TODO: topic ejemplo ejercicio inicial
