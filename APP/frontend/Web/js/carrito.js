@@ -64,8 +64,10 @@ function revisarCarritoVacio(){
     const productos = JSON.parse(localStorage.getItem("products"));
     const carritoVacioElement = document.querySelector('.mensaje-carrito-vacio');
     const totalesElement = document.querySelector('#todo');
+    const botonesytotales = document.getElementById("botonesytotales");
     carritoVacioElement.classList.toggle('escondido', productos && productos.length > 0);
     totalesElement.classList.toggle('escondido', !(productos && productos.length > 0));
+    botonesytotales.classList.toggle('escondido', !(productos && productos.length > 0));
 }
 
 revisarCarritoVacio();

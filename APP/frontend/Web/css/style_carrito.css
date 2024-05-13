@@ -55,6 +55,12 @@ body
     text-align: center;
 }
 
+#todo{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 #productos-container{
     width: 400px;   
     margin: auto;
@@ -113,6 +119,13 @@ body
     font-size: 20px;
     color: #ffffff;
     padding: 5px;
+}
+
+#botonesytotales{
+    margin-top: 300px;
+    position:fixed;
+    bottom:50px;
+    width: 100%;
 }
 
 #totales{
