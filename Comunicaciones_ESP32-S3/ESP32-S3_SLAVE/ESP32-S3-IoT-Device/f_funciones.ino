@@ -18,24 +18,33 @@ void setInternalLed(uint8_t status) {
 
 void readbutton()  //leera en el w_loop el boton todo el rato en caso de estar pulsado envia señal
 {
-  String emergency_msg;
   delay(200);
+  
+  StaticJsonDocument<200> doc; //crea el mensaje en formato json
+  doc["EMERGENCY_TYPE"] = "STOP";
+  String state_json;
+  serializeJson(doc, state_json);
+
   if(digitalRead(PIN_BUTTON) == LOW) //Si el boton esta pulsado
   {
-    emergency_msg = String("Para la ejecución.") + deviceID; //crea el mensaje
-    enviarMensajePorTopic(EMERGENCY_TOPIC, emergency_msg); //envia por el topic el mensaje
+     enviarMensajePorTopic(EMERGENCY_TOPIC, state_json); //envia por el topic el mensaje
   }
 }
 //leer sensor temperatura
 void ilumination()
 {
   char* str_valor="";  //Cadena donde almacenaremos el valor convertido
-
   int adcVal = analogRead(PIN_ANALOG_IN); //lee el valor del sensor ldr
+ 
+  StaticJsonDocument<200> doc; //crea el mensaje en formato json
+  doc["ID_SENSOR"] = "LDR001";
+  doc["DATA"] = "LIGHTOFF";
+  String state_json;
+  serializeJson(doc, state_json);
+
   if(adcVal > 700)  //si el ldr capta poca luz
   {
-    String ilumination_msg = String("Luces apagadas.") + deviceID; //crea el mesnaje
-    enviarMensajePorTopic(ILUMINATION_TOPIC, ilumination_msg);   //envia por el topic el mensaje
+    enviarMensajePorTopic(ILUMINATION_TOPIC, state_json);   //envia por el topic el mensaje
   }
   
   delay(100);

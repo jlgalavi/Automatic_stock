@@ -81,7 +81,7 @@ Archivo JSON:
 [
     {
         "ID_SENSOR": "<string>",
-        "DATA": "<float>"
+        "DATA": "<string>"
     },
     {
         ...
