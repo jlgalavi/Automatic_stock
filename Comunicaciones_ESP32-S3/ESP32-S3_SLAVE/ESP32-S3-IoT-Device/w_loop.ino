@@ -6,19 +6,14 @@ void on_loop() {
   now = millis();
   if (now - lastMsg > sensorsUpdateInterval ) {
     lastMsg = now;
-    
     //
     // Read and process sensors
     //
-/*
-    char tempString[8];
-    dtostrf(temperature, 1, 2, tempString);
-    Serial.print("Temperature: ");
-    Serial.println(tempString);
-    enviarMensajePorTopic("esp32/temperature", tempString);
-*/
 
   }
-
+  //ejecuta las funciones de leer la camaraqr, observar si el boton esta pulsado y si las luces se apagan
+  //readbutton(); 
+  cameraqr();
+  //ilumination();
 }
 
