@@ -45,6 +45,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         enviarMensajePorTopic(DESPALETIZADO_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(ASIGNACION_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(SENSOR1_STATUS_TOPIC, state_json);
+        enviarMensajePorTopic(AGV_STATUS_TOPIC, state_json);
         lcd.clear();
         lcd.print("START PROCESSING");
       } else if (state == "finished") {
@@ -127,29 +128,43 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
       }
     }
   } else warnln("**>> Solicitud no reconocida!");
-if (strcmp(topic, SENSOR1_STATUS_TOPIC) == 0) {
-  JsonDocument doc;
-  DeserializationError err = deserializeJson(doc, incomingMessage);
-  if (!err) {
-    String state = doc["STATE"];
-    if (state == "ready") {
-      StaticJsonDocument<200> doc;
-      doc["ACTION"] = "start";
-      String action_json;
-      serializeJson(doc, action_json);
-      enviarMensajePorTopic(SENSOR1_COMMANDS_TOPIC, action_json);
+  if (strcmp(topic, SENSOR1_STATUS_TOPIC) == 0) {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if (!err) {
+      String state = doc["STATE"];
+      if (state == "ready") {
+        StaticJsonDocument<200> doc;
+        doc["ACTION"] = "start";
+        String action_json;
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(SENSOR1_COMMANDS_TOPIC, action_json);
+      }
     }
   }
-}
-if (strcmp(topic, INFOPEDIDO_TOPIC) == 0) {
-  getOrder(&bDespaletizado, bAsignacion, incomingMessage);
-  StaticJsonDocument<200> doc;
-  doc["STATE"] = "start";
-  String state_json;
-  serializeJson(doc, state_json);
-  enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
-}
-/*if (strcmp(topic, STOCK_TOPIC) == 0) {
+  if (strcmp(topic, AGV_STATUS_TOPIC) == 0) {
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    if (!err) {
+      String state = doc["STATE"];
+      if (state == "ready") {
+        StaticJsonDocument<200> doc;
+        doc["ACTION"] = "start";
+        String action_json;
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(AGV_COMMANDS_TOPIC, action_json);
+      }
+    }
+  }
+  if (strcmp(topic, ORDERPROCES_TOPIC) == 0) {
+    getOrder(&bDespaletizado, bAsignacion, incomingMessage);
+    StaticJsonDocument<200> doc;
+    doc["STATE"] = "start";
+    String state_json;
+    serializeJson(doc, state_json);
+    enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
+  }
+  /*if (strcmp(topic, STOCK_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
     if (!err) {
