@@ -1,6 +1,6 @@
 String bDespaletizado = "";
+order pedido;
 box bAsignacion[100];
-
 void suscribirseATopics() {
 
   // TODO: añadir suscripciones a los topics MQTT ...
@@ -15,6 +15,7 @@ void suscribirseATopics() {
   mqtt_subscribe(DESPALETIZADO_STATUS_TOPIC);
   mqtt_subscribe(CONVEYOR1_STATUS_TOPIC);
   mqtt_subscribe(SENSOR1_STATUS_TOPIC);
+  mqtt_subscribe(AGV_STATUS_TOPIC);
 }
 
 void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
@@ -41,17 +42,28 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         doc["STATE"] = "ready";
         String state_json;
         serializeJson(doc, state_json);
+        enviarMensajePorTopic(AGV_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(CONVEYOR1_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(DESPALETIZADO_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(ASIGNACION_STATUS_TOPIC, state_json);
         enviarMensajePorTopic(SENSOR1_STATUS_TOPIC, state_json);
-        enviarMensajePorTopic(AGV_STATUS_TOPIC, state_json);
         lcd.clear();
         lcd.print("START PROCESSING");
       } else if (state == "finished") {
         bDespaletizado = "";
         lcd.clear();
         lcd.print("ORDER FINISHED");
+        StaticJsonDocument<200> doc;
+        delay(3000);
+        doc["ACTION"] = "place";
+        String action_json;
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(AGV_COMMANDS_TOPIC, action_json);
+        delay(3000);
+        doc["ACTION"] = "stop";
+        serializeJson(doc, action_json);
+        enviarMensajePorTopic(CONVEYOR1_COMMANDS_TOPIC, action_json);
+        //stop conveyor 
 
       } else warnln("**>> Solicitud no reconocida!");
     } else warnln("**>> Solicitud no reconocida!");
@@ -157,7 +169,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     }
   }
   if (strcmp(topic, ORDERPROCES_TOPIC) == 0) {
-    getOrder(&bDespaletizado, bAsignacion, incomingMessage);
+    pedido = getOrder(&bDespaletizado, bAsignacion, incomingMessage);
     StaticJsonDocument<200> doc;
     doc["STATE"] = "start";
     String state_json;

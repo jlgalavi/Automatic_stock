@@ -1,9 +1,10 @@
-void getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) {
+order getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) {
   JsonDocument doc;
   DeserializationError err = deserializeJson(doc, incomingMessage);
   int index = 0;
+  order tempOrder;
   if (!err) {
-    order tempOrder = order(doc["N_CONT"].as<int>(), doc["ID_PEDIDO"]);
+    tempOrder = order(doc["N_CONT"].as<int>(), doc["ID_PEDIDO"]);
     JsonArray CONTAINER = doc["CONTAINER"];
     for (JsonVariant v : CONTAINER) {
       container inputContainer = container(v["N_BOX"].as<int>(), v["ID_CONT"]);
@@ -19,6 +20,7 @@ void getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) 
       tempOrder.add_container(inputContainer);
     }
   }
+  return tempOrder;
 }
 
 bool compareIDs(String ID1, String ID2)
