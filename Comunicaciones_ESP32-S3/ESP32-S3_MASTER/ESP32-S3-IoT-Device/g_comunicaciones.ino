@@ -1,6 +1,5 @@
-String bDespaletizado = "";
 order pedido;
-box bAsignacion[100];
+
 void suscribirseATopics() {
 
   // TODO: añadir suscripciones a los topics MQTT ...
@@ -111,7 +110,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     }
   }
   if (strcmp(topic, ASIGNACION_STATUS_TOPIC) == 0) {
-    JsonDocument doc;
+    /*JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
     String order = "Colocar_";
     if (!err) {
@@ -128,6 +127,36 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
             enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
             bAsignacion[i].set_box();
             i = bDespaletizado.length();
+          }
+        }
+        if ((bAsignacion[bDespaletizado.length() - 1].get_setBox())) {
+          StaticJsonDocument<200> doc;
+          doc["STATE"] = "finished";
+          String state_json;
+          serializeJson(doc, state_json);
+          enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
+        }
+      }
+    }*/
+    JsonDocument doc;
+    DeserializationError err = deserializeJson(doc, incomingMessage);
+    String order = "Colocar_";
+    if (!err) {
+      String state = doc["STATE"];
+      if (state == "start") {
+        for (int i = 0; i < bDespaletizado.length(); i++) {
+          for(int j = 0; j < pedido.get_Size(); j++){
+            if (!(bAsignacion[i].get_setBox())) {
+            StaticJsonDocument<200> doc;
+            order = order + bAsignacion[i].get_boxID();
+            doc["ACTION"] = order;
+            doc["POSE"] = bAsignacion[i].get_boxpos();
+            String action_json;
+            serializeJson(doc, action_json);
+            enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
+            bAsignacion[i].set_box();
+            i = bDespaletizado.length();
+          }
           }
         }
         if ((bAsignacion[bDespaletizado.length() - 1].get_setBox())) {
@@ -169,7 +198,7 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     }
   }
   if (strcmp(topic, ORDERPROCES_TOPIC) == 0) {
-    pedido = getOrder(&bDespaletizado, bAsignacion, incomingMessage);
+    pedido = getOrder(incomingMessage);
     StaticJsonDocument<200> doc;
     doc["STATE"] = "start";
     String state_json;

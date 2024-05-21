@@ -1,7 +1,6 @@
-order getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage) {
+order getOrder(String incomingMessage) {
   JsonDocument doc;
   DeserializationError err = deserializeJson(doc, incomingMessage);
-  int index = 0;
   order tempOrder;
   if (!err) {
     tempOrder = order(doc["N_CONT"].as<int>(), doc["ID_PEDIDO"]);
@@ -12,13 +11,11 @@ order getOrder(String* bDespaletizado, box* bAsignacion, String incomingMessage)
       for (JsonVariant w : Positions) {
         box inputBox = box(w["ID_BOX"], w["POSE"]);
         String id = w["ID_BOX"];
-        bDespaletizado[0] = bDespaletizado[0] + id;
         inputContainer.add_box(inputBox);
-        bAsignacion[index] = inputBox;
-        index++;
       }
       tempOrder.add_container(inputContainer);
     }
+    temOrder.set_Idboxes();
   }
   return tempOrder;
 }
