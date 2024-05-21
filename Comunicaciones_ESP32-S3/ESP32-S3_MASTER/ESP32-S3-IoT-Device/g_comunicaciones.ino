@@ -5,7 +5,7 @@ void suscribirseATopics() {
 
   // TODO: añadir suscripciones a los topics MQTT ...
   mqtt_subscribe(HELLO_TOPIC);
-  mqtt_subscribe(INFOPEDIDO_TOPIC);
+  mqtt_subscribe(ORDERPROCES_TOPIC);
   mqtt_subscribe(STOCK_TOPIC);
   //mqtt_subscribe(TEMPERATURE_TOPIC);
   //mqtt_subscribe(EMERGENCY_TOPIC);
