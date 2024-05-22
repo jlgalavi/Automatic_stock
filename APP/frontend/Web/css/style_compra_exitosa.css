@@ -123,3 +123,10 @@ h2{
     }
 }
 
+@media (max-width:400px)
+{
+    main{
+        gap: 30px;
+    }
+}
+
