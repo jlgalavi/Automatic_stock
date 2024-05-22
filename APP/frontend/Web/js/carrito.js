@@ -96,7 +96,7 @@ function animacionCarga(){
     loadingAnimation.style.display = 'flex';
 
     setTimeout(function() {
-        window.location.href = "#";
+        window.location.href = "compra_exitosa.html";
         loadingAnimation.style.display = 'none';
     }, 2000);
 }
