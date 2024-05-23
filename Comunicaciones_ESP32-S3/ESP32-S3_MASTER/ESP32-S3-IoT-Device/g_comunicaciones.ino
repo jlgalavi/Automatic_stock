@@ -49,20 +49,18 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         lcd.clear();
         lcd.print("START PROCESSING");
       } else if (state == "finished") {
-        bDespaletizado = "";
         lcd.clear();
         lcd.print("ORDER FINISHED");
         StaticJsonDocument<200> doc;
-        delay(3000);
+        delay(5000);
         doc["ACTION"] = "place";
         String action_json;
         serializeJson(doc, action_json);
         enviarMensajePorTopic(AGV_COMMANDS_TOPIC, action_json);
-        delay(3000);
         doc["ACTION"] = "stop";
         serializeJson(doc, action_json);
         enviarMensajePorTopic(CONVEYOR1_COMMANDS_TOPIC, action_json);
-        //stop conveyor 
+        //stop conveyor
 
       } else warnln("**>> Solicitud no reconocida!");
     } else warnln("**>> Solicitud no reconocida!");
@@ -70,25 +68,33 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
   if (strcmp(topic, DESPALETIZADO_STATUS_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
+    String order = "Despaletizado_";
+    String tempboxesContainerId = pedido.get_Idboxes();
+    int tempncontainers = pedido.get_Size();
+    container* tempContainers = pedido.get_containers();
     if (!err) {
       String state = doc["STATE"];
       if (state == "ready") {
-        String order = "Despaletizado_";
-        for (int i = 0; i < bDespaletizado.length(); i++) {
-          if (bDespaletizado[i] != 'F') {
-            StaticJsonDocument<200> doc;
-            order = order + bDespaletizado[i];
-            doc["ACTION"] = order;
-            String action_json;
-            serializeJson(doc, action_json);
-            enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
-            bDespaletizado[i] = 'F';
-            i = bDespaletizado.length();
-            // TODO: Reiniciar cadena de texto
+        for (int i = 0; i < tempncontainers; i++) {
+          box* tempBoxes = tempContainers[i].get_boxes();
+          for (int j = 0; j < tempContainers[i].get_containerSize(); j++) {
+            if (!(tempBoxes[j].get_pickBox())) {
+              StaticJsonDocument<200> doc;
+              order = order + tempBoxes[j].get_boxID();
+              doc["ACTION"] = order;
+              String action_json;
+              serializeJson(doc, action_json);
+              enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
+              tempBoxes[j].pick_box();
+              j = 100;
+              i = tempncontainers;
+            }
+          }
+          if(i < tempncontainers){
+            
           }
         }
       }
-      Serial.println(bDespaletizado);
     }
   }
   if (strcmp(topic, CONVEYOR1_STATUS_TOPIC) == 0) {
@@ -110,56 +116,37 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
     }
   }
   if (strcmp(topic, ASIGNACION_STATUS_TOPIC) == 0) {
-    /*JsonDocument doc;
-    DeserializationError err = deserializeJson(doc, incomingMessage);
-    String order = "Colocar_";
-    if (!err) {
-      String state = doc["STATE"];
-      if (state == "start") {
-        for (int i = 0; i < bDespaletizado.length(); i++) {
-          if (!(bAsignacion[i].get_setBox())) {
-            StaticJsonDocument<200> doc;
-            order = order + bAsignacion[i].get_boxID();
-            doc["ACTION"] = order;
-            doc["POSE"] = bAsignacion[i].get_boxpos();
-            String action_json;
-            serializeJson(doc, action_json);
-            enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
-            bAsignacion[i].set_box();
-            i = bDespaletizado.length();
-          }
-        }
-        if ((bAsignacion[bDespaletizado.length() - 1].get_setBox())) {
-          StaticJsonDocument<200> doc;
-          doc["STATE"] = "finished";
-          String state_json;
-          serializeJson(doc, state_json);
-          enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
-        }
-      }
-    }*/
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);
     String order = "Colocar_";
+    int tempncontainers = pedido.get_Size();
+    container* tempContainers = pedido.get_containers();
     if (!err) {
       String state = doc["STATE"];
       if (state == "start") {
-        for (int i = 0; i < bDespaletizado.length(); i++) {
-          for(int j = 0; j < pedido.get_Size(); j++){
-            if (!(bAsignacion[i].get_setBox())) {
-            StaticJsonDocument<200> doc;
-            order = order + bAsignacion[i].get_boxID();
-            doc["ACTION"] = order;
-            doc["POSE"] = bAsignacion[i].get_boxpos();
-            String action_json;
-            serializeJson(doc, action_json);
-            enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
-            bAsignacion[i].set_box();
-            i = bDespaletizado.length();
+        for (int i = 0; i < tempncontainers; i++) {
+          box* tempBoxes = tempContainers[i].get_boxes();
+          for (int j = 0; j < tempContainers[i].get_containerSize(); j++) {
+            if (!(tempBoxes[j].get_placeBox())) {
+              StaticJsonDocument<200> doc;
+              order = order + tempBoxes[j].get_boxID();
+              doc["ACTION"] = order;
+              doc["POSE"] = tempBoxes[j].get_boxpos();
+              String action_json;
+              serializeJson(doc, action_json);
+              enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
+              tempBoxes[j].place_box();
+              j = 100;
+              i = tempncontainers;
+            }
           }
+          if(i < tempncontainers){
+
           }
         }
-        if ((bAsignacion[bDespaletizado.length() - 1].get_setBox())) {
+        box* proveBox = tempContainers[tempncontainers - 1].get_boxes();
+        if ((proveBox[tempContainers[tempncontainers - 1].get_containerSize() - 1].get_placeBox())) {
+          delay(10000);
           StaticJsonDocument<200> doc;
           doc["STATE"] = "finished";
           String state_json;
@@ -167,8 +154,8 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
           enviarMensajePorTopic(STATION_STATUS_TOPIC, state_json);
         }
       }
-    }
-  } else warnln("**>> Solicitud no reconocida!");
+    } else warnln("**>> Solicitud no reconocida!");
+  } 
   if (strcmp(topic, SENSOR1_STATUS_TOPIC) == 0) {
     JsonDocument doc;
     DeserializationError err = deserializeJson(doc, incomingMessage);

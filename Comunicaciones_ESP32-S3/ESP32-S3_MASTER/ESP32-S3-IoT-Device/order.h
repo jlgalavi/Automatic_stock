@@ -69,8 +69,8 @@ public:
 
   void set_Idboxes(){
     for(int i = 0; i < ncontainers; i++){
-      box* tempboxes = conatiners[i].get_boxes();
-      for(int j = 0; j < conatiners[i].get_containerSize(); j++){
+      box* tempboxes = containers[i].get_boxes();
+      for(int j = 0; j < containers[i].get_containerSize(); j++){
         IdBoxes = IdBoxes + tempboxes[j].get_boxID(); 
       }
     }
@@ -78,5 +78,9 @@ public:
 
   String get_Idboxes(){
     return IdBoxes;
+  }
+
+  void modify_Idboxes(int index){
+    IdBoxes[index] = 'F';
   }
 };
