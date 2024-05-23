@@ -7,6 +7,7 @@ private:
   String ID;
   int ncontainers;
   container* containers;
+  String IdBoxes;
 
 public:
 
@@ -18,6 +19,7 @@ public:
 
   order() {
     ID = "";
+    IdBoxes = "";
   }
 
   void add_container(container c_add) {
@@ -63,5 +65,22 @@ public:
     for (int i = 0; i < ncontainers; i++) {
       containers[i].print_container();
     }
+  }
+
+  void set_Idboxes(){
+    for(int i = 0; i < ncontainers; i++){
+      box* tempboxes = containers[i].get_boxes();
+      for(int j = 0; j < containers[i].get_containerSize(); j++){
+        IdBoxes = IdBoxes + tempboxes[j].get_boxID(); 
+      }
+    }
+  }
+
+  String get_Idboxes(){
+    return IdBoxes;
+  }
+
+  void modify_Idboxes(int index){
+    IdBoxes[index] = 'F';
   }
 };

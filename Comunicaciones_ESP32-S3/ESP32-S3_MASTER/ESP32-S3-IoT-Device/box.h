@@ -5,6 +5,8 @@ class box {
     String ID;
     String pos;
     bool set = false;
+    bool pick = false;
+    bool place = false;
 
   public:
 
@@ -35,9 +37,29 @@ class box {
       return set;
     }
 
+    bool get_pickBox()
+    {
+      return pick;
+    }
+
+    bool get_placeBox()
+    {
+      return place;
+    }
+
     void set_box()
     {
       set = true;
+    }
+
+    void pick_box()
+    {
+      pick = true;
+    }
+
+    void place_box()
+    {
+      place = true;
     }
 
     void print_box()
@@ -45,7 +67,7 @@ class box {
       Serial.print("BOX --> ");
       Serial.print(ID);
       Serial.print("; POSE --> ");
-      Serial.println(pos);
+      Serial.print(pos);
     }
 
 };
