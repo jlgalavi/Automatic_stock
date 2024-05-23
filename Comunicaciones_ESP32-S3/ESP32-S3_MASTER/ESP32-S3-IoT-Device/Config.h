@@ -11,8 +11,8 @@
 #define DEVICE_GIIROB_PR2_ID      "giirobpr2_B1" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                  "iPhone"////"UPV-PSK"
-#define NET_PASSWD                "Hxry-Fp0R-8yMS-5HBS"////"giirob-pr2-2023"
+#define NET_SSID                  //"UPV-PSK"
+#define NET_PASSWD                //"giirob-pr2-2023"
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//

@@ -29,7 +29,6 @@ int main()
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
         order O1;
-        O1.save_order();
         Algorithms A1(O1.get_num_boxes(), LENGTH1, WIDTH1, HEIGHT1, O1.get_V_boxes());
         A1.place_boxes();
         /*
