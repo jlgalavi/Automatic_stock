@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <sstream>
+#include <string>
+#include <cstdio>
 #include "../headers/box.h"
 #include "../headers/order.h"
 
@@ -8,6 +11,49 @@
 // Order constructor, where we generate the menu to select the boxes
 order::order()
 {
+    std::ifstream file("D:\\repos\\Automatic_stock\\filesTXT\\webOrder.txt");
+        if (!file) {
+            throw std::runtime_error("Could not open file");
+        }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string ignore;
+        int id, quantity;
+        iss >> ignore >> id >> ignore >> ignore >> quantity;
+        if (id == 1) {
+            for (int i = 0; i < quantity; i++) {
+                V_boxes_order.push_back(box(15, 12, 10, false, 'S'));
+            }
+        }
+        else if (id == 2) {
+            for (int i = 0; i < quantity; i++) {
+                V_boxes_order.push_back(box(20, 21, 7, false, 'M'));
+            }
+        }
+        else if (id == 3) {
+            for (int i = 0; i < quantity; i++) {
+                V_boxes_order.push_back(box(20, 21, 21, false, 'L'));
+            }
+        }
+        else if (id == 4) {
+            for (int i = 0; i < quantity; i++) {
+                V_boxes_order.push_back(box(25, 30, 21, false, 'X'));
+            }
+        }
+    }
+    file.close();
+    if (std::remove("D:\\repos\\Automatic_stock\\filesTXT\\webOrder.txt") == 0) {
+        std::cout << "Archivo <webOrder.txt> eliminado con exito\n";
+    } else {
+        std::cerr << "No se pudo eliminar el archivo\n";
+    }
+    std::cout << "Order loaded" << std::endl;
+    num_boxes = V_boxes_order.size();
+    
+
+    /*
     std::cout << "Welcome to the box ordering system" << std::endl;
     std::cout << "Type the number of the box that you want to order" << std::endl;
     for(int i = 0; i < 1000; i++)
@@ -50,7 +96,7 @@ order::order()
             break;
         }
     }
-    num_boxes = V_boxes_order.size();
+    num_boxes = V_boxes_order.size();*/
 }
 // Mostrar la orden
 // Show the order
