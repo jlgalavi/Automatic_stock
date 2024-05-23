@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <filesystem>
+#include <thread>
 #include "src/headers/Algorithms.h"
 #include "src/headers/order.h"
 #include "src/headers/shipment.h"
@@ -23,6 +25,14 @@ int main()
     int menu;
     for(;;)
     {
+        while (!std::filesystem::exists("D:\\repos\\Automatic_stock\\filesTXT\\webOrder.txt")) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+        order O1;
+        O1.save_order();
+        Algorithms A1(O1.get_num_boxes(), LENGTH1, WIDTH1, HEIGHT1, O1.get_V_boxes());
+        A1.place_boxes();
+        /*
         std::cout << "Welcome to the NN system" << std::endl; 
         std::cout << "Select an option" << std::endl;
         std::cout << "1. Order boxes" << std::endl;
@@ -50,7 +60,7 @@ int main()
         else
         {
             std::cout << "Invalid option" << std::endl;
-        }
+        }*/
         
     }
     return 0;
