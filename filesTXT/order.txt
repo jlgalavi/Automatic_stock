@@ -1,0 +1,27 @@
+
+--------------------------
+  Number of boxes: 4
+  Box 1
+  ID_Box M
+  Length: 20
+  Width: 21
+  Height: 7
+  Volume: 2940
+  Box 2
+  ID_Box M
+  Length: 20
+  Width: 21
+  Height: 7
+  Volume: 2940
+  Box 3
+  ID_Box L
+  Length: 20
+  Width: 21
+  Height: 21
+  Volume: 8820
+  Box 4
+  ID_Box L
+  Length: 20
+  Width: 21
+  Height: 21
+  Volume: 8820

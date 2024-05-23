@@ -1,0 +1,10 @@
+Container: 1
+Number-boxes: 4
+ID_Box: L
+Target: (10, 10.5, 21)
+ID_Box: L
+Target: (30, 10.5, 21)
+ID_Box: M
+Target: (50, 10.5, 7)
+ID_Box: M
+Target: (70, 10.5, 7)
