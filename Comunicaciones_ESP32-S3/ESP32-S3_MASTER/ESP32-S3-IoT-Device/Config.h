@@ -25,6 +25,7 @@
 
 #define HELLO_TOPIC                   "giirob/pr2/B1/hello"    // TODO: topic ejemplo ejercicio inicial
 #define ORDERPROCES_TOPIC             "giirob/pr2/B1/orderProces"
+#define NEWCONTAINER_TOPIC            "giirob/pr2/B1/newContainer"
 #define STATION_STATUS_TOPIC          "giirob/pr2/B1/status"
 #define DESPALETIZADO_STATUS_TOPIC    "giirob/pr2/B1/actions/despaletizado/status"
 #define DESPALETIZADO_COMMANDS_TOPIC  "giirob/pr2/B1/actions/despaletizado/commands"

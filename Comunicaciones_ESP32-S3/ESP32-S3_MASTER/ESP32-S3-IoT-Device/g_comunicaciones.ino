@@ -52,7 +52,6 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
         lcd.clear();
         lcd.print("ORDER FINISHED");
         StaticJsonDocument<200> doc;
-        delay(5000);
         doc["ACTION"] = "place";
         String action_json;
         serializeJson(doc, action_json);
@@ -89,9 +88,6 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
               j = 100;
               i = tempncontainers;
             }
-          }
-          if(i < tempncontainers){
-            
           }
         }
       }
@@ -141,12 +137,15 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
             }
           }
           if(i < tempncontainers){
-
+            StaticJsonDocument<200> doc;
+            doc["ACTION"] = "start";
+            String action_json;
+            serializeJson(doc, action_json);
+            enviarMensajePorTopic(NEWCONTAINER_TOPIC, action_json);
           }
         }
         box* proveBox = tempContainers[tempncontainers - 1].get_boxes();
         if ((proveBox[tempContainers[tempncontainers - 1].get_containerSize() - 1].get_placeBox())) {
-          delay(10000);
           StaticJsonDocument<200> doc;
           doc["STATE"] = "finished";
           String state_json;
