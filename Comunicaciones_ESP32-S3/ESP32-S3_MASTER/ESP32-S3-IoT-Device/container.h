@@ -15,10 +15,12 @@ public:
     ID = idcontainer;
     nboxes = nbox;
     boxes = new box[nbox];
+    set = false;
   }
 
   container() {
     ID = "";
+    set = false;
   }
 
   void add_box(box b_add) {
