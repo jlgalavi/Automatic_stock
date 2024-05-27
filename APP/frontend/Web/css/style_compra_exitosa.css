@@ -94,7 +94,7 @@ h2{
 
 .footer-text
 {
-    margin-top: 20px;
+    margin-top: 4px;
     font-size: 20px;
     color: #747b8f;
     text-align: center;
@@ -105,68 +105,28 @@ h2{
 
     h1{
         font-size: 30px;
-    }
-    
-    .boton_volver{
-        font-size: 25px;
-        padding: 15px;
-    }
-
-    .footer-text
-    {
-        font-size: 20px;
-        margin-top: 20px;
-    }
+    }   
 
 }
 
 @media (max-width: 600px)
 {
-    main{
-        gap: 50px;
-    }
     .inicio-title h1
-    {   
+    {
         font-size: 14px;
     }
 
     .boton_volver{
-        margin-top: 0px;
-        font-size: 20px;
-        padding:15px;
-    }
-
-    .footer-text
-    {
-        font-size: 20px;
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 500px)
-{
-    main{
-        gap: 100px;
-    }
-
-    .boton_volver{
-        margin-top: 0px;
-        font-size: 20px;
-        padding: 15px;
-    }
-
-    .footer-text
-    {
-        font-size: 20px;
-        margin-top: 20px;
+        margin-top: auto;
+        font-size: 15px;
+        padding:10px;
     }
 }
 
 @media (max-width:400px)
 {
-    .footer-text
-    {
-        font-size: 17px;
+    main{
+        gap: 30px;
     }
 }
 
