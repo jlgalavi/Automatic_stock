@@ -62,11 +62,8 @@ void mqtt_reconnect(int retries) {
     if ( mqttClient.connect(mqttClientID.c_str()) ) {
   #endif
       debugln("-=- Connected to MQTT Broker");
-  
       // Damos tiempo a que la conexión se establezca por completo
       delay(1000);
-
-
     } else {
       debug("-X- failed, rc=");
       debugln(mqttClient.state());
@@ -92,7 +89,6 @@ void mqttCallback(char* topic, byte* message, unsigned int length) {
   traceln(incomingMessage);
 
   alRecibirMensajePorTopic(topic, incomingMessage);
-
 }
 
 void mqtt_publish(const char* topic, String outgoingMessage) {
