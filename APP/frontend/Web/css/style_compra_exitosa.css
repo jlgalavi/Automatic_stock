@@ -94,7 +94,7 @@ h2{
 
 .footer-text
 {
-    margin-top: 4px;
+    margin-top: 20px;
     font-size: 20px;
     color: #747b8f;
     text-align: center;
@@ -120,6 +120,10 @@ h2{
         margin-top: auto;
         font-size: 15px;
         padding:10px;
+    }
+
+    .footer-text{
+        font-size: 17px;
     }
 }
 
