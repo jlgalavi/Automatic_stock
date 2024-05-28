@@ -85,8 +85,8 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
               serializeJson(doc, action_json);
               enviarMensajePorTopic(DESPALETIZADO_COMMANDS_TOPIC, action_json);
               tempBoxes[j].pick_box();
-              j = 100;
               i = tempncontainers;
+              break;
             }
           }
         }
@@ -132,8 +132,8 @@ void alRecibirMensajePorTopic(char* topic, String incomingMessage) {
               serializeJson(doc, action_json);
               enviarMensajePorTopic(ASIGNACION_COMMANDS_TOPIC, action_json);
               tempBoxes[j].place_box();
-              j = 100;
               i = tempncontainers;
+              break;
             }
           }
           if(i < tempncontainers){

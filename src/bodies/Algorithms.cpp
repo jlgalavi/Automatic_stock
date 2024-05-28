@@ -224,7 +224,13 @@ void Algorithms::save_results(target t_in, box b_in)
     std::ofstream file;
     file.open("D:\\repos\\Automatic_stock\\filesTXT\\results.txt", std::ios::app);
     file << "ID_Box: " << b_in.get_id() << std::endl;
-    file << "Target: (" << t_in.get_position_x() << ", " << t_in.get_position_y() << ", " << t_in.get_position_z() << ")" << std::endl;
+    if(t_in.get_is_rotate())
+    {
+        file << "Position: (" << t_in.get_position_x() << "," << t_in.get_position_y() << "," << t_in.get_position_z() << "," << "90)" << std::endl;
+    } else
+    {
+        file << "Position: (" << t_in.get_position_x() << "," << t_in.get_position_y() << "," << t_in.get_position_z() << "," << "0)" << std::endl;
+    }
     file.close();
 }
 /* FUNCION PARA COLOCAR LAS CAJAS EN LOS CONTENEDORES
@@ -338,7 +344,7 @@ void Algorithms::place_boxes()
                                 }
 
                                 calculate_position_target(&pos_x, &pos_y, &pos_z, l, w, h, o, n, m, false);
-                                target T1(pos_x, pos_y, pos_z);
+                                target T1(pos_x, pos_y, pos_z, false);
                                 add_target(T1);
                                 w = width_container_in_use;
                                 l = length_container_in_use;
@@ -363,7 +369,7 @@ void Algorithms::place_boxes()
                                 }
                                 
                                 calculate_position_target(&pos_x, &pos_y, &pos_z, l, w, h, o, n, m, true);
-                                target T1(pos_x, pos_y, pos_z);
+                                target T1(pos_x, pos_y, pos_z, true);
                                 add_target(T1);
                                 w = width_container_in_use;
                                 l = length_container_in_use;

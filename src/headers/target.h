@@ -10,13 +10,15 @@ class target
         float position_x;
         float position_y;
         float position_z;
+        bool is_rotate;
     
     public:
         target();
-        target(float x, float y, float z);
+        target(float x, float y, float z, bool rotate);
         float get_position_x();
         float get_position_y();
         float get_position_z();
+        bool get_is_rotate();
         void show_target();
         
 };
