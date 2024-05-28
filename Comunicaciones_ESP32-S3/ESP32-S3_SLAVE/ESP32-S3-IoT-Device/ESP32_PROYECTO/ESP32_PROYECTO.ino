@@ -1,4 +1,4 @@
-/*
+/*dev modçulel
  * Grado GIIROB
  * Asignatura PR2
  * Joan Fons (jjfons@dsic.upv.es)
@@ -7,6 +7,7 @@
  * Plantilla Dispositivo IoT
  *
  * Control de versiones
+ * Version: 0.6   (2024/02/21) JSON Management
  * Version: 0.5.1 (2024/02/20) SSL fork
  * Version: 0.5   (2024/02/19) Mejora en comunicaciones y reconexiones
  * Version: 0.4   (2024/02/15) Reestructuración y simplificación
@@ -22,16 +23,15 @@
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
-#include "src/ESP32QRCodeReader.h"
-ESP32QRCodeReader reader(CAMERA_MODEL_ESP32S3_EYE);
-
+TaskHandle_t ilumination_Task; 
+TaskHandle_t readbutton_Task; 
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
 String deviceID = String("giirobpr2-device-") + String(DEVICE_GIIROB_PR2_ID); 
   // Versión usando el ID asignado en la asignatura GIIROB-PR2
 //String deviceID = String("device-") + String(WiFi.macAddress());            
   // Versión usando la dirección MAC del dispositivo
 //String deviceID = String("device-esp32s3-") + String(DEVICE_ESP_ID);        
-// Versión usando el ID de ESP del dispositivo
+  // Versión usando el ID de ESP del dispositivo
 
 void setup() {
   // Este setup configura conceptos 'core', inicializa la wifi y la conexión con 
@@ -58,9 +58,9 @@ void setup() {
 
   // TODO: completar esta función (g_comunicaciones.ino)
   suscribirseATopics();
-
-  // TODO: completar esta función (s_setup.ino)
   on_setup();
+  // TODO: completar esta función (s_setup.ino)
+  setup_QR();
 
 }
 
@@ -69,9 +69,8 @@ void loop() {
   // NO QUITAR (jjfons)
   wifi_loop();
   mqtt_loop();
-
   // TODO: completar esta función (w_loop.ino)
-  on_loop();
+  //loop_QR();
 }
 
 
