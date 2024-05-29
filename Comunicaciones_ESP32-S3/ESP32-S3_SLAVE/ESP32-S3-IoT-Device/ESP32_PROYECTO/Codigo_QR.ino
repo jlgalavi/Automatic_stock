@@ -68,7 +68,16 @@ void setup_QR() {
   Serial.println("Configure and initialize the camera successfully.");
   Serial.println();
   
-  xTaskCreatePinnedToCore(QRCodeReader, "QRCodeReader_Task", 10000, NULL, 1, &QRCodeReader_Task, 0);
+  /* Create "QRCodeReade
+  r_Task" using the xTaskCreatePinnedToCore() function */
+  xTaskCreatePinnedToCore(
+             QRCodeReader,          /* Task function. */
+             "QRCodeReader_Task",   /* name of task. */
+             10000,                 /* Stack size of task */
+             NULL,                  /* parameter of the task */
+             1,                     /* priority of the task */
+             &QRCodeReader_Task,    /* Task handle to keep track of created task */
+             0);                    /* pin task to core 0 */
 }
 /* The function to be executed by "QRCodeReader_Task" */
 // This function is to instruct the camera to take or capture a QR Code image,
@@ -135,11 +144,6 @@ void dumpData_bis(const struct quirc_data *data)
   Serial.printf("Length: %d\n", data->payload_len);
   Serial.printf("Payload: %s\n", data->payload);
   //MQTT
-  QRCodeResult = (const char *)data->payload; //lee el valor del sensor ldr
- 
-  StaticJsonDocument<200> doc; //crea el mensaje en formato json
-  doc["ID_BOX"] = QRCodeResult;
-  String state_json;
-  serializeJson(doc, state_json);
-  enviarMensajePorTopic(CONTROLBOX_TOPIC,state_json);
+  QRCodeResult = (const char *)data->payload;
+  enviarMensajePorTopic(HELLO_TOPIC,QRCodeResult);
 }
