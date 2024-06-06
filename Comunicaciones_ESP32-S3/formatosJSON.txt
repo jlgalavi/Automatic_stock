@@ -81,7 +81,7 @@ Archivo JSON:
 [
     {
         "ID_SENSOR": "<string>",
-        "DATA": "<float>"
+        "DATA": "<string>"
     },
     {
         ...
@@ -95,7 +95,7 @@ TOPIC: EMERGENCY_TOPIC --> giirob/pr2/B1/control/emergency
 SUBSCRIBERS:
     - ESP32-S3_MASTER
 PUBLISHERS:
-    - ESP32-S3_SLAVE
+    - ESP32-S3_SLAVE    
 Archivo JSON:
 '''
 {

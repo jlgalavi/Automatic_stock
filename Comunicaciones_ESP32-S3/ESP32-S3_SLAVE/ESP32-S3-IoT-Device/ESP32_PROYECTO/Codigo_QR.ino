@@ -1,10 +1,10 @@
-/*#include <Arduino.h>
+#include <Arduino.h>
 #include "src/quirc/quirc.h"
 #include "esp_camera.h"
 #include "Config.h"
 // creating a task handle
 TaskHandle_t QRCodeReader_Task; 
-//Variables declaration 
+/*  Variables declaration */
 struct QRCodeData
 {
   bool valid;
@@ -21,16 +21,15 @@ struct quirc_data data;
 quirc_decode_error_t err;
 struct QRCodeData qrCodeData;  
 String QRCodeResult = "";
-bool caja_urgente;
-void cambiar_urgencia(bool valor){
-  caja_urgente=valor;
-}
 
+/* VOID SETTUP() */
 void setup_QR() {
   // Disable brownout detector.
   //WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
 
+  /* Init serial communication speed (baud rate). */
  Serial.begin(115200);
+  /* Camera configuration. */
   Serial.println("Start configuring and initializing the camera...");
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -68,9 +67,19 @@ void setup_QR() {
   
   Serial.println("Configure and initialize the camera successfully.");
   Serial.println();
-                    /* pin task to core 0 */
-//}
-/* The function to be executed by "QRCodeReader_Task" 
+  
+  /* Create "QRCodeReade
+  r_Task" using the xTaskCreatePinnedToCore() function */
+  xTaskCreatePinnedToCore(
+             QRCodeReader,          /* Task function. */
+             "QRCodeReader_Task",   /* name of task. */
+             10000,                 /* Stack size of task */
+             NULL,                  /* parameter of the task */
+             1,                     /* priority of the task */
+             &QRCodeReader_Task,    /* Task handle to keep track of created task */
+             0);                    /* pin task to core 0 */
+}
+/* The function to be executed by "QRCodeReader_Task" */
 // This function is to instruct the camera to take or capture a QR Code image,
 // then it is processed and translated into text.
 void QRCodeReader( void * pvParameters ){
@@ -79,7 +88,7 @@ void QRCodeReader( void * pvParameters ){
   Serial.println(xPortGetCoreID());
   Serial.println();
 
-  /* Loop to read QR Code in real time. 
+  /* Loop to read QR Code in real time. */
   while(1){
       q = quirc_new();
       if (q == NULL){
@@ -92,7 +101,7 @@ void QRCodeReader( void * pvParameters ){
       if (!fb)
       {
         Serial.println("Camera capture failed");
-        enviarMensajePorTopic(CONTROLBOX_TOPIC,"Camera capture failed" );
+        //enviarMensajePorTopic(HELLO_TOPIC,"Camera capture failed" );
         continue;
       }   
       
@@ -107,11 +116,11 @@ void QRCodeReader( void * pvParameters ){
         err = quirc_decode(&code, &data);
     
         if (err){
-          enviarMensajePorTopic(CONTROLBOX_TOPIC,"Decoding FAILED");
+          //enviarMensajePorTopic(HELLO_TOPIC,"Decoding FAILED");
           Serial.println("Decoding FAILED");
           QRCodeResult = "Decoding FAILED";
         } else {
-          enviarMensajePorTopic(CONTROLBOX_TOPIC,"Decoding successful:\n");
+          //enviarMensajePorTopic(HELLO_TOPIC,"Decoding successful:\n");
           Serial.printf("Decoding successful:\n");
           dumpData_bis(&data);
         } 
@@ -126,7 +135,7 @@ void QRCodeReader( void * pvParameters ){
   delay(10);//mirar si funciona sin o si es necesario
 }
 
-/* Function to display the results of reading the QR Code on the serial monitor. 
+/* Function to display the results of reading the QR Code on the serial monitor. */
 void dumpData_bis(const struct quirc_data *data)
 {
   Serial.printf("Version: %d\n", data->version);
@@ -136,11 +145,5 @@ void dumpData_bis(const struct quirc_data *data)
   Serial.printf("Payload: %s\n", data->payload);
   //MQTT
   QRCodeResult = (const char *)data->payload;
-  if(caja_urgente==true){
-    enviarMensajePorTopic(CONTROLBOX_TOPIC,"1"+QRCodeResult);
-  }
-  else{
-     enviarMensajePorTopic(CONTROLBOX_TOPIC,QRCodeResult);
-  }
-   
-}*/
+  enviarMensajePorTopic(HELLO_TOPIC,QRCodeResult);
+}
