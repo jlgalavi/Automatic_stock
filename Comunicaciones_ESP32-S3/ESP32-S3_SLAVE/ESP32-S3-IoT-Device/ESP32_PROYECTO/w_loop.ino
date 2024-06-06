@@ -25,6 +25,5 @@ void on_loop() {
 
 void loop_componentes(){
   
-  
 
 }

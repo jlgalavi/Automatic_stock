@@ -10,8 +10,8 @@
 #define DEVICE_GIIROB_PR2_ID      "97" //"giirobpr2_00"
 
 // WIFI
-#define NET_SSID                  "Gonzalo"
-#define NET_PASSWD                "galbelda"
+#define NET_SSID                  "Gonzalo"//"iPhone"//
+#define NET_PASSWD                "galbelda"//"Hxry-Fp0R-8yMS-5HBS"//
 
 // MQTT
 #define MQTT_SERVER_IP            "broker.emqx.io"
@@ -22,18 +22,22 @@
 
 // SSL
 // Define SSL_ROOT_CA to enable TLS/SSL connection
-#define HELLO_TOPIC               "giirob/pr2/devices/hello"    // TODO: topic ejemplo ejercicio inicial
-#define ILUMINATION_TOPIC         "giirob/pr2/B11/control/sensors/ilumination"    // TODO: topic ejemplo ejercicio inicial
-#define EMERGENCY_TOPIC           "giirob/pr2/B11/control/emergency"
-#define CONTROLBOX_TOPIC          "giirob/pr2/B11/control/boxes"    
+#define HELLO_TOPIC               "giirob/pr2/b1/devices/hello"    // TODO: topic ejemplo ejercicio inicial
+#define ILUMINATION_TOPIC         "giirob/pr2/b1/control/sensors/ilumination"    // TODO: topic ejemplo ejercicio inicial
+#define PROXIMITY_TOPIC           "giirob/pr2/b1/control/sensors/proximity" 
+#define EMERGENCY_TOPIC           "giirob/pr2/b1/control/emergency"
+#define CONTROLBOX_TOPIC          "giirob/pr2/b1/control/boxes"
+#define INCIDENCE_TOPIC           "giirob/pr2/b1/control/incidence"    
 
 // IO
-#define PIN_ANALOG_IN             1
-#define LED_BUILTIN               2
-#define PIN_BUTTON                13
+#define PIN_ANALOG_IN             21
+#define LED_BUILTIN               42
+#define PIN_BUTTON                14
+#define US_SENSOR1                 2
+#define US_SENSOR2                 0
 
 /* GPIO of CAMERA_MODEL_ESP32S3_EYE */
-#define PWDN_GPIO_NUM     -1
+  #define PWDN_GPIO_NUM     -1
   #define RESET_GPIO_NUM    -1
   #define XCLK_GPIO_NUM      15
   #define SIOD_GPIO_NUM     4

@@ -60,7 +60,7 @@ void setup() {
   suscribirseATopics();
   on_setup();
   // TODO: completar esta función (s_setup.ino)
-  setup_QR();
+  //setup_QR();
 
 }
 
