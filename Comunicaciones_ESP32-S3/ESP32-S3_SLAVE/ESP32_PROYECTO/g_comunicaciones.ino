@@ -22,7 +22,7 @@ void alRecibirMensajePorTopic(char* topic, String msg) {
   int id = doc["id"];
   int nuevo_id;
   
-  if(strcmp(topic, HELLO_TOPIC) == 0){
+  /*if(strcmp(topic, HELLO_TOPIC) == 0){
     switch(id){
       case 1:
         nuevo_id = 4;

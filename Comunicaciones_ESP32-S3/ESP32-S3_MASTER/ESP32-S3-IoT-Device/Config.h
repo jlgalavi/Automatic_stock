@@ -15,7 +15,7 @@
 #define NET_PASSWD                "Hxry-Fp0R-8yMS-5HBS"//"09122000"////"giirob-pr2-2023"
 
 // MQTT
-#define MQTT_SERVER_IP            "broker.emqx.io"//"mqtt.dsic.upv.es"//
+#define MQTT_SERVER_IP            "broker.hivemq.com"//"mqtt.dsic.upv.es"//
 #define MQTT_SERVER_PORT           1883
 #define MQTT_USERNAME             "giirob"    // Descomentar para conexión al broker MQTT (user/passwd)
 #define MQTT_PASSWORD             "UPV2024"

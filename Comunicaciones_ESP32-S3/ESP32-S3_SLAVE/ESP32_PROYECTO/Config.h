@@ -14,7 +14,7 @@
 #define NET_PASSWD                "Hxry-Fp0R-8yMS-5HBS"//"galbelda"
 
 // MQTT
-#define MQTT_SERVER_IP            "broker.emqx.io"
+#define MQTT_SERVER_IP            "broker.hivemq.com"
 #define MQTT_SERVER_PORT          1883
 #define MQTT_USERNAME             "giirob"    // Descomentar esta línea (y la siguiente) para que se conecte al broker MQTT usando usuario y contraseña
 #define MQTT_PASSWORD             "UPV2024"
@@ -28,7 +28,7 @@
 #define CONTROLBOX_TOPIC          "giirob/pr2/b1/control/boxes"    
 
 // IO
-#define PIN_ANALOG_IN             21
+#define PIN_ANALOG_IN             20
 #define LED_BUILTIN               2
 #define PIN_BUTTON                14
 
