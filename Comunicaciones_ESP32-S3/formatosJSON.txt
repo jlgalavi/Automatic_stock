@@ -91,6 +91,21 @@ Archivo JSON:
 
 *********************************************************************************
 
+TOPIC: PROXIMITY_TOPIC --> giirob/pr2/B1/control/sensors/proximity
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - ESP32-S3_SLAVE    
+Archivo JSON:
+'''
+{
+    "ID_SENSOR": "<string>"
+    "PROXIMITY_TYPE": "<string>"
+}
+'''
+
+*********************************************************************************
+
 TOPIC: EMERGENCY_TOPIC --> giirob/pr2/B1/control/emergency
 SUBSCRIBERS:
     - ESP32-S3_MASTER
@@ -99,7 +114,23 @@ PUBLISHERS:
 Archivo JSON:
 '''
 {
+    "ID_SENSOR": "<string>"
     "EMERGENCY_TYPE": "<string>"
+}
+'''
+
+*********************************************************************************
+
+TOPIC: INCIDENCE_TOPIC --> giirob/pr2/B1/control/incidence
+SUBSCRIBERS:
+    - ESP32-S3_MASTER
+PUBLISHERS:
+    - ESP32-S3_SLAVE    
+Archivo JSON:
+'''
+{
+    "ID_SENSOR": "<string>"
+    "TYPE": "<string>"
 }
 '''
 
