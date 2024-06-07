@@ -1,13 +1,16 @@
-class box : public target{
+class box {
 
   private:
 
-    const char* ID;
-    target pos;
+    String ID;
+    String pos;
+    bool set = false;
+    bool pick = false;
+    bool place = false;
 
   public:
 
-    box(const char* idbox, target position)
+    box(String idbox, String position)
     {
       ID = idbox;
       pos = position;
@@ -16,17 +19,55 @@ class box : public target{
     box()
     {
       ID = "";
-      pos = target(0,0,0);
+      pos = "(0,0,0)";
     }
 
-    const char* get_boxID()
+    String get_boxID()
     {
       return ID;
     }
 
-    target get_boxpos()
+    String get_boxpos()
     {
       return pos;
+    }
+
+    bool get_setBox()
+    {
+      return set;
+    }
+
+    bool get_pickBox()
+    {
+      return pick;
+    }
+
+    bool get_placeBox()
+    {
+      return place;
+    }
+
+    void set_box()
+    {
+      set = true;
+    }
+
+    void pick_box()
+    {
+      pick = true;
+    }
+
+    void place_box()
+    {
+      place = true;
+    }
+
+    void print_box()
+    {
+      Serial.print("BOX --> ");
+      Serial.print(ID);
+      Serial.print("; POSE --> ");
+      Serial.print(pos);
     }
 
 };

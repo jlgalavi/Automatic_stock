@@ -15,13 +15,16 @@
  * Version: 0.1   (2023/11/29) Prototipo Inicial Funcional
 */
 #include "Config.h"
+#include "order.h"
 
 #include <WiFi.h>
 #ifdef SSL_ROOT_CA
-  #include <WiFiClientSecure.h>
+#include <WiFiClientSecure.h>
 #endif
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include <LiquidCrystal_I2C.h>
+
 
 // ID de Dispositivo : se proporcionan varias alternativas, a modo de ejemplo
 //String deviceID = String("giirobpr2-device-") + String(DEVICE_GIIROB_PR2_ID); 
@@ -30,7 +33,7 @@
   // Versión usando la dirección MAC del dispositivo
 String deviceID = String("device-esp32s3-") + String(DEVICE_ESP_ID);        
 // Versión usando el ID de ESP del dispositivo
-
+LiquidCrystal_I2C lcd(0x27,16,2);
 void setup() {
   // Este setup configura conceptos 'core', inicializa la wifi y la conexión con 
   //  el bróker MQTT, y ejecuta algunos métodos que hay que completar. 
@@ -59,6 +62,8 @@ void setup() {
 
   // TODO: completar esta función (s_setup.ino)
   on_setup();
+
+  mqtt_resize_buffer();
 
 }
 

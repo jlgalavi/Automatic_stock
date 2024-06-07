@@ -1,37 +1,71 @@
-class container : public box{
+#include "box.h"
 
-  private:
+class container : public box {
 
-    int index = 0;
-    const char* ID;
-    box* boxes;
+private:
 
-  public:
+  String ID;
+  box* boxes;
+  int nboxes;
+  bool set = false;
 
-    container(int nbox, const char* idcontainer)
-    {
-      ID = idcontainer;
-      boxes = new box[nbox];
-    } 
+public:
 
-    container()
-    {
-      ID = "";
+  container(int nbox, String idcontainer) {
+    ID = idcontainer;
+    nboxes = nbox;
+    boxes = new box[nbox];
+    set = false;
+  }
+
+  container() {
+    ID = "";
+    set = false;
+  }
+
+  void add_box(box b_add) {
+    for (int i = 0; i < nboxes; i++) {
+      if (!(boxes[i].get_setBox())) {
+        boxes[i] = b_add;
+        boxes[i].set_box();
+        i = nboxes;
+      }
     }
+  }
 
-    void add_box(box b_add)
-    {
-      boxes[index] = b_add;
-      index++;
-    }
+  String get_containerID() {
+    return ID;
+  }
 
-    const char* get_containerID()
-    {
-      return ID;
-    }
+  box* get_boxes() {
+    return boxes;
+  }
 
-    box* get_boxes()
-    {
-      return boxes;
+  int get_containerSize() {
+    return nboxes;
+  }
+
+  void set_boxes(box* newBoxes) {
+    boxes = newBoxes;
+  }
+
+  void set_container()
+  {
+    set = true;
+  }
+
+  bool get_setContainer()
+  {
+    return set;
+  }
+
+  void print_container() {
+    Serial.print("CONTAINER --> ");
+    Serial.println(ID);
+    if (ID != "") {
+      for (int i = 0; i < nboxes; i++) {
+        boxes[i].print_box();
+      }
     }
+  }
 };

@@ -11,3 +11,6 @@ cajas a utilizar son las .obj
 color carton #a58a67
 color logo #013357
 - Para gestionar la información del pedido y poder comunicarlo con RoboDK a través de la web, necesitamos si o si BBDD
+100x100x50
+75x75x35
+50x50x25
